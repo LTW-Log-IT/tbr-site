@@ -2,8 +2,6 @@ export interface FaqItem {
   id: string;
   question: string;
   paragraphs: string[];
-  /** Visible gap that should not be treated as a finished fact. */
-  todo?: string;
   href?: string;
   linkLabel?: string;
   home?: boolean;
@@ -41,10 +39,8 @@ export const faqs: FaqItem[] = [
     paragraphs: [
       "Not when the pin is within 30 miles. Killeen, Fort Cavazos, Harker Heights, Nolanville, Copperas Cove, Belton, and Kempner are free on this card.",
       "Temple, Salado, Gatesville, Lampasas, Florence, Jarrell, and Troy are the 31–45 mile band at $50. A pin at 30 miles or under is still free. Georgetown, Moody, and Burnet are 46–60 miles at $90.",
-      "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum.",
-      "Bands are measured from a Killeen home base. If the trailer is stored somewhere else, the table has to be rebuilt before it is treated as final.",
+      "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum. Bands are measured from a Killeen home base.",
     ],
-    todo: "Recompute every band from the real storage address before ads name a free radius.",
     href: "/areas",
     linkLabel: "Look up a town",
   },
@@ -56,7 +52,6 @@ export const faqs: FaqItem[] = [
       "Plan on about 50–60 feet of level space for the tow vehicle and the trailer together, clear of low branches, with a way to pull out. Apartment offices and city parks need their own permission. A pavilion reservation is not automatically a yes for a trailer.",
       "The trailer brings a 13.5 kW generator. Do not plan on a bedroom outlet or a kitchen circuit. Food, drinks, and gum stay outside. The trailer is unwrapped. Magnets or a banner are fine. It does not wear a full wrap.",
     ],
-    todo: "Replace the 50–60 foot range with the measured truck-plus-trailer length, and publish the generator model plus a decibel reading. HOAs ask. Output is already 13.5 kW.",
     href: "/the-rig",
     linkLabel: "See the spec sheet",
   },
@@ -96,7 +91,7 @@ export const faqs: FaqItem[] = [
     question: "What ages can play, and who picks the game ratings?",
     paragraphs: [
       "The room is built for up to 24 players. The host sets the rating limit, and the coach follows it. Say the limit when you book if younger kids will be in the mix with older ones.",
-      "There is no VR on the trailer. Younger kids use the 8 tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
+      "Younger kids use the 8 tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
     ],
   },
   {
@@ -123,7 +118,6 @@ export const faqs: FaqItem[] = [
       "On-post events are part of the offer: unit days, FRG gatherings, BOSS events, homecomings, and PCS farewells. The travel fee on this card is $0 when the pin is within 30 miles. Getting through the gate is not.",
       "Installation access, a pass or a sponsor, and any MWR vendor steps have to be confirmed for the specific date. A booking on this site is not an endorsement by Fort Cavazos or the Department of Defense.",
     ],
-    todo: "Write the access steps you are allowed to publish after you confirm them. Do not guess a gate procedure.",
     href: "/military",
     linkLabel: "Military page",
   },
@@ -135,7 +129,6 @@ export const faqs: FaqItem[] = [
       "Those organizations can also use a Monday–Thursday rate of $125 an hour with a 3-hour minimum, if they have a tax-exempt certificate or a purchase order. It is not a birthday or home-party price. Residential bookings stay on Skirmish, Mission, Campaign, or a full day.",
       "Quotes show 8.25% tax. Tax-exempt groups need a Texas exemption certificate on file. We do not mark a booking tax-exempt without it.",
     ],
-    todo: "Confirm with the Texas Comptroller whether these bookings are taxable amusement services, and get the sales-tax permit if they are.",
     href: "/contact",
     linkLabel: "Request a group quote",
   },

@@ -2,7 +2,7 @@
 
 Static marketing site for **Team Battle Ready** — a Central Texas car club and a mobile gaming trailer serving Killeen, Fort Cavazos, Belton, and the towns on the travel card.
 
-Visual system: navy stage, blue and red marks, white type. Typographic **TBR** and **B4TTL3** only. The tagline is **Play · Connect · Build · Belong**. A black-and-cyan car-club flyer is not the color source of truth. No invented sponsor besides **Hakai No Kamigami**. The trailer is unwrapped. Magnets or a banner are fine. Do not show a wrap.
+Visual system: the launch flyer. Deep black and charcoal stage, electric cyan and ice blue call-to-action bars, white and metallic silver type. The mark is Joe’s **B4TTL3** brush logo: `public/brand/b4ttl3-logo-transparent.png` on the header and other light-on-dark chrome, and `public/brand/b4ttl3-logo.png` on dark panels. The values strip is **Drive · Build · Compete · Represent**. **Play · Connect · Build · Belong** can stay in body copy. No invented sponsor besides **Hakai No Kamigami**. The trailer is unwrapped. Magnets or a banner are fine. Do not show a wrap.
 
 Soft launch books by phone: call or text **(254) 251-5219**. `/book` can also open a text or email with the request. A date is not held until Joe confirms it. Facts that are still missing are marked **[TODO: Joe]**.
 
@@ -62,7 +62,7 @@ Edit these before the domain is advertised:
 2. **Email** — `contactEmail` in `src/config/site.ts`. When it is set, Request a date and the quote form open `mailto:`. While it is blank, Request a date opens a text to (254) 251-5219.
 3. **Rate card sign-off** — prices, zones, discounts, and policies live in `src/data/pricing.ts`. They are the launch draft. Change them there; the pages read that file.
 4. **Remaining measurements** — station and console counts are filled on `/the-rig` (6 Switch stations, about 4 Xbox, 3 PS5, 8 Roblox/Minecraft tablets). Generator output is 13.5 kW. Model, decibels, length, screen size, and parking footprint are still `[TODO: Joe]`.
-5. **Photos** — trailer pictures are not in yet. Hero, packages, and The Rig use branded “Trailer photos coming soon” frames. Put real files in `public/photos/` after the event and replace those frames. No stock gamers. No wrapped-trailer art. No invented trailer photos. Magnets or a banner are fine. Optional launch flyer: `public/brand/tbr-flyer-launch.png` (the home page shows it if that file exists). That flyer is not the color system.
+5. **Photos** — trailer pictures are not in yet. Hero, packages, and The Rig use branded “Trailer photos coming soon” frames. Put real files in `public/photos/` after the event and replace those frames. No stock gamers. No wrapped-trailer art. No invented trailer photos. Magnets or a banner are fine. Drop the launch flyer at `public/brand/tbr-flyer-launch.png` and the home page will show it. That flyer is the color system.
 6. **Storage address** — travel zones assume a Killeen base. Recompute `/areas` if the lot is somewhere else.
 7. **Bio** — replace the About stub with facts you want public. No home address, no gate codes, no minors’ last names.
 8. **Google Business Profile** — add the real link when it exists. Do not type a star rating or review count.

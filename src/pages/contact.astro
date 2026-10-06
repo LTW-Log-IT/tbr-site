@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { phoneLabel, phoneReady, site } from "../config/site";
+import { phoneLabel, site } from "../config/site";
 import { packages, towns } from "../data/pricing";
 ---
 
 <BaseLayout
   title="Contact Team Battle Ready | Killeen Gaming Trailer"
-  description="Text, call, or send a quote request for the Team Battle Ready gaming trailer in Killeen and Fort Cavazos. Phone and email are marked until they are connected."
+  description="Text or call (254) 251-5219, or send a quote request for the Team Battle Ready gaming trailer in Killeen and Fort Cavazos."
 >
   <PageHero eyebrow="Contact" title="Text, call, or send the date." crumb="Contact">
     <p>
@@ -20,28 +20,14 @@ import { packages, towns } from "../data/pricing";
       <div class="grid gap-4">
         <article class="panel" id="text">
           <h2 class="metal" style="font-size: 1.8rem">Text</h2>
-          {phoneReady() ? (
-            <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`sms:+${site.phoneE164}`}>Text {phoneLabel()}</a></p>
-          ) : (
-            <p class="muted" style="margin-top: 0.7rem">
-              <span class="todo">[TODO: Joe]</span>
-              Set <code>phoneE164</code> and <code>phoneDisplay</code> in <code>src/config/site.ts</code>. Until then, Text in the bottom bar lands here.
-            </p>
-          )}
+          <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`sms:+${site.phoneE164}`}>Text {phoneLabel()}</a></p>
           <p class="muted" style="margin-top: 0.7rem">
             Copy if you need it: “Hi Team Battle Ready — I want to check a date for a gaming trailer in [town]. Package: [Skirmish / Mission / Campaign / 6-hour / 8-hour].”
           </p>
         </article>
         <article class="panel" id="call">
           <h2 class="metal" style="font-size: 1.8rem">Call</h2>
-          {phoneReady() ? (
-            <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`tel:+${site.phoneE164}`}>Call {phoneLabel()}</a></p>
-          ) : (
-            <p class="muted" style="margin-top: 0.7rem">
-              <span class="todo">[TODO: Joe]</span>
-              The call button is waiting on the same phone fields. Do not publish a personal number you do not want on a public site.
-            </p>
-          )}
+          <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`tel:+${site.phoneE164}`}>Call {phoneLabel()}</a></p>
         </article>
         <article class="panel" id="instagram">
           <h2 class="metal" style="font-size: 1.8rem">Instagram</h2>
@@ -52,19 +38,14 @@ import { packages, towns } from "../data/pricing";
             Also <a class="inline-link" href={site.instagram[1].href} rel="noopener noreferrer">{site.instagram[1].handle}</a>.
           </p>
         </article>
-        <article class="panel" id="email">
-          <h2 class="metal" style="font-size: 1.8rem">Email</h2>
-          <p class="muted" style="margin-top: 0.7rem">
-            {site.contactEmail ? (
+        {site.contactEmail && (
+          <article class="panel" id="email">
+            <h2 class="metal" style="font-size: 1.8rem">Email</h2>
+            <p class="muted" style="margin-top: 0.7rem">
               <a class="inline-link" href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-            ) : (
-              <>
-                <span class="todo">[TODO: Joe]</span>
-                Set <code>contactEmail</code> in <code>src/config/site.ts</code>.
-              </>
-            )}
-          </p>
-        </article>
+            </p>
+          </article>
+        )}
       </div>
 
       <form id="quote-form" class="panel grid gap-4">
@@ -159,7 +140,7 @@ import { packages, towns } from "../data/pricing";
       previewLabel.hidden = false;
       preview.value = body;
       if (!contactEmail) {
-        status.textContent = "[TODO: Joe] Set contactEmail in src/config/site.ts. The message is in the box so you can copy it. It was not sent.";
+        status.textContent = "This message was not emailed. Call or text (254) 251-5219. The note is in the box if you want to copy it.";
         return;
       }
       const subject = encodeURIComponent("Team Battle Ready quote");

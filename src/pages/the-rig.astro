@@ -47,21 +47,17 @@ const photos = [
   </PageHero>
 
   <section class="section" style="padding-top: 1rem">
-    <div class="wrap">
+    <div class="wrap narrow">
       <h2 class="metal">What is on board</h2>
       <ul class="checks" style="margin-top: 1rem">
         <li>6 gaming stations: a chair, a monitor, and a Nintendo Switch at each one.</li>
         <li>About 4 Xbox consoles and 3 PlayStation 5 consoles.</li>
         <li>8 tablets for Roblox and Minecraft, for toddlers and younger kids.</li>
-        <li>Room for up to 24 players, a game coach, setup, and cleanup. The host sets the game-rating limit. No VR.</li>
+        <li>Room for up to 24 players, a game coach, setup, and cleanup. The host sets the game-rating limit.</li>
         <li>A 13.5 kW generator. The cabin does not run off a household outlet.</li>
         <li>The trailer is stealth and unwrapped. Magnets or a banner are fine. It does not wear a full wrap.</li>
         <li>Food, drinks, and gum stay outside.</li>
       </ul>
-      <p class="muted" style="margin-top: 1rem">
-        <span class="todo">[TODO: Joe]</span>
-        Do not add “fully insured” or “background-checked crew” here until the policy is bound and the checks are done.
-      </p>
     </div>
   </section>
 
@@ -102,10 +98,7 @@ const photos = [
             {openSpecs.map(([label, hint]) => (
               <tr>
                 <th scope="row">{label}</th>
-                <td>
-                  <span class="todo">[TODO: Joe]</span>
-                  {hint}
-                </td>
+                <td>{hint}</td>
               </tr>
             ))}
           </tbody>
@@ -121,10 +114,6 @@ const photos = [
         <p class="muted" style="margin-top: 0.7rem">
           Plan on about 50–60 feet of level space until the real footprint is measured. Similar trailers in this area ask for that kind of length. It is a planning range, not this rig’s number.
         </p>
-        <p class="muted" style="margin-top: 0.7rem">
-          <span class="todo">[TODO: Joe]</span>
-          Write the measured truck-plus-trailer length, the surface you will and will not set up on, and how loud the generator is at the property line.
-        </p>
       </article>
       <article class="panel">
         <h2 class="metal">Power and weather</h2>
@@ -134,10 +123,6 @@ const photos = [
         <p class="muted" style="margin-top: 0.7rem">
           Rain alone does not cancel a climate-controlled cabin. Lightning, ice, winds above 35 mph, or a National Weather Service warning: free reschedule or full credit.
         </p>
-        <p class="muted" style="margin-top: 0.7rem">
-          <span class="todo">[TODO: Joe]</span>
-          Publish generator fuel use for a 3-hour event once you have run one in July heat.
-        </p>
       </article>
     </div>
   </section>
@@ -146,7 +131,7 @@ const photos = [
     <div class="wrap">
       <h2 id="photo-title" class="metal">Photo slots</h2>
       <p class="lede">
-        Trailer photos coming soon. No stock gamers and no fake trailer pictures. Drop files in <code>public/photos/</code> after the next event and swap these frames.
+        Trailer photos coming soon. No stock gamers and no fake trailer pictures.
       </p>
       <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1rem">
         {photos.map((caption) => (

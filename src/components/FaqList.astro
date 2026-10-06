@@ -15,12 +15,6 @@ const { items } = Astro.props;
         <summary><span>{item.question}</span></summary>
         <div class="faq-body">
           {item.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-          {item.todo && (
-            <p>
-              <span class="todo">[TODO: Joe]</span>
-              {item.todo}
-            </p>
-          )}
           {item.href && item.linkLabel && <p><a href={item.href}>{item.linkLabel}</a></p>}
         </div>
       </details>

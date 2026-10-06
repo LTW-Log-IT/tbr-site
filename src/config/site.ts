@@ -12,8 +12,12 @@ export const SQUARE_BOOKING_URL = "";
 export const site = {
   name: "Team Battle Ready Gaming Trailer",
   shortName: "Team Battle Ready",
-  mark: "TBR",
+  mark: "B4TTL3",
   leet: "B4TTL3",
+  logo: {
+    chrome: "/brand/b4ttl3-logo-transparent.png",
+    plate: "/brand/b4ttl3-logo.png",
+  },
   domain: "tbr.leadthewaylogistics.info",
   url: "https://tbr.leadthewaylogistics.info",
   repo: "https://github.com/LTW-Log-IT/tbr-site",
@@ -43,7 +47,7 @@ export const site = {
     },
   ],
   sponsor: "Hakai No Kamigami",
-  values: ["Play.", "Connect.", "Build.", "Belong."],
+  values: ["Drive.", "Build.", "Compete.", "Represent."],
 } as const;
 
 export const nav = [
@@ -68,5 +72,5 @@ export function textHref(): string {
 }
 
 export function phoneLabel(): string {
-  return site.phoneDisplay.trim() || "[TODO: Joe — business phone]";
+  return site.phoneDisplay.trim() || "(254) 251-5219";
 }

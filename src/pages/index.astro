@@ -34,7 +34,7 @@ const steps = [
   {
     n: "04",
     title: "Play it out",
-    body: "Six Switch stations, about four Xbox, three PS5s, and a coach. Add-ons are extra. There is no VR.",
+    body: "Six Switch stations, about four Xbox, three PS5s, and a coach. Add-ons are extra.",
   },
 ];
 ---
@@ -52,9 +52,9 @@ const steps = [
       <span class="corner bl" aria-hidden="true"></span>
       <span class="corner br" aria-hidden="true"></span>
       <div class="speed-stack" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="eyebrow">TBR · Central Texas · Car club × gaming trailer</p>
+      <p class="eyebrow">B4TTL3 · Central Texas · Car club × gaming trailer</p>
       <h1 class="metal">The Party Shows Up Battle Ready.</h1>
-      <p class="leet" style="margin-top: 0.8rem">{site.leet}</p>
+      <img class="brand-logo brand-logo-hero" src={site.logo.chrome} alt="B4TTL3" width="2096" height="944" />
       <p class="lede">
         Mobile video game theater for up to 24 players. Killeen • Fort Cavazos • Temple • Belton.
       </p>
@@ -80,10 +80,6 @@ const steps = [
         <li>14+ days: full refund</li>
         <li>$25 military, responder, teacher</li>
       </ul>
-      <p class="muted" style="margin-top: 0.9rem">
-        <span class="todo">[TODO: Joe]</span>
-        Google reviews stay off this page until the Business Profile is live. Do not type a star rating by hand.
-      </p>
     </div>
   </section>
 
@@ -110,9 +106,7 @@ const steps = [
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
       </div>
       <p class="muted" style="margin-top: 1rem">
-        <span class="todo">[TODO: Joe]</span>
-        Sign off on these numbers in <code>src/data/pricing.ts</code> before you put them on a flyer or an ad.
-        <a class="inline-link" href="/packages"> Full comparison, add-ons, and travel.</a>
+        <a class="inline-link" href="/packages">Full comparison, add-ons, and travel.</a>
       </p>
     </div>
   </section>
@@ -156,11 +150,7 @@ const steps = [
             ))}.
           </p>
           <p>
-            Club perks on the launch flyer — decals, shop discounts, meets, cruises — belong to the car club, not to a trailer booking. Membership signups are not on this site yet.
-          </p>
-          <p>
-            <span class="todo">[TODO: Joe]</span>
-            Add a real join path when you want one. Until then, Instagram is the crew channel.
+            Club perks on the launch flyer — decals, shop discounts, meets, cruises — belong to the car club, not to a trailer booking. Membership signups are not on this site yet. Instagram is the crew channel.
           </p>
         </div>
       </div>
@@ -172,14 +162,14 @@ const steps = [
         {hasFlyer && (
           <img
             src="/brand/tbr-flyer-launch.png"
-            alt="Car-club launch flyer for Team Battle Ready. The sponsor line reads Hakai No Kamigami. Flyer ink is not the site color system. This site is navy, blue, red, and white."
+            alt="Launch flyer for Team Battle Ready. Metallic silver wordmark, cyan B4TTL3 mark, night asphalt, and sponsor Hakai No Kamigami."
             style="margin-bottom: 1rem"
           />
         )}
         <div class="speed-stack" aria-hidden="true"><span></span><span></span><span></span></div>
-        <p class="eyebrow">TBR · Central Texas</p>
+        <p class="eyebrow">B4TTL3 · Central Texas</p>
         <p class="poster-title metal">Team Battle Ready</p>
-        <p class="leet">{site.leet}</p>
+        <img class="brand-logo brand-logo-plate" src={site.logo.plate} alt="B4TTL3" width="2096" height="944" />
         <ul class="poster-values">
           {site.values.map((value) => <li>{value}</li>)}
         </ul>

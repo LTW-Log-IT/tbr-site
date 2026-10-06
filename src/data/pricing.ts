@@ -54,7 +54,6 @@ const sharedIncludes = [
   "Trailer, coach, setup, and cleanup",
   "Up to 24 players at a time",
   "6 Switch stations, about 4 Xbox, 3 PS5s",
-  "No VR",
 ];
 
 export const packages: CatalogPackage[] = [

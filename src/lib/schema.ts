@@ -21,7 +21,7 @@ export function localBusinessSchema() {
     url: site.url,
     telephone: "+1-254-251-5219",
     sameAs: site.instagram.map((account) => account.href),
-    image: `${site.url}/favicon.svg`,
+    image: `${site.url}${site.logo.chrome}`,
     slogan: site.slogan,
     areaServed: areas.map((name) => ({
       "@type": name === "Fort Cavazos" ? "AdministrativeArea" : "City",

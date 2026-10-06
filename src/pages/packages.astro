@@ -32,7 +32,6 @@ const matrix = [
   { label: "Players at a time", value: () => "Up to 24" },
   { label: "Coach, setup, cleanup", value: () => "Included" },
   { label: "Switch stations / Xbox / PS5", value: () => "6 / about 4 / 3" },
-  { label: "VR", value: () => "Not offered" },
   { label: "Toddler zone", value: () => `Add-on ${money(75)}` },
   { label: "Tournament pack", value: () => `Add-on ${money(40)}` },
   { label: "Yard games", value: () => `Add-on ${money(25)}` },
@@ -47,8 +46,6 @@ const matrix = [
   <PageHero eyebrow="Rate card" title="Every number, on the page." crumb="Packages">
     <p>
       Weekday means Monday–Thursday. Weekend means Friday–Sunday. Prices exclude tax. The quote adds 8.25%.
-      <span class="todo">[TODO: Joe]</span>
-      Confirm this card before you advertise it. Edit <code>src/data/pricing.ts</code>.
     </p>
   </PageHero>
 
@@ -152,8 +149,6 @@ const matrix = [
       <h2 id="travel-title" class="metal">Travel from a Killeen base</h2>
       <p class="lede">
         One-way distance. The fee is flat for the trip. Free within 30 miles, {money(50)} for 31–45, {money(90)} for 46–60. Past 60 miles is a quote.
-        <span class="todo">[TODO: Joe]</span>
-        Rebuild this if the storage lot is not in Killeen.
       </p>
       <div class="table-wrap" style="margin-top: 1rem">
         <table class="data">

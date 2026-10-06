@@ -12,8 +12,6 @@ import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
   <PageHero eyebrow="Where we roll" title="Towns, miles, and the fee." crumb="Areas">
     <p>
       Travel is free within 30 miles of a Killeen home base. Fort Cavazos is inside that fee and still needs installation access.
-      <span class="todo">[TODO: Joe]</span>
-      If the trailer is stored in another town, redo this whole page from that address.
     </p>
   </PageHero>
 
@@ -52,13 +50,11 @@ import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
             <p class="eyebrow">{zone.name} · {feeLabel(town.fee)}</p>
             <h2 class="metal" style="font-size: 2rem">{town.name}</h2>
             <p class="muted" style="margin-top: 0.5rem">{town.blurb}</p>
-            <p style="margin-top: 0.8rem">
-              {town.href ? (
+            {town.href && (
+              <p style="margin-top: 0.8rem">
                 <a class="inline-link" href={town.href}>Killeen city page</a>
-              ) : (
-                <span class="muted">City page not written yet. The fee above is the useful part.</span>
-              )}
-            </p>
+              </p>
+            )}
           </article>
         );
       })}
