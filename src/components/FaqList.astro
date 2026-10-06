@@ -1,0 +1,29 @@
+---
+import type { FaqItem } from "../data/faq";
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-list">
+  {
+    items.map((item) => (
+      <details class="faq-item" id={item.id}>
+        <summary><span>{item.question}</span></summary>
+        <div class="faq-body">
+          {item.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {item.todo && (
+            <p>
+              <span class="todo">[TODO: Joe]</span>
+              {item.todo}
+            </p>
+          )}
+          {item.href && item.linkLabel && <p><a href={item.href}>{item.linkLabel}</a></p>}
+        </div>
+      </details>
+    ))
+  }
+</div>

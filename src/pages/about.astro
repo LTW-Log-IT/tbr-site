@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../config/site";
+
+const flyerPerks = [
+  "Free decals and windshield banners",
+  "Sponsorship opportunities",
+  "Discounts at various shops",
+  "Events, meets, and cruises",
+  "Community, networking, and support",
+];
+---
+
+<BaseLayout
+  title="About Team Battle Ready | Killeen Car Club and Gaming Trailer"
+  description="Team Battle Ready is a Central Texas car club and a mobile gaming trailer serving Killeen and Fort Cavazos. Play, connect, build, belong."
+>
+  <PageHero eyebrow="The crew" title="Cars at night. Controllers after." crumb="About">
+    <p>
+      Team Battle Ready is Joe Bonilla’s Central Texas crew. The car club came with the name. The gaming trailer is already loaded and rolling under the same four words.
+    </p>
+  </PageHero>
+
+  <article class="section" style="padding-top: 0.5rem">
+    <div class="wrap grid gap-8 lg:grid-cols-2">
+      <div class="prose">
+        <h2>Two lanes, one mark</h2>
+        <p>
+          Play is the room: consoles, a coach, and a cabin that is already loaded. Connect is the crew, the unit, and the driveway full of people who showed up. Build is the trailer, the shop time, and the habit of finishing what you started. Belong is Killeen and Fort Cavazos having a place that is theirs to host.
+        </p>
+        <p>
+          The trailer side is a climate-controlled game room for birthdays, units, schools, and anybody else who would rather have 24 players in a cabin than one TV in a garage. The club side is meets, cruises, and cars that look like they belong on a night poster. Booking a party does not sign you into the club. Following the club does not reserve the trailer. They share a name on purpose.
+        </p>
+        <p>
+          <span class="todo">[TODO: Joe]</span>
+          Replace this with your paragraph: the military or veteran detail you actually want public, how the cars started, how the games started, and why a trailer instead of another template site. Nobody else should invent that biography.
+        </p>
+        <h2>Who is on the crew</h2>
+        <p>
+          <span class="todo">[TODO: Joe]</span>
+          List first names and roles only for people who agreed to be on a public page. No last names of minors. No storage-lot address, no home address, no gate codes. This is a service-area business. The public NAP is a phone, an email, and the towns you serve.
+        </p>
+        <p>
+          A second adult on youth events is the operating plan, not a claim that the roster is hired. Say “background-checked” only after the checks are done.
+        </p>
+      </div>
+      <div>
+        <div class="poster">
+          <p class="eyebrow">TBR · Central Texas car club</p>
+          <p class="poster-title metal">Team Battle Ready</p>
+          <p class="leet">{site.leet}</p>
+          <ul class="poster-values">
+            {site.values.map((value) => <li>{value}</li>)}
+          </ul>
+          <p class="poster-sponsor">Flyer sponsor · {site.sponsor}</p>
+        </div>
+        <div class="panel" style="margin-top: 0.8rem">
+          <h2 class="metal" style="font-size: 1.7rem">From the launch flyer</h2>
+          <p class="muted" style="margin-top: 0.5rem">Member benefits the flyer lists for the car club. Confirm they are still true before this becomes the handbook.</p>
+          <ul class="checks">
+            {flyerPerks.map((perk) => <li>{perk}</li>)}
+          </ul>
+          <p class="muted" style="margin-top: 0.7rem">
+            <span class="todo">[TODO: Joe]</span>
+            These perks are not included with a trailer booking.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap prose" style="margin-top: 2rem">
+      <h2>Sponsor line</h2>
+      <p>
+        The launch flyer credits one sponsor: {site.sponsor}. This site does not add co-sponsors, trophies, or certifications that are not in writing.
+        <span class="todo">[TODO: Joe]</span>
+        Add a link only if they gave you a URL.
+      </p>
+      <p>
+        Instagram: {site.instagram.map((account, index) => (
+          <>
+            <a href={account.href} rel="noopener noreferrer">{account.handle}</a>
+            {index === 0 ? " and " : ""}
+          </>
+        ))}.
+      </p>
+      <p><a class="btn btn-primary" href="/book">Check My Date</a></p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqList from "../components/FaqList.astro";
+import PageHero from "../components/PageHero.astro";
+import { faqSchema, faqs } from "../data/faq";
+---
+
+<BaseLayout
+  title="FAQ | Team Battle Ready Gaming Trailer"
+  description="Parking, power, deposits, cancellations, travel fees, military discount, and Fort Cavazos access for the Team Battle Ready gaming trailer."
+  jsonLd={faqSchema(faqs)}
+>
+  <PageHero eyebrow="Questions" title="Short answers. The policy has the rest." crumb="FAQ">
+    <p>
+      Prices, the deposit, travel, parking, weather, and the military discount. If a fact is still missing, it says so.
+      <span class="todo">[TODO: Joe]</span>
+      Have a Texas attorney read the policy before you take the first deposit, and match the 48-hour balance charge to the live Square settings.
+    </p>
+  </PageHero>
+  <section class="section" style="padding-top: 0.5rem">
+    <div class="wrap">
+      <FaqList items={faqs} />
+      <p style="margin-top: 1.5rem"><a class="btn btn-primary" href="/book">Check My Date</a></p>
+    </div>
+  </section>
+</BaseLayout>

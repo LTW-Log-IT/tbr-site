@@ -1,0 +1,31 @@
+---
+import { money, type CatalogPackage } from "../data/pricing";
+
+interface Props {
+  pkg: CatalogPackage;
+}
+
+const { pkg } = Astro.props;
+---
+
+<article class="pkg-card" id={pkg.id}>
+  <p class="pkg-kicker">
+    <span>{pkg.hourly ? "Weekdays" : "Mon–Thu / Fri–Sun"}</span>
+  </p>
+  <h3 class="metal">{pkg.name}</h3>
+  <p class="pkg-meta">{pkg.timeLabel}</p>
+  {pkg.hourly ? (
+    <p class="pkg-price">{money(pkg.weekdayPrice)}<span class="pkg-unit">/hr</span></p>
+  ) : (
+    <>
+      <p class="pkg-price">{money(pkg.weekdayPrice)}</p>
+      <p class="pkg-meta">Fri–Sun {money(pkg.weekendPrice ?? pkg.weekdayPrice)}</p>
+    </>
+  )}
+  <p class="muted">{pkg.summary}</p>
+  <ul class="checks">
+    {pkg.includes.map((item) => <li>{item}</li>)}
+  </ul>
+  {pkg.note && <p class="muted">{pkg.note}</p>}
+  <a class="btn btn-primary" href={`/book?pkg=${pkg.id}`}>Book {pkg.name}</a>
+</article>

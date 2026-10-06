@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<BaseLayout
+  title="Policies | Team Battle Ready Gaming Trailer"
+  description="Draft deposit, cancellation, weather, food, and damage rules for Team Battle Ready gaming trailer bookings in Central Texas."
+>
+  <PageHero eyebrow="Draft policy" title="The rules, in plain English." crumb="Policies">
+    <p>
+      This is the launch draft, dated October 6, 2026. It is not legal advice.
+      <span class="todo">[TODO: Joe]</span>
+      Have a Texas attorney review it, then make Square’s checkout checkbox point at the same words. Do not take a deposit while this paragraph is still a to-do.
+    </p>
+  </PageHero>
+
+  <article class="section prose" style="padding-top: 0.5rem">
+    <div class="wrap">
+      <h2>Deposit</h2>
+      <p>
+        The deposit is a flat $100 on every booking: Skirmish, Mission, Campaign, a 6- or 8-hour full day, and the Monday–Thursday group rate. Add-ons, travel, tax, and the $25 discount do not change the deposit.
+      </p>
+      <p>
+        Prices on the card exclude tax. Quotes and booking totals add 8.25% to the subtotal. The $100 deposit comes off that tax-included total.
+      </p>
+      <p>
+        The balance is set up to charge automatically 48 hours before the event to the card on file. Cash or Zelle on arrival is an option if the card is held as backup.
+        <span class="todo">[TODO: Joe]</span>
+        Turn that timing on in Square, or change this sentence. Do not advertise an automatic charge the account cannot make.
+      </p>
+      <h2>Cancellation</h2>
+      <p>Cancel 14 or more days before the event and the deposit is refunded in full.</p>
+      <p>Cancel 3 to 13 days out and the deposit becomes a credit good for 12 months. It is not returned as cash.</p>
+      <p>Cancel inside 72 hours and the deposit is forfeited.</p>
+      <h2>Weather</h2>
+      <p>
+        Rain alone does not cancel. The cabin is climate-controlled on purpose. Lightning, ice, winds above 35 mph, or a National Weather Service warning: you get a free reschedule or a full credit. You choose.
+      </p>
+      <h2>Late start</h2>
+      <p>
+        The clock starts at the scheduled time. If parking or access is not ready, the coach waits up to 30 minutes. Time lost after that is not added to the back of the event, because the next slot may belong to someone else.
+      </p>
+      <h2>Travel</h2>
+      <p>
+        Travel is free within 30 miles, $50 for 31–45 miles, and $90 for 46–60 miles. Past 60 miles is a quote, with no published fee. The town list is on the <a href="/areas">areas page</a>. A fee that was wrong because we mis-measured the address gets fixed. A fee that changes because the storage lot moves gets fixed on the site before new bookings, not after.
+      </p>
+      <h2>Food, drink, and gum</h2>
+      <p>They stay outside the trailer. A violation is a $75 cleaning fee on this draft.</p>
+      <h2>Damage</h2>
+      <p>Damage is billed at replacement cost to the card on file. Normal wear on a controller is not damage. A broken screen is.</p>
+      <h2>Ratings and supervision</h2>
+      <p>
+        The host sets the game-rating limit and is responsible for telling us. The coach enforces the limit you set. The host also supplies any adult supervision the venue requires beyond the coach. The trailer does not offer VR.
+      </p>
+      <h2>Photos</h2>
+      <p>
+        Photos of an event go on a social feed only with the booking host’s consent. Say so on the booking if faces should stay off.
+        <span class="todo">[TODO: Joe]</span>
+        Write the exact consent line you want next to the Square terms checkbox.
+      </p>
+      <h2>Discounts</h2>
+      <p>
+        Military, first responders, and teachers: $25 off the package price, or off the Monday–Thursday hourly total. Bring an ID. The $25 does not come off travel, add-ons, or extra time.
+      </p>
+      <h2>On post</h2>
+      <p>
+        Fort Cavazos bookings still depend on installation access. We do not guarantee a gate we do not control. We do not use official seals, and we do not speak for the installation.
+      </p>
+      <h2>Changes</h2>
+      <p>
+        The version that applies is the one you accept at booking. If this page changes later, existing deposits keep the rules from the day they were paid.
+      </p>
+      <p><a class="btn btn-primary" href="/book">Check My Date</a></p>
+    </div>
+  </article>
+</BaseLayout>

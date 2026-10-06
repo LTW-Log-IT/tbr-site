@@ -1,0 +1,9 @@
+---
+import { callHref, textHref } from "../config/site";
+---
+
+<div class="dock" role="region" aria-label="Book, text, or call">
+  <a class="btn btn-primary" href="/book">Book</a>
+  <a class="btn btn-ghost" href={textHref()}>Text</a>
+  <a class="btn btn-ghost" href={callHref()}>Call</a>
+</div>

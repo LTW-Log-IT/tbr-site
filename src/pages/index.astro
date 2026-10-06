@@ -1,0 +1,225 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import DateCheck from "../components/DateCheck.astro";
+import FaqList from "../components/FaqList.astro";
+import PackageCard from "../components/PackageCard.astro";
+import { site, textHref } from "../config/site";
+import { homeFaqs, faqSchema } from "../data/faq";
+import { groupPackage, partyPackages } from "../data/pricing";
+import { localBusinessSchema } from "../lib/schema";
+
+const hasFlyer = fs.existsSync(path.join(process.cwd(), "public/brand/tbr-flyer-launch.png"));
+const text = textHref();
+
+const steps = [
+  {
+    n: "01",
+    title: "Check the date",
+    body: "Pick a package, a town, and a start window. The travel fee for that town is on the card before anyone takes a deposit.",
+  },
+  {
+    n: "02",
+    title: "Leave the deposit",
+    body: "A flat $100 holds the date. That hold is what keeps one trailer from getting booked twice.",
+  },
+  {
+    n: "03",
+    title: "We roll in",
+    body: "Level ground, the 13.5 kW generator on, cabin cooled, short briefing. The trailer is unwrapped. Magnets or a banner are fine.",
+  },
+  {
+    n: "04",
+    title: "Play it out",
+    body: "Six Switch stations, about four Xbox, three PS5s, and a coach. Add-ons are extra. There is no VR.",
+  },
+];
+---
+
+<BaseLayout
+  title="The Party Shows Up Battle Ready | Team Battle Ready"
+  description="Mobile video game theater for up to 24 players in Killeen, Fort Cavazos, Temple, and Belton. Skirmish from $349 on weekdays. Check a date and hold the trailer with a $100 deposit."
+  jsonLd={[localBusinessSchema(), faqSchema(homeFaqs)]}
+>
+  <section class="hero">
+    <div class="wrap hero-frame">
+      <span class="corner tl" aria-hidden="true"></span>
+      <span class="corner tr" aria-hidden="true"></span>
+      <span class="corner bl" aria-hidden="true"></span>
+      <span class="corner br" aria-hidden="true"></span>
+      <div class="speed-stack" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="eyebrow">TBR · Central Texas · Car club × gaming trailer</p>
+      <h1 class="metal">The Party Shows Up Battle Ready.</h1>
+      <p class="leet" style="margin-top: 0.8rem">{site.leet}</p>
+      <p class="lede">
+        Mobile video game theater for up to 24 players. Killeen • Fort Cavazos • Temple • Belton.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/book">Check My Date</a>
+        <a class="btn btn-ghost" href={text}>Text Us</a>
+      </div>
+      <ul class="value-row">
+        {site.values.map((value) => <li>{value}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-label="What you can count on">
+    <div class="wrap">
+      <ul class="trust">
+        <li>Up to 24 players</li>
+        <li>Climate-controlled cabin</li>
+        <li>Travel fee by town</li>
+        <li>$100 deposit</li>
+        <li>14+ days: full refund</li>
+        <li>$25 military, responder, teacher</li>
+      </ul>
+      <p class="muted" style="margin-top: 0.9rem">
+        <span class="todo">[TODO: Joe]</span>
+        Google reviews stay off this page until the Business Profile is live. Do not type a star rating by hand.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="check-title">
+    <div class="wrap">
+      <p class="eyebrow">Date check</p>
+      <h2 id="check-title" class="metal">See the town fee, then check the day.</h2>
+      <p class="lede">This sends you to the booking page with the package and town filled in. Open slots live in Square, not in this form.</p>
+      <div style="margin-top: 1.25rem">
+        <DateCheck />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="packages-title">
+    <div class="wrap">
+      <p class="eyebrow">Rate card</p>
+      <h2 id="packages-title" class="metal">Skirmish, Mission, Campaign.</h2>
+      <p class="lede">The big number is Monday–Thursday. Friday–Sunday is on the line under it. Full days are 6 and 8 hours. Weekday groups can also book $125 an hour, three hours minimum.</p>
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.5rem">
+        {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
+        <PackageCard pkg={groupPackage} />
+      </div>
+      <p class="muted" style="margin-top: 1rem">
+        <span class="todo">[TODO: Joe]</span>
+        Sign off on these numbers in <code>src/data/pricing.ts</code> before you put them on a flyer or an ad.
+        <a class="inline-link" href="/packages"> Full comparison, add-ons, and travel.</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="how-title">
+    <div class="wrap">
+      <p class="eyebrow">How a mission runs</p>
+      <h2 id="how-title" class="metal">Four steps. One trailer.</h2>
+      <div class="steps" style="margin-top: 1.5rem">
+        {steps.map((step) => (
+          <article class="panel step">
+            <p class="step-no">{step.n}</p>
+            <div>
+              <h3 class="metal">{step.title}</h3>
+              <p class="muted" style="margin-top: 0.4rem">{step.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="muted" style="margin-top: 1rem">
+        On the trailer now: 6 stations (chair, monitor, and a Nintendo Switch each), about 4 Xbox, 3 PS5s, and 8 tablets for Roblox and Minecraft. Screen sizes and the measured parking length are the open lines on <a class="inline-link" href="/the-rig">The Rig</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="crossover-title">
+    <div class="wrap grid gap-6 lg:grid-cols-2 lg:items-stretch">
+      <div>
+        <p class="eyebrow">Gaming × car club</p>
+        <h2 id="crossover-title" class="metal">Same crew. Night roads and night screens.</h2>
+        <div class="prose" style="margin-top: 1rem">
+          <p>
+            Team Battle Ready is a Central Texas car club that also rolls a gaming trailer. Meets and cruises on one side. Birthdays, unit days, and driveway missions on the other. Play, connect, build, belong.
+          </p>
+          <p>
+            Follow the cars and the trailer at {site.instagram.map((account, index) => (
+              <>
+                <a href={account.href} rel="noopener noreferrer">{account.handle}</a>
+                {index === 0 ? " and " : ""}
+              </>
+            ))}.
+          </p>
+          <p>
+            Club perks on the launch flyer — decals, shop discounts, meets, cruises — belong to the car club, not to a trailer booking. Membership signups are not on this site yet.
+          </p>
+          <p>
+            <span class="todo">[TODO: Joe]</span>
+            Add a real join path when you want one. Until then, Instagram is the crew channel.
+          </p>
+        </div>
+      </div>
+      <div class="poster">
+        <span class="corner tl" aria-hidden="true"></span>
+        <span class="corner tr" aria-hidden="true"></span>
+        <span class="corner bl" aria-hidden="true"></span>
+        <span class="corner br" aria-hidden="true"></span>
+        {hasFlyer && (
+          <img
+            src="/brand/tbr-flyer-launch.png"
+            alt="Car-club launch flyer for Team Battle Ready. The sponsor line reads Hakai No Kamigami. Flyer ink is not the site color system. This site is navy, blue, red, and white."
+            style="margin-bottom: 1rem"
+          />
+        )}
+        <div class="speed-stack" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p class="eyebrow">TBR · Central Texas</p>
+        <p class="poster-title metal">Team Battle Ready</p>
+        <p class="leet">{site.leet}</p>
+        <ul class="poster-values">
+          {site.values.map((value) => <li>{value}</li>)}
+        </ul>
+        <p class="poster-sponsor">Sponsor on the flyer · {site.sponsor}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="groups-title">
+    <div class="wrap">
+      <p class="eyebrow">Fort Cavazos and groups</p>
+      <h2 id="groups-title" class="metal">Built for the towns around the installation.</h2>
+      <div class="band-grid" style="margin-top: 1.25rem">
+        <a class="band-card" href="/military">
+          <h3 class="metal">Units, FRG, homecomings</h3>
+          <p class="muted">Unit days, BOSS events, PCS farewells. $25 off for military, first responders, and teachers. Invoice and PO welcome. Not a DoD program.</p>
+        </a>
+        <a class="band-card" href="/military#groups">
+          <h3 class="metal">Schools and organizations</h3>
+          <p class="muted">Six- and eight-hour full days, or $125 an hour Monday–Thursday. Rotations of 24, a coach, and a quote before you commit a gym or a festival lot.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="faq-title">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title" class="metal">Before you ask the group chat.</h2>
+      <div style="margin-top: 1rem">
+        <FaqList items={homeFaqs} />
+      </div>
+      <p style="margin-top: 1rem"><a class="btn btn-ghost" href="/faq">All questions</a></p>
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="final-title">
+    <div class="wrap">
+      <div class="slash">
+        <p>Check the date. Leave the deposit. Show up battle ready.</p>
+      </div>
+      <h2 id="final-title" class="metal" style="margin-top: 1.5rem">The trailer holds one booking at a time.</h2>
+      <p class="lede">Killeen, Fort Cavazos, Temple, Belton, and every town on the travel card.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/book">Check My Date</a>
+        <a class="btn btn-ghost" href={text}>Text Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

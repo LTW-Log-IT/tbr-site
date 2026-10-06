@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
+---
+
+<BaseLayout
+  title="Service Area | Team Battle Ready Gaming Trailer"
+  description="Travel for the Team Battle Ready gaming trailer from a Killeen base: free within 30 miles, $50 for 31–45, $90 for 46–60. Past 60 miles is a quote."
+>
+  <PageHero eyebrow="Where we roll" title="Towns, miles, and the fee." crumb="Areas">
+    <p>
+      Travel is free within 30 miles of a Killeen home base. Fort Cavazos is inside that fee and still needs installation access.
+      <span class="todo">[TODO: Joe]</span>
+      If the trailer is stored in another town, redo this whole page from that address.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 1rem">
+    <div class="wrap">
+      <div class="table-wrap">
+        <table class="data">
+          <caption>Flat trip fee by mileage. Distance is one-way from the assumed Killeen base.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Band</th>
+              <th scope="col">One-way</th>
+              <th scope="col">Fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            {zones.map((zone) => (
+              <tr>
+                <th scope="row">{zone.name}</th>
+                <td>{zone.miles}</td>
+                <td>{feeLabel(zone.fee)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap grid gap-4 md:grid-cols-2">
+      {towns.map((town) => {
+        const zone = zoneFor(town.zoneId);
+        return (
+          <article class="panel" id={town.id}>
+            <p class="eyebrow">{zone.name} · {feeLabel(town.fee)}</p>
+            <h2 class="metal" style="font-size: 2rem">{town.name}</h2>
+            <p class="muted" style="margin-top: 0.5rem">{town.blurb}</p>
+            <p style="margin-top: 0.8rem">
+              {town.href ? (
+                <a class="inline-link" href={town.href}>Killeen city page</a>
+              ) : (
+                <span class="muted">City page not written yet. The fee above is the useful part.</span>
+              )}
+            </p>
+          </article>
+        );
+      })}
+    </div>
+    <div class="wrap" style="margin-top: 1.5rem">
+      <a class="btn btn-primary" href="/book">Check My Date</a>
+    </div>
+  </section>
+</BaseLayout>

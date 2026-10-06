@@ -1,0 +1,93 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import PackageCard from "../components/PackageCard.astro";
+import { groupPackage, partyPackages } from "../data/pricing";
+---
+
+<BaseLayout
+  title="Fort Cavazos, Units, and FRG Events | Team Battle Ready"
+  description="Gaming trailer for Fort Cavazos units, FRG events, homecomings, and PCS farewells. $25 off for military, first responders, and teachers. Invoice and PO on the draft terms."
+>
+  <PageHero eyebrow="Fort Cavazos" title="Built for families who already know the word “orders.”" crumb="Military">
+    <p>
+      Unit days, FRG events, BOSS gatherings, homecomings, and PCS farewells use the same card as a birthday.
+      Invoice and PO are welcome.
+      This is not a Department of Defense program. No official insignia. A booking is not an endorsement by Fort Cavazos.
+    </p>
+  </PageHero>
+
+  <section class="section prose" style="padding-top: 0.5rem">
+    <div class="wrap">
+      <p>
+        Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. It is a flat $25, once. Travel and add-ons stay full price.
+      </p>
+      <p>
+        The travel fee for Fort Cavazos on this card is $0, same as Killeen, when the pin is within 30 miles. Getting the trailer on the installation is a separate step. Someone has to sponsor the vehicle or clear whatever pass the gate wants that month, and MWR may have its own vendor steps for an official event.
+      </p>
+      <p>
+        There is no VR station. The room is six Switch stations, about four Xbox, three PS5s, and eight tablets for younger kids.
+      </p>
+      <p>
+        <span class="todo">[TODO: Joe]</span>
+        After you confirm the current access rules through official channels, write only the steps you are allowed to publish. Do not post a home address, a gate code, or a personal sponsor’s phone number on this page.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap">
+      <h2 class="metal">The same card, named for the event</h2>
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.25rem">
+        {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
+        <PackageCard pkg={groupPackage} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap grid gap-4 md:grid-cols-3">
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.8rem">Unit / FRG / BOSS</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer family event. Monday–Thursday can also use $125 an hour with a three-hour minimum. The $25 discount applies once.
+        </p>
+      </article>
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.8rem">Homecoming</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          Most homecomings fit a Mission or a Campaign. Add a tournament pack or yard games if you want them. They are not included in the package price.
+        </p>
+      </article>
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.8rem">PCS farewell</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          Same lengths as a homecoming. PCS season in this town does not pause for a gap in the calendar. Book the date when the orders are real, not the week the truck is in the driveway.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="groups" style="padding-top: 0">
+    <div class="wrap">
+      <p class="eyebrow">Schools and other groups</p>
+      <h2 class="metal">Rotations, not a promise of 100 controllers.</h2>
+      <p class="lede">
+        Killeen ISD, Cove, Belton, and Temple schools, church youth nights, and festival committees all ask the same three things: a price, a certificate of insurance, and whether you can invoice. The price is the full day or the weekday hourly rate. The other two are not ready to claim.
+      </p>
+      <div class="panel" style="margin-top: 1rem">
+        <p>
+          A 6-hour full day is $749 Monday–Thursday and $799 Friday–Sunday. Eight hours is $949 / $999. Weekday blocks that do not match those lengths use $125 an hour, three hours minimum. Up to 24 players at a time, then a rotation.
+        </p>
+        <p style="margin-top: 0.8rem">
+          <span class="todo">[TODO: Joe]</span>
+          Have a certificate of insurance and a W-9 ready before you tell a school or a unit they can have them in 24 hours. Do not put “background-checked” on a flyer until the checks exist. Quotes add 8.25% tax. Tax-exempt groups need a Texas exemption certificate.
+        </p>
+        <p class="muted" style="margin-top: 0.7rem">
+          Draft billing for verified units, schools, and nonprofits is net-15, purchase order welcome.
+        </p>
+        <p style="margin-top: 1rem"><a class="btn btn-primary" href="/contact">Request a quote</a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

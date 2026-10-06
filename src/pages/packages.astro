@@ -1,0 +1,204 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import PackageCard from "../components/PackageCard.astro";
+import {
+  COMMUNITY_DISCOUNT,
+  DEPOSIT,
+  EXTRA_HALF_HOUR,
+  GROUP_HOURLY,
+  GROUP_MIN_HOURS,
+  addons,
+  feeLabel,
+  groupPackage,
+  money,
+  partyPackages,
+  towns,
+  zones,
+} from "../data/pricing";
+
+const matrix = [
+  { label: "Time", value: (id: string) => partyPackages.find((p) => p.id === id)!.timeLabel },
+  {
+    label: "Monday–Thursday",
+    value: (id: string) => money(partyPackages.find((p) => p.id === id)!.weekdayPrice),
+  },
+  {
+    label: "Friday–Sunday",
+    value: (id: string) => money(partyPackages.find((p) => p.id === id)!.weekendPrice ?? 0),
+  },
+  { label: "Players at a time", value: () => "Up to 24" },
+  { label: "Coach, setup, cleanup", value: () => "Included" },
+  { label: "Switch stations / Xbox / PS5", value: () => "6 / about 4 / 3" },
+  { label: "VR", value: () => "Not offered" },
+  { label: "Toddler zone", value: () => `Add-on ${money(75)}` },
+  { label: "Tournament pack", value: () => `Add-on ${money(40)}` },
+  { label: "Yard games", value: () => `Add-on ${money(25)}` },
+  { label: "Dog-tag favors", value: () => `Add-on ${money(30)}, flat` },
+];
+---
+
+<BaseLayout
+  title="Packages and Pricing | Team Battle Ready Gaming Trailer"
+  description="Skirmish $349/$399, Mission $449/$499, Campaign $549/$599. Six- and eight-hour full days, a $125 weekday group rate, travel bands, and 8.25% tax on the quote."
+>
+  <PageHero eyebrow="Rate card" title="Every number, on the page." crumb="Packages">
+    <p>
+      Weekday means Monday–Thursday. Weekend means Friday–Sunday. Prices exclude tax. The quote adds 8.25%.
+      <span class="todo">[TODO: Joe]</span>
+      Confirm this card before you advertise it. Edit <code>src/data/pricing.ts</code>.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 1.5rem">
+    <div class="wrap">
+      <h2 class="metal">Skirmish, Mission, Campaign</h2>
+      <p class="lede">The first price is Monday–Thursday. The line under it is Friday–Sunday.</p>
+      <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.25rem">
+        {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
+      </div>
+      <p class="muted" style="margin-top: 1rem">Extra time is {money(EXTRA_HALF_HOUR)} per 30 minutes, only if the next slot is open.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="compare-title">
+    <div class="wrap">
+      <h2 id="compare-title" class="metal">Compare them</h2>
+      <div class="table-wrap" style="margin-top: 1rem">
+        <table class="data">
+          <caption>Weekday and weekend prices for each named package. Swipe sideways on a phone.</caption>
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              {partyPackages.map((pkg) => <th scope="col">{pkg.name} · {pkg.timeLabel}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {matrix.map((row) => (
+              <tr>
+                <th scope="row">{row.label}</th>
+                {partyPackages.map((pkg) => <td>{row.value(pkg.id)}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="group-title">
+    <div class="wrap">
+      <h2 id="group-title" class="metal">Weekday group rate</h2>
+      <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1.25rem">
+        <PackageCard pkg={groupPackage} />
+        <article class="panel">
+          <p class="muted">
+            {money(GROUP_HOURLY)} an hour, Monday–Thursday, {GROUP_MIN_HOURS}-hour minimum.
+            Schools, units, and long weeknight blocks use this when a named package is the wrong shape.
+            Friday, Saturday, and Sunday stay on Skirmish, Mission, Campaign, or a full day.
+          </p>
+          <p class="muted" style="margin-top: 0.8rem">
+            The {money(COMMUNITY_DISCOUNT)} military, first responder, and teacher discount comes off the hourly total once.
+            Travel and add-ons stay full price.
+          </p>
+          <p style="margin-top: 1rem"><a class="btn btn-primary" href="/book?pkg=group">Price a weekday block</a></p>
+        </article>
+      </div>
+      <p class="muted" style="margin-top: 1rem">
+        Invoice and PO are available for verified units, schools, and nonprofits. Net-15 on the draft terms.
+        <a class="inline-link" href="/military"> Military page</a> ·
+        <a class="inline-link" href="/contact"> quote form</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="addon-title">
+    <div class="wrap">
+      <h2 id="addon-title" class="metal">Add-ons</h2>
+      <div class="table-wrap" style="margin-top: 1rem">
+        <table class="data">
+          <caption>Add-on prices. Each one is a flat fee, not per guest.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Add-on</th>
+              <th scope="col">Price</th>
+              <th scope="col">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {addons.map((addon) => (
+              <tr>
+                <th scope="row">{addon.name}</th>
+                <td>{money(addon.price)}</td>
+                <td>{addon.detail}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="travel-title">
+    <div class="wrap">
+      <h2 id="travel-title" class="metal">Travel from a Killeen base</h2>
+      <p class="lede">
+        One-way distance. The fee is flat for the trip. Free within 30 miles, {money(50)} for 31–45, {money(90)} for 46–60. Past 60 miles is a quote.
+        <span class="todo">[TODO: Joe]</span>
+        Rebuild this if the storage lot is not in Killeen.
+      </p>
+      <div class="table-wrap" style="margin-top: 1rem">
+        <table class="data">
+          <caption>Mileage bands assume the trailer lives in Killeen.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Band</th>
+              <th scope="col">Distance</th>
+              <th scope="col">Fee</th>
+              <th scope="col">Towns</th>
+            </tr>
+          </thead>
+          <tbody>
+            {zones.map((zone) => (
+              <tr>
+                <th scope="row">{zone.name}</th>
+                <td>{zone.miles}</td>
+                <td>{feeLabel(zone.fee)}</td>
+                <td>{towns.filter((town) => town.zoneId === zone.id).map((town) => town.name).join(", ")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top: 0.8rem">
+        On-post Fort Cavazos is inside the free radius for the fee, then gated by installation access.
+        <a class="inline-link" href="/areas"> Town-by-town list.</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="discount-title">
+    <div class="wrap grid gap-6 lg:grid-cols-2">
+      <div class="panel">
+        <h2 id="discount-title" class="metal">Discount</h2>
+        <ul class="checks" style="margin-top: 0.8rem">
+          <li>Military, first responder, or teacher: {money(COMMUNITY_DISCOUNT)} off the package or the weekday hourly total. ID or unit email.</li>
+        </ul>
+        <p class="muted" style="margin-top: 0.8rem">It applies once. Travel, add-ons, and extra time stay full price. Prices still exclude tax.</p>
+      </div>
+      <div class="panel">
+        <h2 class="metal">Deposit and tax</h2>
+        <div class="prose" style="margin-top: 0.8rem">
+          <p>The deposit is a flat {money(DEPOSIT)} on every booking.</p>
+          <p>Cancel 14 or more days out: full deposit refund. Cancel 3–13 days out: the deposit becomes a 12-month credit. Inside 72 hours: the deposit is forfeited.</p>
+          <p>Listed prices exclude tax. The quote adds 8.25% to the subtotal, then subtracts the {money(DEPOSIT)} deposit from that total.</p>
+          <p>Severe weather (lightning, ice, winds above 35 mph, or an NWS warning): free reschedule or full credit. Rain alone does not cancel.</p>
+          <p><a href="/policies">Full draft policy</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top: 1.5rem">
+      <a class="btn btn-primary" href="/book">Check My Date</a>
+    </div>
+  </section>
+</BaseLayout>

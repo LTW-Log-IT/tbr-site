@@ -1,0 +1,283 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site, textHref } from "../config/site";
+import { addons, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
+---
+
+<BaseLayout
+  title="Check My Date | Team Battle Ready Gaming Trailer"
+  description="Pick a package, a town, and a date for the Team Battle Ready gaming trailer. The quote adds 8.25% tax. Square Appointments holds the real slot and the $100 deposit."
+>
+  <PageHero eyebrow="Booking" title="Check My Date." crumb="Book">
+    <p>
+      The planner prices the day, including 8.25% tax. Square holds the slot. The deposit is a flat {money(100)}.
+      Listed prices exclude tax.
+      <span class="todo">[TODO: Joe]</span>
+      Confirm the amusement-tax treatment with the Texas Comptroller before the first charge.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 1rem">
+    <div class="wrap grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <form id="planner" class="grid gap-4">
+        <label>
+          Package
+          <select id="pkg" name="pkg">
+            <optgroup label="Named packages">
+              {partyPackages.map((pkg) => (
+                <option value={pkg.id} selected={pkg.id === "mission"}>
+                  {pkg.name} · {pkg.timeLabel} · {money(pkg.weekdayPrice)} weekdays / {money(pkg.weekendPrice ?? pkg.weekdayPrice)} weekends
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Weekday hourly">
+              <option value={groupPackage.id}>{groupPackage.name} · {groupPackage.timeLabel}</option>
+            </optgroup>
+          </select>
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Date
+            <input id="date" name="date" type="date" />
+          </label>
+          <label>
+            Start window
+            <select id="time" name="time">
+              {startWindows.map((window) => <option value={window.id}>{window.label}</option>)}
+            </select>
+          </label>
+        </div>
+        <p class="muted">Monday–Thursday and Friday–Sunday are different prices. These windows are the usual rhythm. They are not a live open/closed list. Square is.</p>
+        <label>
+          Town
+          <select id="town" name="town">
+            {towns.map((town) => (
+              <option value={town.id} selected={town.id === "killeen"}>{town.name}</option>
+            ))}
+            <option value="beyond">Past 60 miles</option>
+          </select>
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Group hours
+            <input id="hours" name="hours" type="number" min="3" max="12" value="3" inputmode="numeric" />
+          </label>
+          <label>
+            Extra 30-minute blocks
+            <input id="extra" name="extra" type="number" min="0" max="6" value="0" inputmode="numeric" />
+          </label>
+        </div>
+        <p class="muted">Group hours apply to the $125/hr Monday–Thursday rate. Named packages ignore that field. Extra time is $50 per 30 minutes if the next slot is open.</p>
+        <label>
+          Discount
+          <select id="discount" name="discount">
+            {discounts.map((discount) => <option value={discount.id}>{discount.label}</option>)}
+          </select>
+        </label>
+        <fieldset class="checks-field">
+          <legend>Add-ons</legend>
+          {addons.map((addon) => (
+            <label class="checkline">
+              <input type="checkbox" name="addon" value={addon.id} />
+              <span>
+                <strong style="color: #f4f7fb">{addon.name}</strong>
+                {" "}— {money(addon.price)}. {addon.detail}
+              </span>
+            </label>
+          ))}
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Check My Date</button>
+      </form>
+
+      <aside class="panel" aria-live="polite" id="estimate-panel">
+        <p class="eyebrow">Planning total</p>
+        <h2 class="metal" style="font-size: 2rem" id="estimate-title">Mission</h2>
+        <dl id="estimate-lines"></dl>
+        <div class="total-row"><span>Subtotal</span><span id="estimate-subtotal">—</span></div>
+        <div class="total-row"><span>Tax 8.25%</span><span id="estimate-tax">—</span></div>
+        <div class="total-row"><span>Total</span><span id="estimate-total">—</span></div>
+        <div class="total-row"><span>Deposit</span><span id="estimate-deposit">—</span></div>
+        <div class="total-row"><span>Balance</span><span id="estimate-balance">—</span></div>
+        <ul class="note-list" id="estimate-notes"></ul>
+        <p class="muted" style="margin-top: 0.8rem">Prices exclude tax. This panel adds 8.25%. The deposit is $100.</p>
+        <button class="btn btn-ghost btn-block" type="button" id="copy-estimate" style="margin-top: 0.8rem">
+          Copy this estimate link
+        </button>
+        <p class="status" id="copy-status" role="status"></p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="scheduler-title">
+    <div class="wrap">
+      <h2 id="scheduler-title" class="metal">Square Appointments</h2>
+      <p class="lede">
+        Live openings and the deposit belong in this slot. Paste the embed here. Do not paste API keys.
+      </p>
+      <!--
+        JOE — PASTE THE SQUARE EMBED BELOW THIS COMMENT.
+        Square Dashboard → Appointments → Online Booking → Embed code.
+        Paste only the public widget snippet (the div and script Square gives you).
+        Do not paste API keys, access tokens, webhook secrets, or application secrets.
+        Then set squareBookingUrl in src/config/site.ts to the hosted public booking page.
+        Delete the placeholder div once the snippet is in place.
+      -->
+      <div id="square-appointments-embed" class="panel" tabindex="-1" data-slot="square-appointments" style="margin-top: 1rem">
+        <p class="eyebrow">Embed slot</p>
+        <p>
+          <span class="todo">[TODO: Joe]</span>
+          Paste the Square Appointments embed in <code>src/pages/book.astro</code> where the comment says PASTE THE SQUARE EMBED.
+        </p>
+        <p class="muted" style="margin-top: 0.6rem">No Square keys are stored in this repo on purpose.</p>
+      </div>
+      <div class="cta-row">
+        {site.squareBookingUrl ? (
+          <a class="btn btn-primary" href={site.squareBookingUrl} rel="noopener noreferrer">Open the Square booking page</a>
+        ) : (
+          <p class="muted">
+            <span class="todo">[TODO: Joe]</span>
+            Set <code>squareBookingUrl</code> in <code>src/config/site.ts</code> so this button can open the hosted Square page if the embed is blocked.
+          </p>
+        )}
+        <a class="btn btn-ghost" href={textHref()}>Text (254) 251-5219</a>
+        <a class="btn btn-ghost" href="/contact">Email a quote</a>
+      </div>
+      <noscript>
+        <p class="muted" style="margin-top: 1rem">
+          JavaScript is off, so the running total is hidden. Package prices and travel fees are on the Packages page. Tell us the package and town when you write.
+        </p>
+      </noscript>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { buildEstimate, money } from "../data/pricing";
+
+  const form = document.querySelector<HTMLFormElement>("#planner");
+  const pkg = document.querySelector<HTMLSelectElement>("#pkg");
+  const date = document.querySelector<HTMLInputElement>("#date");
+  const time = document.querySelector<HTMLSelectElement>("#time");
+  const town = document.querySelector<HTMLSelectElement>("#town");
+  const discount = document.querySelector<HTMLSelectElement>("#discount");
+  const hours = document.querySelector<HTMLInputElement>("#hours");
+  const extra = document.querySelector<HTMLInputElement>("#extra");
+  const lines = document.querySelector<HTMLDListElement>("#estimate-lines");
+  const title = document.querySelector<HTMLElement>("#estimate-title");
+  const subtotal = document.querySelector<HTMLElement>("#estimate-subtotal");
+  const tax = document.querySelector<HTMLElement>("#estimate-tax");
+  const total = document.querySelector<HTMLElement>("#estimate-total");
+  const deposit = document.querySelector<HTMLElement>("#estimate-deposit");
+  const balance = document.querySelector<HTMLElement>("#estimate-balance");
+  const notes = document.querySelector<HTMLUListElement>("#estimate-notes");
+  const copyButton = document.querySelector<HTMLButtonElement>("#copy-estimate");
+  const copyStatus = document.querySelector<HTMLElement>("#copy-status");
+
+  if (form && pkg && date && time && town && discount && hours && extra && lines && title && subtotal && tax && total && deposit && balance && notes) {
+    const params = new URLSearchParams(window.location.search);
+    const setSelect = (select: HTMLSelectElement, key: string) => {
+      const value = params.get(key);
+      if (value && [...select.options].some((option) => option.value === value)) select.value = value;
+    };
+    setSelect(pkg, "pkg");
+    setSelect(town, "town");
+    setSelect(time, "time");
+    setSelect(discount, "discount");
+    const dateValue = params.get("date");
+    if (dateValue && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) date.value = dateValue;
+    const hourValue = Number(params.get("hours"));
+    if (Number.isFinite(hourValue) && hourValue >= 3) hours.value = String(Math.floor(hourValue));
+    const extraValue = Number(params.get("extra"));
+    if (Number.isFinite(extraValue) && extraValue >= 0) extra.value = String(Math.floor(extraValue));
+    const addonParams = new Set((params.get("addons") ?? "").split(",").filter(Boolean));
+    form.querySelectorAll<HTMLInputElement>('input[name="addon"]').forEach((input) => {
+      input.checked = addonParams.has(input.value);
+    });
+
+    const dash = () => {
+      subtotal.textContent = "—";
+      tax.textContent = "—";
+      total.textContent = "—";
+      deposit.textContent = "—";
+      balance.textContent = "—";
+    };
+
+    const render = () => {
+      const addonIds = [...form.querySelectorAll<HTMLInputElement>('input[name="addon"]:checked')].map((input) => input.value);
+      const result = buildEstimate({
+        packageId: pkg.value,
+        townId: town.value,
+        discount: discount.value,
+        addonIds,
+        extraHalfHours: Number(extra.value),
+        groupHours: Number(hours.value),
+        date: date.value,
+      });
+      lines.replaceChildren();
+      notes.replaceChildren();
+      if (!result) {
+        title.textContent = "Pick a package";
+        dash();
+        return;
+      }
+      title.textContent = `${result.packageName} · ${result.townName}`;
+      for (const line of result.lines) {
+        const row = document.createElement("div");
+        row.className = "est-row";
+        const label = document.createElement("dt");
+        label.textContent = line.label;
+        const amount = document.createElement("dd");
+        amount.textContent = money(line.amount);
+        row.append(label, amount);
+        lines.append(row);
+      }
+      for (const note of result.notes) {
+        const item = document.createElement("li");
+        item.textContent = note;
+        notes.append(item);
+      }
+      if (result.available) {
+        subtotal.textContent = money(result.subtotal);
+        tax.textContent = money(result.tax);
+        total.textContent = money(result.total);
+        deposit.textContent = money(result.deposit);
+        balance.textContent = money(result.balance);
+      } else {
+        dash();
+      }
+
+      const next = new URLSearchParams();
+      next.set("pkg", pkg.value);
+      next.set("town", town.value);
+      if (date.value) next.set("date", date.value);
+      if (time.value) next.set("time", time.value);
+      if (discount.value !== "none") next.set("discount", discount.value);
+      if (addonIds.length) next.set("addons", addonIds.join(","));
+      if (Number(hours.value) !== 3) next.set("hours", hours.value);
+      if (Number(extra.value) > 0) next.set("extra", extra.value);
+      const url = `${window.location.pathname}?${next.toString()}`;
+      window.history.replaceState(null, "", url);
+    };
+
+    form.addEventListener("input", render);
+    form.addEventListener("change", render);
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      render();
+      const slot = document.querySelector<HTMLElement>("#square-appointments-embed");
+      slot?.scrollIntoView({ behavior: "smooth", block: "start" });
+      slot?.focus();
+    });
+    copyButton?.addEventListener("click", async () => {
+      if (!copyStatus) return;
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        copyStatus.textContent = "Link copied. It includes the package, town, and add-ons, not a private note.";
+      } catch {
+        copyStatus.textContent = window.location.href;
+      }
+    });
+    render();
+  }
+</script>

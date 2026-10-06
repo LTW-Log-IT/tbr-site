@@ -1,0 +1,90 @@
+---
+import { nav, site } from "../config/site";
+
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+function current(href: string) {
+  if (href === "/") return path === "/";
+  return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo-lockup" href="/" aria-label="Team Battle Ready, home">
+      <span class="logo-mark" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="logo-tbr metal">TBR</span>
+      <span class="logo-words">
+        <span class="logo-name">Team Battle Ready</span>
+        <span class="logo-sub">Gaming Trailer</span>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={current(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="btn btn-primary" href="/book">Check My Date</a>
+    </nav>
+    <a class="btn btn-primary header-book" href="/book">Book</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      Menu
+    </button>
+  </div>
+  <div id="site-menu" class="mobile-panel" hidden>
+    <nav aria-label="Mobile">
+      <a href="/" aria-current={current("/") ? "page" : undefined}>Home</a>
+      {
+        nav.map((item) => (
+          <a href={item.href} aria-current={current(item.href) ? "page" : undefined}>
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact">Contact</a>
+      <a href="/policies">Policies</a>
+      <a href="/book">Check My Date</a>
+      {
+        site.instagram.map((account) => (
+          <a href={account.href} rel="noopener noreferrer">
+            {account.handle}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#site-menu");
+  if (button && menu) {
+    const close = () => {
+      menu.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = "Menu";
+      document.body.classList.remove("menu-open");
+    };
+    button.addEventListener("click", () => {
+      const open = menu.hidden;
+      menu.hidden = !open;
+      button.setAttribute("aria-expanded", String(open));
+      button.textContent = open ? "Close" : "Menu";
+      document.body.classList.toggle("menu-open", open);
+    });
+    menu.addEventListener("click", (event) => {
+      const target = event.target;
+      if (target instanceof HTMLAnchorElement) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+  }
+</script>

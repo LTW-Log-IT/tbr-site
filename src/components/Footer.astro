@@ -1,0 +1,54 @@
+---
+import { nav, phoneLabel, site } from "../config/site";
+---
+
+<footer class="site-footer">
+  <div class="wrap grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <p class="footer-mark metal">TBR</p>
+      <p class="leet">{site.leet}</p>
+      <p class="value-row" style="margin-top: 0.8rem">
+        {site.values.join("  ")}
+      </p>
+      <p class="fine" style="margin-top: 1rem">
+        Team Battle Ready is an independent Central Texas car club and a mobile gaming trailer.
+        Not affiliated with or endorsed by the Department of Defense or Fort Cavazos.
+      </p>
+      <p class="fine" style="margin-top: 0.7rem">
+        Pre-launch site. A date is not held until the deposit is paid in Square. Sponsor on the launch flyer:
+        {site.sponsor}. No other sponsors are listed here.
+      </p>
+    </div>
+    <div>
+      <p class="eyebrow">On this site</p>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+        <li><a href="/book">Book</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/policies">Policies</a></li>
+        <li><a href="/areas/killeen">Killeen</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Find the crew</p>
+      <ul class="footer-links">
+        {site.instagram.map((account) => (
+          <li>
+            <a href={account.href} rel="noopener noreferrer">{account.handle}</a>
+          </li>
+        ))}
+      </ul>
+      <p class="fine" style="margin-top: 0.8rem">Phone: {phoneLabel()}</p>
+      <p class="fine">
+        Email: {site.contactEmail || "[TODO: Joe — contact email]"}
+      </p>
+      <p class="fine" style="margin-top: 0.8rem">{site.domain}</p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top: 2rem">
+    <p class="fine">© {new Date().getFullYear()} Team Battle Ready. Play. Connect. Build. Belong.</p>
+  </div>
+</footer>

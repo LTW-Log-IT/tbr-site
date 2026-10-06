@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+
+const owned = [
+  ["Gaming stations", "6. Each station has a chair, a monitor, and a Nintendo Switch."],
+  ["Xbox", "About 4 consoles on the trailer."],
+  ["PlayStation 5", "3 consoles."],
+  ["Tablets", "8, for Roblox and Minecraft. These are for toddlers and younger kids."],
+  ["Monitors", "6, one at each gaming station."],
+  ["Generator", "13.5 kW. The trailer brings its own power."],
+];
+
+const openSpecs = [
+  ["Monitor size", "Diagonal size of the six station monitors, plus any exterior screen."],
+  ["Controllers and spares", "How many controllers ride with the Switches, Xbox, and PS5s."],
+  ["Trailer length and width", "Exterior length including the tongue, width, and which side the door is on."],
+  ["Audio", "How sound is run inside."],
+  ["Generator model", "Output is 13.5 kW. Still need the model name and decibels at a stated distance."],
+  ["Climate", "A/C and heat BTU, and how long the cabin is pre-cooled."],
+  ["Wi-Fi", "How online play is served, and what you will not promise."],
+  ["Loaded weight and tow vehicle", "Weight of the loaded trailer and which truck pulls it."],
+  ["Parking footprint", "Truck plus trailer, in feet, on level ground."],
+  ["Setup time", "Arrival to the first controller in a kid’s hand."],
+];
+
+const photos = [
+  "Exterior of the unwrapped trailer, lights on. Magnets or a banner are fine. Do not use a wrap.",
+  "Interior with screens on and the lights the way guests see them.",
+  "The six stations, Xbox, PS5s, and the eight tablets.",
+  "Yard games set up outside the door.",
+  "A real car-meet photo the club has rights to use. Not a wrapped trailer.",
+];
+---
+
+<BaseLayout
+  title="The Rig | Team Battle Ready Gaming Trailer"
+  description="The Team Battle Ready trailer is live: 6 Switch stations, about 4 Xbox, 3 PS5s, and 8 tablets for Roblox and Minecraft."
+>
+  <PageHero eyebrow="Inside the trailer" title="The rig is already loaded." crumb="The Rig">
+    <p>
+      The trailer and the gear below are owned and in service. Six stations, the consoles, and the tablets are not a future build.
+      Length and a few other measurements are still blank. Those lines say so. The inventory does not. Power on board is a 13.5 kW generator. The shell is unwrapped. Magnets or a banner are fine.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 1rem">
+    <div class="wrap">
+      <h2 class="metal">What is on board</h2>
+      <ul class="checks" style="margin-top: 1rem">
+        <li>6 gaming stations: a chair, a monitor, and a Nintendo Switch at each one.</li>
+        <li>About 4 Xbox consoles and 3 PlayStation 5 consoles.</li>
+        <li>8 tablets for Roblox and Minecraft, for toddlers and younger kids.</li>
+        <li>Room for up to 24 players, a game coach, setup, and cleanup. The host sets the game-rating limit. No VR.</li>
+        <li>A 13.5 kW generator. The cabin does not run off a household outlet.</li>
+        <li>The trailer is stealth and unwrapped. Magnets or a banner are fine. It does not wear a full wrap.</li>
+        <li>Food, drinks, and gum stay outside.</li>
+      </ul>
+      <p class="muted" style="margin-top: 1rem">
+        <span class="todo">[TODO: Joe]</span>
+        Do not add “fully insured” or “background-checked crew” here until the policy is bound and the checks are done.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="spec-title">
+    <div class="wrap">
+      <h2 id="spec-title" class="metal">Live inventory</h2>
+      <div class="table-wrap" style="margin-top: 1rem">
+        <table class="data">
+          <caption>Gear Joe already owns. Counts are the live inventory, not a wish list.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">On the trailer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {owned.map(([label, value]) => (
+              <tr>
+                <th scope="row">{label}</th>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h2 class="metal" style="margin-top: 2.5rem">Still to measure</h2>
+      <p class="lede">These are dimensions and models, not missing consoles.</p>
+      <div class="table-wrap" style="margin-top: 1rem">
+        <table class="data">
+          <caption>Open measurements. The trailer is already in service while these stay blank.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Still open</th>
+            </tr>
+          </thead>
+          <tbody>
+            {openSpecs.map(([label, hint]) => (
+              <tr>
+                <th scope="row">{label}</th>
+                <td>
+                  <span class="todo">[TODO: Joe]</span>
+                  {hint}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap grid gap-4 md:grid-cols-2">
+      <article class="panel">
+        <h2 class="metal">Parking</h2>
+        <p class="muted" style="margin-top: 0.7rem">
+          Plan on about 50–60 feet of level space until the real footprint is measured. Similar trailers in this area ask for that kind of length. It is a planning range, not this rig’s number.
+        </p>
+        <p class="muted" style="margin-top: 0.7rem">
+          <span class="todo">[TODO: Joe]</span>
+          Write the measured truck-plus-trailer length, the surface you will and will not set up on, and how loud the generator is at the property line.
+        </p>
+      </article>
+      <article class="panel">
+        <h2 class="metal">Power and weather</h2>
+        <p class="muted" style="margin-top: 0.7rem">
+          The trailer brings a 13.5 kW generator. Do not tell a host to run an extension cord from the kitchen.
+        </p>
+        <p class="muted" style="margin-top: 0.7rem">
+          Rain alone does not cancel a climate-controlled cabin. Lightning, ice, winds above 35 mph, or a National Weather Service warning: free reschedule or full credit.
+        </p>
+        <p class="muted" style="margin-top: 0.7rem">
+          <span class="todo">[TODO: Joe]</span>
+          Publish generator fuel use for a 3-hour event once you have run one in July heat.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="photo-title">
+    <div class="wrap">
+      <h2 id="photo-title" class="metal">Photo slots</h2>
+      <p class="lede">
+        No stock gamers. Drop files in <code>public/photos/</code> and swap these frames when you have rights to the picture.
+      </p>
+      <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1rem">
+        {photos.map((caption) => (
+          <figure class="photo-slot">
+            <figcaption>
+              <span class="todo">[TODO: Joe]</span>
+              {caption}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p style="margin-top: 1.5rem"><a class="btn btn-primary" href="/book">Check My Date</a></p>
+    </div>
+  </section>
+</BaseLayout>

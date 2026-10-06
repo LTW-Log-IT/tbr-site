@@ -1,0 +1,54 @@
+---
+import { partyPackages, towns } from "../data/pricing";
+---
+
+<form class="panel grid gap-4 md:grid-cols-4" action="/book" method="get">
+  <label>
+    Package
+    <select name="pkg" id="home-pkg">
+      {partyPackages.map((pkg) => (
+        <option value={pkg.id} selected={pkg.id === "mission"}>{pkg.name} · {pkg.timeLabel}</option>
+      ))}
+    </select>
+  </label>
+  <label>
+    Date
+    <input type="date" name="date" required />
+  </label>
+  <label>
+    Town
+    <select name="town" id="home-town">
+      {towns.map((town) => (
+        <option value={town.id} selected={town.id === "killeen"}>{town.name}</option>
+      ))}
+      <option value="beyond">Past 60 miles</option>
+    </select>
+  </label>
+  <div style="align-self: end">
+    <button class="btn btn-primary btn-block" type="submit">Check My Date</button>
+  </div>
+  <p id="town-fee" class="muted md:col-span-4" aria-live="polite"></p>
+</form>
+
+<script>
+  import { feeLabel, towns, zoneFor } from "../data/pricing";
+
+  const select = document.querySelector<HTMLSelectElement>("#home-town");
+  const out = document.querySelector<HTMLElement>("#town-fee");
+  if (select && out) {
+    const update = () => {
+      const town = towns.find((item) => item.id === select.value);
+      if (!town || town.fee === null) {
+        out.textContent = "Past 60 miles, travel is a quote. There is no published fee on the card.";
+        return;
+      }
+      const zone = zoneFor(town.zoneId);
+      out.textContent =
+        town.fee === 0
+          ? `${town.name} is within 30 miles. Travel is free.`
+          : `${town.name} is ${zone.miles}. Travel is ${feeLabel(town.fee)}.`;
+    };
+    select.addEventListener("change", update);
+    update();
+  }
+</script>

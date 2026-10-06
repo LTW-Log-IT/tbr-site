@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { phoneLabel, phoneReady, site } from "../config/site";
+import { packages, towns } from "../data/pricing";
+---
+
+<BaseLayout
+  title="Contact Team Battle Ready | Killeen Gaming Trailer"
+  description="Text, call, or send a quote request for the Team Battle Ready gaming trailer in Killeen and Fort Cavazos. Phone and email are marked until they are connected."
+>
+  <PageHero eyebrow="Contact" title="Text, call, or send the date." crumb="Contact">
+    <p>
+      Birthdays should use <a href="/book">Check My Date</a>. Units, schools, and anyone who needs an invoice can use the form. Nothing sends until an inbox exists.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 0.5rem">
+    <div class="wrap grid gap-6 lg:grid-cols-2">
+      <div class="grid gap-4">
+        <article class="panel" id="text">
+          <h2 class="metal" style="font-size: 1.8rem">Text</h2>
+          {phoneReady() ? (
+            <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`sms:+${site.phoneE164}`}>Text {phoneLabel()}</a></p>
+          ) : (
+            <p class="muted" style="margin-top: 0.7rem">
+              <span class="todo">[TODO: Joe]</span>
+              Set <code>phoneE164</code> and <code>phoneDisplay</code> in <code>src/config/site.ts</code>. Until then, Text in the bottom bar lands here.
+            </p>
+          )}
+          <p class="muted" style="margin-top: 0.7rem">
+            Copy if you need it: “Hi Team Battle Ready — I want to check a date for a gaming trailer in [town]. Package: [Skirmish / Mission / Campaign / 6-hour / 8-hour].”
+          </p>
+        </article>
+        <article class="panel" id="call">
+          <h2 class="metal" style="font-size: 1.8rem">Call</h2>
+          {phoneReady() ? (
+            <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`tel:+${site.phoneE164}`}>Call {phoneLabel()}</a></p>
+          ) : (
+            <p class="muted" style="margin-top: 0.7rem">
+              <span class="todo">[TODO: Joe]</span>
+              The call button is waiting on the same phone fields. Do not publish a personal number you do not want on a public site.
+            </p>
+          )}
+        </article>
+        <article class="panel" id="email">
+          <h2 class="metal" style="font-size: 1.8rem">Email</h2>
+          <p class="muted" style="margin-top: 0.7rem">
+            {site.contactEmail ? (
+              <a class="inline-link" href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+            ) : (
+              <>
+                <span class="todo">[TODO: Joe]</span>
+                Set <code>contactEmail</code> in <code>src/config/site.ts</code>.
+              </>
+            )}
+          </p>
+        </article>
+      </div>
+
+      <form id="quote-form" class="panel grid gap-4">
+        <h2 class="metal" style="font-size: 1.8rem">Quote request</h2>
+        <label>
+          Name
+          <input name="name" autocomplete="name" required />
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>
+          Phone
+          <input name="phone" type="tel" autocomplete="tel" />
+        </label>
+        <label>
+          Organization
+          <input name="org" autocomplete="organization" />
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Town
+            <select name="town">
+              {towns.map((town) => <option value={town.name}>{town.name}</option>)}
+              <option value="Past 60 miles">Past 60 miles</option>
+            </select>
+          </label>
+          <label>
+            Headcount
+            <input name="headcount" inputmode="numeric" />
+          </label>
+        </div>
+        <label>
+          Date options
+          <input name="dates" placeholder="Two or three dates if you have them" />
+        </label>
+        <label>
+          Package
+          <select name="pkg">
+            <option value="Not sure">Not sure yet</option>
+            {packages.map((pkg) => <option value={`${pkg.name} ${pkg.timeLabel}`}>{pkg.name} · {pkg.timeLabel}</option>)}
+          </select>
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Purchase order?
+            <select name="po">
+              <option>Not sure</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </label>
+          <label>
+            Tax-exempt certificate?
+            <select name="tax">
+              <option>Not sure</option>
+              <option>Yes, we can send it</option>
+              <option>No</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Notes
+          <textarea name="notes" placeholder="Parking limits, ages, invoice contact"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Prepare this quote</button>
+        <p class="status" id="quote-status" role="status"></p>
+        <label id="quote-preview-label" hidden>
+          Message to copy
+          <textarea id="quote-preview" readonly></textarea>
+        </label>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script define:vars={{ contactEmail: site.contactEmail }}>
+  const form = document.querySelector("#quote-form");
+  const status = document.querySelector("#quote-status");
+  const preview = document.querySelector("#quote-preview");
+  const previewLabel = document.querySelector("#quote-preview-label");
+  if (form instanceof HTMLFormElement && status && preview instanceof HTMLTextAreaElement && previewLabel instanceof HTMLElement) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const lines = [];
+      for (const [key, value] of data.entries()) {
+        if (typeof value === "string" && value.trim()) lines.push(`${key}: ${value.trim()}`);
+      }
+      const body = lines.join("\n");
+      previewLabel.hidden = false;
+      preview.value = body;
+      if (!contactEmail) {
+        status.textContent = "[TODO: Joe] Set contactEmail in src/config/site.ts. The message is in the box so you can copy it. It was not sent.";
+        return;
+      }
+      const subject = encodeURIComponent("Team Battle Ready quote");
+      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
+      status.textContent = "Your email app should open with this quote. If it does not, copy the box.";
+    });
+  }
+</script>

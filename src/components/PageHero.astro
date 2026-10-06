@@ -1,0 +1,31 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  crumb: string;
+  parent?: { href: string; label: string };
+}
+
+const { eyebrow, title, crumb, parent } = Astro.props;
+---
+
+<header class="page-hero">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      {parent && (
+        <>
+          <a href={parent.href}>{parent.label}</a>
+          <span aria-hidden="true">/</span>
+        </>
+      )}
+      <span aria-current="page">{crumb}</span>
+    </nav>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="metal">{title}</h1>
+    <div class="lede">
+      <slot />
+    </div>
+  </div>
+</header>
