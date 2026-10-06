@@ -118,18 +118,20 @@ export const packages: CatalogPackage[] = [
     name: "Group rate",
     group: "hourly",
     minutes: 180,
-    timeLabel: "$125/hr · Mon–Thu · 3 hr min",
+    timeLabel: "$125/hr · Mon–Thu · 3 hr min · verified orgs",
     weekdayPrice: 125,
     weekendPrice: null,
     hourly: true,
-    summary: "Monday through Thursday only. $125 an hour, three-hour minimum.",
+    summary:
+      "Verified organizations only. Schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not a birthday or home-party price.",
     includes: [
-      "$125 per hour",
-      "Monday–Thursday only",
+      "Verified organizations only",
+      "$125 per hour, Monday–Thursday",
       "Three-hour minimum",
-      "Friday–Sunday uses Skirmish, Mission, Campaign, or a full day",
+      "Tax-exempt certificate or purchase order",
+      "Residential parties use Skirmish, Mission, Campaign, or a full day",
     ],
-    note: "Weekend dates do not get this hourly rate.",
+    note: "Not offered for home parties. Friday–Sunday uses a named package.",
   },
 ];
 
@@ -288,8 +290,11 @@ export function buildEstimate(input: {
   const lines: EstimateLine[] = [];
 
   if (pkg.hourly) {
+    notes.push(
+      "Verified organizations only: schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not for residential parties.",
+    );
     if (kind === "weekend") {
-      notes.push("The $125/hr group rate is Monday–Thursday only. Friday–Sunday uses Skirmish, Mission, Campaign, or a full day.");
+      notes.push("The $125/hr organization rate is Monday–Thursday only. Friday–Sunday uses Skirmish, Mission, Campaign, or a full day.");
       return emptyEstimate(pkg, input.townId, notes);
     }
     const requested = Number.isFinite(input.groupHours) ? Math.floor(input.groupHours ?? 0) : 0;

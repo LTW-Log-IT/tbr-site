@@ -40,7 +40,7 @@ const matrix = [
 
 <BaseLayout
   title="Packages and Pricing | Team Battle Ready Gaming Trailer"
-  description="Skirmish $349/$399, Mission $449/$499, Campaign $549/$599. Six- and eight-hour full days, a $125 weekday group rate, travel bands, and 8.25% tax on the quote."
+  description="Skirmish $349/$399, Mission $449/$499, Campaign $549/$599. Six- and eight-hour full days. Home parties use those packages. Verified organizations have a separate weekday hourly rate. Quotes add 8.25% tax."
 >
   <PageHero eyebrow="Rate card" title="Every number, on the page." crumb="Packages">
     <p>
@@ -88,20 +88,21 @@ const matrix = [
 
   <section class="section" style="padding-top: 0" aria-labelledby="group-title">
     <div class="wrap">
-      <h2 id="group-title" class="metal">Weekday group rate</h2>
+      <p class="eyebrow">Schools, churches, units, nonprofits</p>
+      <h2 id="group-title" class="metal">Verified organizations only</h2>
+      <p class="lede">Not a birthday price and not a home-party alternative. Residential bookings stay on Skirmish, Mission, Campaign, or a full day.</p>
       <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1.25rem">
         <PackageCard pkg={groupPackage} />
         <article class="panel">
           <p class="muted">
-            {money(GROUP_HOURLY)} an hour, Monday–Thursday, {GROUP_MIN_HOURS}-hour minimum.
-            Schools, units, and long weeknight blocks use this when a named package is the wrong shape.
+            {money(GROUP_HOURLY)} an hour, Monday–Thursday, {GROUP_MIN_HOURS}-hour minimum, for schools, churches, units, and nonprofits that can show a tax-exempt certificate or a purchase order.
             Friday, Saturday, and Sunday stay on Skirmish, Mission, Campaign, or a full day.
           </p>
           <p class="muted" style="margin-top: 0.8rem">
             The {money(COMMUNITY_DISCOUNT)} military, first responder, and teacher discount comes off the hourly total once.
-            Travel and add-ons stay full price.
+            Travel and add-ons stay full price. The quote still adds 8.25% unless an exemption certificate is on file.
           </p>
-          <p style="margin-top: 1rem"><a class="btn btn-primary" href="/book?pkg=group">Price a weekday block</a></p>
+          <p style="margin-top: 1rem"><a class="btn btn-primary" href="/book?pkg=group">Price an organization block</a></p>
         </article>
       </div>
       <p class="muted" style="margin-top: 1rem">

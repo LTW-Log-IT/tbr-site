@@ -31,7 +31,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
                 </option>
               ))}
             </optgroup>
-            <optgroup label="Weekday hourly">
+            <optgroup label="Verified organizations only — not for home parties">
               <option value={groupPackage.id}>{groupPackage.name} · {groupPackage.timeLabel}</option>
             </optgroup>
           </select>
@@ -60,7 +60,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
         </label>
         <div class="grid gap-4 md:grid-cols-2">
           <label>
-            Group hours
+            Organization hours
             <input id="hours" name="hours" type="number" min="3" max="12" value="3" inputmode="numeric" />
           </label>
           <label>
@@ -68,7 +68,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
             <input id="extra" name="extra" type="number" min="0" max="6" value="0" inputmode="numeric" />
           </label>
         </div>
-        <p class="muted">Group hours apply to the $125/hr Monday–Thursday rate. Named packages ignore that field. Extra time is $50 per 30 minutes if the next slot is open.</p>
+        <p class="muted">Organization hours apply only to the verified-organization rate: schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Home parties ignore that field. Extra time on a named package is $50 per 30 minutes if the next slot is open. Menu prices exclude tax. This quote adds 8.25%.</p>
         <label>
           Discount
           <select id="discount" name="discount">

@@ -16,7 +16,7 @@ export const faqs: FaqItem[] = [
     question: "How much does a party cost?",
     paragraphs: [
       "Skirmish is 2 hours at $349 Monday–Thursday and $399 Friday–Sunday. Mission is 3 hours at $449 / $499. Campaign is 4 hours at $549 / $599. A 6-hour full day is $749 / $799. An 8-hour full day is $949 / $999. Extra time is $50 per 30 minutes when the next slot is open.",
-      "Monday–Thursday also has a group rate of $125 an hour with a 3-hour minimum. Friday–Sunday uses the named packages. Prices on the card exclude tax. The booking quote adds 8.25%.",
+      "Home parties use those packages. Prices on the card exclude tax. The booking quote adds 8.25% for taxable jobs. Tax is not built into the menu price.",
       "Travel is separate. It is free within 30 miles, $50 from 31–45 miles, and $90 from 46–60 miles. Past 60 miles is a quote.",
     ],
     href: "/packages",
@@ -77,7 +77,7 @@ export const faqs: FaqItem[] = [
     question: "Is there a military, teacher, or weekday discount?",
     paragraphs: [
       "Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
-      "Friday–Sunday uses Skirmish, Mission, Campaign, or a full day. The $125 an hour group rate is Monday–Thursday only, with a 3-hour minimum. This is not a Department of Defense program, and the site does not use official Army insignia.",
+      "Weekday and weekend prices are already the two columns on Skirmish, Mission, Campaign, and the full days. This is not a Department of Defense program, and the site does not use official Army insignia.",
     ],
     href: "/military",
     linkLabel: "Fort Cavazos and unit events",
@@ -103,7 +103,7 @@ export const faqs: FaqItem[] = [
     id: "players",
     question: "How many players fit?",
     paragraphs: [
-      "Up to 24 at a time in the trailer. A 6-hour or 8-hour full day, or the weekday group rate, rotates people through that same room instead of promising 100 controllers at once.",
+      "Up to 24 at a time in the trailer. A 6-hour or 8-hour full day rotates people through that same room instead of promising 100 controllers at once.",
     ],
   },
   {
@@ -131,7 +131,8 @@ export const faqs: FaqItem[] = [
     id: "invoice",
     question: "Do you invoice schools, units, and nonprofits?",
     paragraphs: [
-      "Yes. Verified units, schools, and nonprofits can be invoiced. Draft terms are net-15, and a purchase order is fine when the organization requires one.",
+      "Yes. Verified schools, churches, units, and nonprofits can be invoiced. Draft terms are net-15, and a purchase order is fine when the organization requires one.",
+      "Those organizations can also use a Monday–Thursday rate of $125 an hour with a 3-hour minimum, if they have a tax-exempt certificate or a purchase order. It is not a birthday or home-party price. Residential bookings stay on Skirmish, Mission, Campaign, or a full day.",
       "Quotes show 8.25% tax. Tax-exempt groups need a Texas exemption certificate on file. We do not mark a booking tax-exempt without it.",
     ],
     todo: "Confirm with the Texas Comptroller whether these bookings are taxable amusement services, and get the sales-tax permit if they are.",

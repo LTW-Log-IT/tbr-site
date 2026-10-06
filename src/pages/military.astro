@@ -37,10 +37,10 @@ import { groupPackage, partyPackages } from "../data/pricing";
 
   <section class="section" style="padding-top: 0">
     <div class="wrap">
-      <h2 class="metal">The same card, named for the event</h2>
+      <h2 class="metal">The same party card, named for the event</h2>
+      <p class="lede">Units and families book Skirmish, Mission, Campaign, or a full day. The hourly rate is not on this row.</p>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.25rem">
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
-        <PackageCard pkg={groupPackage} />
       </div>
     </div>
   </section>
@@ -50,7 +50,7 @@ import { groupPackage, partyPackages } from "../data/pricing";
       <article class="panel">
         <h2 class="metal" style="font-size: 1.8rem">Unit / FRG / BOSS</h2>
         <p class="muted" style="margin-top: 0.6rem">
-          A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer family event. Monday–Thursday can also use $125 an hour with a three-hour minimum. The $25 discount applies once.
+          A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer family event. The $25 discount applies once. A verified unit with a purchase order can ask about the organization hourly rate. A home party cannot.
         </p>
       </article>
       <article class="panel">
@@ -73,11 +73,14 @@ import { groupPackage, partyPackages } from "../data/pricing";
       <p class="eyebrow">Schools and other groups</p>
       <h2 class="metal">Rotations, not a promise of 100 controllers.</h2>
       <p class="lede">
-        Killeen ISD, Cove, Belton, and Temple schools, church youth nights, and festival committees all ask the same three things: a price, a certificate of insurance, and whether you can invoice. The price is the full day or the weekday hourly rate. The other two are not ready to claim.
+        Killeen ISD, Cove, Belton, and Temple schools, church youth nights, and festival committees all ask the same three things: a price, a certificate of insurance, and whether you can invoice. The other two are not ready to claim. The hourly rate below is for verified organizations only.
       </p>
+      <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1.25rem">
+        <PackageCard pkg={groupPackage} />
+      </div>
       <div class="panel" style="margin-top: 1rem">
         <p>
-          A 6-hour full day is $749 Monday–Thursday and $799 Friday–Sunday. Eight hours is $949 / $999. Weekday blocks that do not match those lengths use $125 an hour, three hours minimum. Up to 24 players at a time, then a rotation.
+          A 6-hour full day is $749 Monday–Thursday and $799 Friday–Sunday. Eight hours is $949 / $999. Verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order can use $125 an hour on Monday–Thursday, three hours minimum. That rate is not for residential parties. Up to 24 players at a time, then a rotation.
         </p>
         <p style="margin-top: 0.8rem">
           <span class="todo">[TODO: Joe]</span>

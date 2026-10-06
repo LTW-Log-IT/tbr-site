@@ -7,7 +7,7 @@ import FaqList from "../components/FaqList.astro";
 import PackageCard from "../components/PackageCard.astro";
 import { site, textHref } from "../config/site";
 import { homeFaqs, faqSchema } from "../data/faq";
-import { groupPackage, partyPackages } from "../data/pricing";
+import { partyPackages } from "../data/pricing";
 import { localBusinessSchema } from "../lib/schema";
 
 const hasFlyer = fs.existsSync(path.join(process.cwd(), "public/brand/tbr-flyer-launch.png"));
@@ -97,10 +97,9 @@ const steps = [
     <div class="wrap">
       <p class="eyebrow">Rate card</p>
       <h2 id="packages-title" class="metal">Skirmish, Mission, Campaign.</h2>
-      <p class="lede">The big number is Monday–Thursday. Friday–Sunday is on the line under it. Full days are 6 and 8 hours. Weekday groups can also book $125 an hour, three hours minimum.</p>
+      <p class="lede">The big number is Monday–Thursday. Friday–Sunday is on the line under it. Full days are 6 and 8 hours. Home parties use these packages.</p>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.5rem">
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
-        <PackageCard pkg={groupPackage} />
       </div>
       <p class="muted" style="margin-top: 1rem">
         <span class="todo">[TODO: Joe]</span>
@@ -192,7 +191,7 @@ const steps = [
         </a>
         <a class="band-card" href="/military#groups">
           <h3 class="metal">Schools and organizations</h3>
-          <p class="muted">Six- and eight-hour full days, or $125 an hour Monday–Thursday. Rotations of 24, a coach, and a quote before you commit a gym or a festival lot.</p>
+          <p class="muted">Verified organizations only. Six- and eight-hour full days, or $125 an hour Monday–Thursday with a 3-hour minimum. Not a home-party price.</p>
         </a>
       </div>
     </div>

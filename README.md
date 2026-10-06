@@ -88,7 +88,7 @@ Canonical prices live in `src/data/pricing.ts`:
 | Full day, 6 hr | $749 | $799 |
 | Full day, 8 hr | $949 | $999 |
 
-Group rate: $125/hr Monday–Thursday, 3-hour minimum. Extra time is $50 per 30 minutes. Deposit is a flat $100. Travel is free within 30 miles, $50 for 31–45, and $90 for 46–60.
+Organization rate: $125/hr Monday–Thursday, 3-hour minimum, verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not a residential package. Extra time is $50 per 30 minutes. Deposit is a flat $100. Travel is free within 30 miles, $50 for 31–45, and $90 for 46–60. Menu prices exclude tax. Quotes add 8.25%.
 
 Domain DNS for `tbr.leadthewaylogistics.info` is Bridge’s job. Do not change `site` or `base` in `astro.config.mjs` unless the hostname changes.
 

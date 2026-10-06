@@ -1,4 +1,4 @@
-import { buildEstimate, money, taxOnCents } from "../src/data/pricing.ts";
+import { buildEstimate, money, packages, partyPackages, taxOnCents } from "../src/data/pricing.ts";
 
 function assert(condition: boolean, message: string) {
   if (!condition) {
@@ -66,6 +66,10 @@ const bumped = buildEstimate({
 });
 close(bumped!.subtotal, 375, "group minimum 3 hours");
 assert(bumped!.notes.some((note) => note.includes("3-hour")), "minimum note");
+assert(bumped!.notes.some((note) => note.includes("Verified organizations")), "org-only note");
+assert(bumped!.notes.some((note) => note.includes("Not for residential")), "not a home-party rate");
+assert(partyPackages.every((pkg) => pkg.hourly !== true), "party card has no hourly rate");
+assert(!packages.some((pkg) => pkg.weekdayPrice === 299 || pkg.weekendPrice === 299), "no 299 menu price");
 
 const group = buildEstimate({
   packageId: "group",
