@@ -73,15 +73,21 @@ export const site = {
   values: ["Play.", "Connect.", "Build.", "Belong."],
 } as const;
 
-export const nav = [
+export const primaryNav = [
   { href: "/packages", label: "Packages" },
   { href: "/the-rig", label: "The Rig" },
+  { href: "/join", label: "Join TBR" },
+] as const;
+
+export const moreNav = [
   { href: "/military", label: "Military" },
   { href: "/areas", label: "Areas" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
-  { href: "/join", label: "Join TBR" },
+  { href: "/contact", label: "Contact" },
 ] as const;
+
+export const nav = [...primaryNav, ...moreNav];
 
 export function phoneReady(): boolean {
   return site.phoneE164.trim().length > 0;

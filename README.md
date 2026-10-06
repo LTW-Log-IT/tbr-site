@@ -112,8 +112,9 @@ GitHub Pages on this domain is the locked target. If you ever move:
 | `/areas/killeen` | Sample city page |
 | `/military` | Fort Hood, units, schools |
 | `/about` | Car club and trailer story |
-| `/contact` | Text, call, quote form |
+| `/contact` | Text, call, rental interest form |
+| `/join` | Community list: tournaments, events, discounts, giveaways |
 | `/faq` | Full FAQ |
 | `/policies` | Draft deposit and cancellation rules |
 
-Internal links are in the header and footer. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).
+Desktop header: logo, Packages, The Rig, Join TBR, a More menu (Military, Areas, FAQ, About, Contact), and Call / Text to book. Instagram is in the footer and the mobile menu. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).
