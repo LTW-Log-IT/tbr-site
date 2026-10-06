@@ -1,4 +1,5 @@
 ---
+import CallToBook from "../components/CallToBook.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 ---
@@ -11,7 +12,7 @@ import PageHero from "../components/PageHero.astro";
     <p>
       This is the launch draft, dated October 6, 2026. It is not legal advice.
       <span class="todo">[TODO: Joe]</span>
-      Have a Texas attorney review it, then make Square’s checkout checkbox point at the same words. Do not take a deposit while this paragraph is still a to-do.
+      Have a Texas attorney review it before you take a deposit. Soft launch holds the date by phone, not an online checkout.
     </p>
   </PageHero>
 
@@ -25,9 +26,9 @@ import PageHero from "../components/PageHero.astro";
         Prices on the card exclude tax. Quotes and booking totals add 8.25% to the subtotal. The $100 deposit comes off that tax-included total.
       </p>
       <p>
-        The balance is set up to charge automatically 48 hours before the event to the card on file. Cash or Zelle on arrival is an option if the card is held as backup.
+        Call or text (254) 251-5219 to arrange the $100 deposit. The balance is due before the event. Cash or Zelle on arrival is fine when you agree to it on the call.
         <span class="todo">[TODO: Joe]</span>
-        Turn that timing on in Square, or change this sentence. Do not advertise an automatic charge the account cannot make.
+        Confirm how you want the balance paid before the first booking. Do not advertise an automatic card charge this site cannot make.
       </p>
       <h2>Cancellation</h2>
       <p>Cancel 14 or more days before the event and the deposit is refunded in full.</p>
@@ -57,7 +58,7 @@ import PageHero from "../components/PageHero.astro";
       <p>
         Photos of an event go on a social feed only with the booking host’s consent. Say so on the booking if faces should stay off.
         <span class="todo">[TODO: Joe]</span>
-        Write the exact consent line you want next to the Square terms checkbox.
+        Write the consent line you will read when someone books by phone.
       </p>
       <h2>Discounts</h2>
       <p>
@@ -71,7 +72,7 @@ import PageHero from "../components/PageHero.astro";
       <p>
         The version that applies is the one you accept at booking. If this page changes later, existing deposits keep the rules from the day they were paid.
       </p>
-      <p><a class="btn btn-primary" href="/book">Check My Date</a></p>
+      <p><CallToBook /></p>
     </div>
   </article>
 </BaseLayout>

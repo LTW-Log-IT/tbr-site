@@ -1,22 +1,85 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CallToBook from "../components/CallToBook.astro";
 import PageHero from "../components/PageHero.astro";
-import { callHref, site, textHref } from "../config/site";
+import { phoneLabel, site, textHref } from "../config/site";
 import { addons, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
 ---
 
 <BaseLayout
-  title="Check My Date | Team Battle Ready Gaming Trailer"
-  description="Pick a package, a town, and a date for the Team Battle Ready gaming trailer. The quote adds 8.25% tax. Square Appointments holds the real slot and the $100 deposit."
+  title="Call or Text to Book | Team Battle Ready Gaming Trailer"
+  description="Book the Team Battle Ready gaming trailer by calling or texting (254) 251-5219. Optional request form. Quotes add 8.25% tax. Deposit is $100."
 >
-  <PageHero eyebrow="Booking" title="Check My Date." crumb="Book">
+  <PageHero eyebrow="Booking" title="Call / Text to book." crumb="Book">
     <p>
-      The planner prices the day, including 8.25% tax. Square holds the slot. The deposit is a flat {money(100)}.
-      Listed prices exclude tax.
-      <span class="todo">[TODO: Joe]</span>
-      Confirm the amusement-tax treatment with the Texas Comptroller before the first charge.
+      Soft launch holds a date on the phone. Call or text {phoneLabel()}. Joe will call you back.
+      The quote below adds 8.25% tax. The deposit is a flat {money(100)}. Listed prices exclude tax.
     </p>
+    <div class="cta-row">
+      <CallToBook />
+      <a class="btn btn-ghost" href={textHref()}>Text {phoneLabel()}</a>
+    </div>
   </PageHero>
+
+  <section class="section" style="padding-top: 0.5rem" aria-labelledby="request-title">
+    <div class="wrap grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <form id="request-date" class="panel grid gap-4">
+        <h2 id="request-title" class="metal" style="font-size: 2rem">Request a date</h2>
+        <p class="muted">This does not hold the trailer. {phoneLabel()} does. We’ll text you back.</p>
+        <label>
+          Name
+          <input id="req-name" name="name" autocomplete="name" required />
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Phone
+            <input id="req-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+          </label>
+          <label>
+            Email
+            <input id="req-email" name="email" type="email" autocomplete="email" />
+          </label>
+        </div>
+        <p class="muted">Phone or email. One of them is enough.</p>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Preferred date
+            <input id="req-date" name="date" type="date" />
+          </label>
+          <label>
+            Package
+            <select id="req-pkg" name="package">
+              <option value="Skirmish">Skirmish</option>
+              <option value="Mission" selected>Mission</option>
+              <option value="Campaign">Campaign</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Notes
+          <textarea id="req-notes" name="notes" placeholder="Town, headcount, full day, or a verified organization"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Send this request</button>
+        <p class="status" id="request-status" role="status"></p>
+        <label id="request-preview-label" hidden>
+          Message to copy
+          <textarea id="request-preview" readonly></textarea>
+        </label>
+      </form>
+      <aside class="panel">
+        <p class="eyebrow">The real path</p>
+        <h2 class="metal" style="font-size: 2rem">We’ll text you back</h2>
+        <p class="muted" style="margin-top: 0.7rem">
+          Call or text {phoneLabel()}. If the request opens your text app, send it. If it does not, call. Joe will call you back.
+        </p>
+        <div class="cta-row">
+          <CallToBook />
+          <a class="btn btn-ghost" href={textHref()}>Text {phoneLabel()}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
 
   <section class="section" style="padding-top: 1rem">
     <div class="wrap grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
@@ -48,7 +111,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
             </select>
           </label>
         </div>
-        <p class="muted">Monday–Thursday and Friday–Sunday are different prices. These windows are the usual rhythm. They are not a live open/closed list. Square is.</p>
+        <p class="muted">Monday–Thursday and Friday–Sunday are different prices. This total is a quote, not a held date.</p>
         <label>
           Town
           <select id="town" name="town">
@@ -87,7 +150,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
             </label>
           ))}
         </fieldset>
-        <button class="btn btn-primary" type="submit">Check My Date</button>
+        <button class="btn btn-ghost" type="submit">Update this quote</button>
       </form>
 
       <aside class="panel" aria-live="polite" id="estimate-panel">
@@ -109,48 +172,6 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0" aria-labelledby="scheduler-title">
-    <div class="wrap">
-      <h2 id="scheduler-title" class="metal">Square Appointments</h2>
-      <p class="lede">
-        Live openings and the deposit belong in this slot. Paste the embed here. Do not paste API keys.
-      </p>
-      <!--
-        JOE — PASTE THE SQUARE EMBED BELOW THIS COMMENT.
-        Square Dashboard → Appointments → Online Booking → Embed code.
-        Paste only the public widget snippet (the div and script Square gives you).
-        Do not paste API keys, access tokens, webhook secrets, or application secrets.
-        Then set SQUARE_BOOKING_URL in src/config/site.ts. That one line fills squareBookingUrl.
-        Delete the placeholder div once the snippet is in place.
-      -->
-      <div id="square-appointments-embed" class="panel" tabindex="-1" data-slot="square-appointments" style="margin-top: 1rem">
-        <p class="eyebrow">Embed slot</p>
-        <p>
-          <span class="todo">[TODO: Joe]</span>
-          Paste the Square Appointments embed in <code>src/pages/book.astro</code> where the comment says PASTE THE SQUARE EMBED.
-        </p>
-        <p class="muted" style="margin-top: 0.6rem">No Square keys are stored in this repo on purpose.</p>
-      </div>
-      <div class="cta-row">
-        {site.squareBookingUrl ? (
-          <a class="btn btn-primary" href={site.squareBookingUrl} rel="noopener noreferrer">Open the Square booking page</a>
-        ) : (
-          <p class="muted">
-            <span class="todo">[TODO: Joe]</span>
-            Set <code>SQUARE_BOOKING_URL</code> in <code>src/config/site.ts</code> when the public Square page exists. Until then, call or text (254) 251-5219. Do not invent a Square link.
-          </p>
-        )}
-        <a class="btn btn-ghost" href={callHref()}>Call (254) 251-5219</a>
-        <a class="btn btn-ghost" href={textHref()}>Text (254) 251-5219</a>
-        <a class="btn btn-ghost" href="/contact">Email a quote</a>
-      </div>
-      <noscript>
-        <p class="muted" style="margin-top: 1rem">
-          JavaScript is off, so the running total is hidden. Package prices and travel fees are on the Packages page. Tell us the package and town when you write.
-        </p>
-      </noscript>
-    </div>
-  </section>
 </BaseLayout>
 
 <script>
@@ -266,9 +287,6 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       render();
-      const slot = document.querySelector<HTMLElement>("#square-appointments-embed");
-      slot?.scrollIntoView({ behavior: "smooth", block: "start" });
-      slot?.focus();
     });
     copyButton?.addEventListener("click", async () => {
       if (!copyStatus) return;
@@ -280,5 +298,76 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
       }
     });
     render();
+  }
+</script>
+
+<script define:vars={{ contactEmail: site.contactEmail, smsTo: site.phoneE164 }}>
+  const form = document.querySelector("#request-date");
+  const status = document.querySelector("#request-status");
+  const preview = document.querySelector("#request-preview");
+  const previewLabel = document.querySelector("#request-preview-label");
+  const nameInput = document.querySelector("#req-name");
+  const phoneInput = document.querySelector("#req-phone");
+  const emailInput = document.querySelector("#req-email");
+  const dateInput = document.querySelector("#req-date");
+  const pkgInput = document.querySelector("#req-pkg");
+  const notesInput = document.querySelector("#req-notes");
+
+  if (
+    form instanceof HTMLFormElement &&
+    status instanceof HTMLElement &&
+    preview instanceof HTMLTextAreaElement &&
+    previewLabel instanceof HTMLElement &&
+    nameInput instanceof HTMLInputElement &&
+    phoneInput instanceof HTMLInputElement &&
+    emailInput instanceof HTMLInputElement &&
+    dateInput instanceof HTMLInputElement &&
+    pkgInput instanceof HTMLSelectElement &&
+    notesInput instanceof HTMLTextAreaElement
+  ) {
+    const params = new URLSearchParams(window.location.search);
+    const named = { skirmish: "Skirmish", mission: "Mission", campaign: "Campaign" };
+    const pkg = params.get("pkg") ?? "";
+    if (pkg && pkg in named) pkgInput.value = named[pkg];
+    else if (pkg) pkgInput.value = "Other";
+    const dateValue = params.get("date");
+    if (dateValue && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) dateInput.value = dateValue;
+    const town = params.get("town");
+    if (town && !notesInput.value) {
+      const extra = pkg && !(pkg in named) ? `${pkg} · ${town}` : town;
+      notesInput.value = extra;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const phone = phoneInput.value.trim();
+      const email = emailInput.value.trim();
+      if (!phone && !email) {
+        status.textContent = "Add a phone number or an email so Joe can reach you. Or call (254) 251-5219.";
+        phoneInput.focus();
+        return;
+      }
+      const lines = [
+        "Team Battle Ready date request",
+        `Name: ${nameInput.value.trim()}`,
+        phone ? `Phone: ${phone}` : "",
+        email ? `Email: ${email}` : "",
+        dateInput.value ? `Preferred date: ${dateInput.value}` : "Preferred date: not chosen",
+        `Package: ${pkgInput.value}`,
+        notesInput.value.trim() ? `Notes: ${notesInput.value.trim()}` : "",
+        "Please call or text me back. The date is not held until we talk.",
+      ].filter(Boolean);
+      const body = lines.join("\n");
+      previewLabel.hidden = false;
+      preview.value = body;
+      if (contactEmail) {
+        const subject = encodeURIComponent("Team Battle Ready date request");
+        window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
+        status.textContent = "Your email app should open with this request. Joe will call or text you back. If it does not, call (254) 251-5219.";
+        return;
+      }
+      window.location.href = `sms:+${smsTo}?body=${encodeURIComponent(body)}`;
+      status.textContent = "Your text app should open with this request. Joe will call or text you back. If it does not open, call (254) 251-5219.";
+    });
   }
 </script>

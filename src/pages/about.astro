@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import CallToBook from "../components/CallToBook.astro";
 import { site } from "../config/site";
 
 const flyerPerks = [
@@ -83,7 +84,7 @@ const flyerPerks = [
           </>
         ))}.
       </p>
-      <p><a class="btn btn-primary" href="/book">Check My Date</a></p>
+      <p><CallToBook /></p>
     </div>
   </article>
 </BaseLayout>

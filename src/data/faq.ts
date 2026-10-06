@@ -29,7 +29,7 @@ export const faqs: FaqItem[] = [
     paragraphs: [
       "The deposit is a flat $100 on every booking. Package length, add-ons, travel, and the $25 discount do not change it.",
       "Cancel 14 or more days out and the deposit is refunded in full. Cancel 3 to 13 days out and the deposit becomes a credit good for 12 months, not cash. Cancel inside 72 hours and the deposit is forfeited.",
-      "The balance is set up to charge 48 hours before the event, or cash or Zelle on arrival with the card held as backup. The quote total is the package, travel, add-ons, and extra time, then 8.25% tax.",
+      "Call or text (254) 251-5219 to hold the date with the $100 deposit. Joe will call you back. The quote total is the package, travel, add-ons, and extra time, then 8.25% tax. The balance is due before the event.",
     ],
     href: "/policies",
     linkLabel: "Read the draft policy in plain English",

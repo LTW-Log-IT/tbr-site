@@ -1,4 +1,5 @@
 ---
+import CallToBook from "../../components/CallToBook.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
@@ -63,7 +64,7 @@ import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
       })}
     </div>
     <div class="wrap" style="margin-top: 1.5rem">
-      <a class="btn btn-primary" href="/book">Check My Date</a>
+      <CallToBook />
     </div>
   </section>
 </BaseLayout>

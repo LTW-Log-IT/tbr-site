@@ -1,4 +1,5 @@
 ---
+import CallToBook from "../components/CallToBook.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqList from "../components/FaqList.astro";
 import PageHero from "../components/PageHero.astro";
@@ -14,13 +15,13 @@ import { faqSchema, faqs } from "../data/faq";
     <p>
       Prices, the deposit, travel, parking, weather, and the military discount. If a fact is still missing, it says so.
       <span class="todo">[TODO: Joe]</span>
-      Have a Texas attorney read the policy before you take the first deposit, and match the 48-hour balance charge to the live Square settings.
+      Have a Texas attorney read the policy before you take the first deposit. Soft launch holds a date by phone.
     </p>
   </PageHero>
   <section class="section" style="padding-top: 0.5rem">
     <div class="wrap">
       <FaqList items={faqs} />
-      <p style="margin-top: 1.5rem"><a class="btn btn-primary" href="/book">Check My Date</a></p>
+      <p style="margin-top: 1.5rem"><CallToBook /></p>
     </div>
   </section>
 </BaseLayout>

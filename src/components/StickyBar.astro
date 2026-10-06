@@ -1,9 +1,10 @@
 ---
-import { callHref, textHref } from "../config/site";
+import { textHref } from "../config/site";
+import CallToBook from "./CallToBook.astro";
 ---
 
-<div class="dock" role="region" aria-label="Book, text, or call">
-  <a class="btn btn-primary" href="/book">Book</a>
+<div class="dock" role="region" aria-label="Call or text to book">
+  <CallToBook />
   <a class="btn btn-ghost" href={textHref()}>Text</a>
-  <a class="btn btn-ghost" href={callHref()}>Call</a>
+  <a class="btn btn-ghost" href="/book">Request</a>
 </div>

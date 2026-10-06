@@ -1,4 +1,5 @@
 ---
+import CallToBook from "./CallToBook.astro";
 import { money, type CatalogPackage } from "../data/pricing";
 
 interface Props {
@@ -27,5 +28,6 @@ const { pkg } = Astro.props;
     {pkg.includes.map((item) => <li>{item}</li>)}
   </ul>
   {pkg.note && <p class="muted">{pkg.note}</p>}
-  <a class="btn btn-primary" href={`/book?pkg=${pkg.id}`}>Book {pkg.name}</a>
+  <CallToBook />
+  <a class="inline-link" href={`/book?pkg=${pkg.id}`}>Request a date</a>
 </article>

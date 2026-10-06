@@ -323,6 +323,10 @@ code {
   color: var(--cyan);
 }
 
+.desktop-nav a.btn-primary {
+  color: #fff;
+}
+
 .desktop-nav a.nav-ig {
   display: none;
   text-transform: none;

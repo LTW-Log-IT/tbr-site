@@ -2,11 +2,11 @@
  * Public site configuration.
  *
  * Joe: fill the blank strings before launch.
- * Do not commit Square secret keys, access tokens, or application secrets.
- * A public booking-page URL and the embed snippet are not secrets.
+ * Do not commit payment-processor secret keys.
+ * Soft launch does not use online booking.
  */
 
-/** TODO: Joe — one-line swap when the Square Appointments page exists. No API keys. */
+/** Unused for soft launch. Leave empty. Do not render this on the site. */
 export const SQUARE_BOOKING_URL = "";
 
 export const site = {
@@ -30,12 +30,7 @@ export const site = {
   phoneDisplay: "(254) 251-5219",
   /** Inbox for quote mail. Leave blank until the mailbox exists. */
   contactEmail: "",
-  /**
-   * Public Square Appointments page. Not an API key.
-   * TODO: Joe — paste the hosted booking URL into SQUARE_BOOKING_URL below.
-   * That one line turns on the Square button. Leave it empty until then.
-   * Book and call stay on /book and tel:+12542515219.
-   */
+  /** Unused. Soft-launch booking is the phone, not this field. */
   squareBookingUrl: SQUARE_BOOKING_URL,
   instagram: [
     {

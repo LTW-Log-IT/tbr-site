@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import PackageCard from "../components/PackageCard.astro";
+import CallToBook from "../components/CallToBook.astro";
 import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
 import {
   COMMUNITY_DISCOUNT,
@@ -107,7 +108,8 @@ const matrix = [
             The {money(COMMUNITY_DISCOUNT)} military, first responder, and teacher discount comes off the hourly total once.
             Travel and add-ons stay full price. The quote still adds 8.25% unless an exemption certificate is on file.
           </p>
-          <p style="margin-top: 1rem"><a class="btn btn-primary" href="/book?pkg=group">Price an organization block</a></p>
+          <p style="margin-top: 1rem"><CallToBook /></p>
+          <p style="margin-top: 0.7rem"><a class="inline-link" href="/book?pkg=group">Request a date</a></p>
         </article>
       </div>
       <p class="muted" style="margin-top: 1rem">
@@ -204,7 +206,7 @@ const matrix = [
       </div>
     </div>
     <div class="wrap" style="margin-top: 1.5rem">
-      <a class="btn btn-primary" href="/book">Check My Date</a>
+      <CallToBook />
     </div>
   </section>
 </BaseLayout>

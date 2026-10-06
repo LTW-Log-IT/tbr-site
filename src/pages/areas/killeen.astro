@@ -1,4 +1,5 @@
 ---
+import CallToBook from "../../components/CallToBook.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 ---
@@ -66,7 +67,8 @@ import PageHero from "../../components/PageHero.astro";
         The deposit on a Killeen booking is a flat $100. Cancel 14 or more days out and that deposit comes back. The quote adds 8.25% tax. The balance is due on the schedule in the policy, not as a surprise at the curb.
       </p>
       <p>
-        <a class="btn btn-primary" href="/book?town=killeen">Check a Killeen date</a>
+        <CallToBook />
+        <a class="inline-link" href="/book?town=killeen">Request a Killeen date</a>
       </p>
       <p>
         Neighboring fees live on the <a href="/areas">areas index</a>. The consoles and stations already on the trailer are listed on <a href="/the-rig">The Rig</a>. The measured parking length is still an open number there.

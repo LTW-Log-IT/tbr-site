@@ -1,0 +1,17 @@
+---
+import { callHref, phoneLabel } from "../config/site";
+
+interface Props {
+  block?: boolean;
+}
+
+const { block = false } = Astro.props;
+---
+
+<a
+  class:list={["btn", "btn-primary", block && "btn-block"]}
+  href={callHref()}
+  aria-label={`Call or text ${phoneLabel()} to book`}
+>
+  Call / Text to book
+</a>

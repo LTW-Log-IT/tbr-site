@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import DateCheck from "../components/DateCheck.astro";
 import FaqList from "../components/FaqList.astro";
 import PackageCard from "../components/PackageCard.astro";
+import CallToBook from "../components/CallToBook.astro";
 import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
 import { site, textHref } from "../config/site";
 import { homeFaqs, faqSchema } from "../data/faq";
@@ -58,7 +59,7 @@ const steps = [
         Mobile video game theater for up to 24 players. Killeen • Fort Cavazos • Temple • Belton.
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="/book">Check My Date</a>
+        <CallToBook />
         <a class="btn btn-ghost" href={text}>Text Us</a>
       </div>
       <ul class="value-row">
@@ -90,7 +91,10 @@ const steps = [
     <div class="wrap">
       <p class="eyebrow">Date check</p>
       <h2 id="check-title" class="metal">See the town fee, then check the day.</h2>
-      <p class="lede">This sends you to the booking page with the package and town filled in. Open slots live in Square, not in this form.</p>
+      <p class="lede">A date is held when you call or text (254) 251-5219. This form only carries the package and town to the request page.</p>
+      <div style="margin: 1rem 0 1.25rem">
+        <CallToBook />
+      </div>
       <div style="margin-top: 1.25rem">
         <DateCheck />
       </div>
@@ -220,7 +224,7 @@ const steps = [
       <h2 id="final-title" class="metal" style="margin-top: 1.5rem">The trailer holds one booking at a time.</h2>
       <p class="lede">Killeen, Fort Cavazos, Temple, Belton, and every town on the travel card.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="/book">Check My Date</a>
+        <CallToBook />
         <a class="btn btn-ghost" href={text}>Text Us</a>
       </div>
     </div>
