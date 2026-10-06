@@ -76,7 +76,7 @@ export const site = {
 export const primaryNav = [
   { href: "/packages", label: "Packages" },
   { href: "/faq", label: "FAQ" },
-  { href: "/join", label: "Join" },
+  { href: "/join", label: "Join TBR" },
 ] as const;
 
 /** Pages that stay off the top bar. Linked from the footer. */
