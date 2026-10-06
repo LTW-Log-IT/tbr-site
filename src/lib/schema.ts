@@ -20,6 +20,7 @@ export function localBusinessSchema() {
     description: site.description,
     url: site.url,
     telephone: "+1-254-251-5219",
+    sameAs: site.instagram.map((account) => account.href),
     image: `${site.url}/favicon.svg`,
     slogan: site.slogan,
     areaServed: areas.map((name) => ({

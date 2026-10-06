@@ -5,6 +5,10 @@
  * Do not commit Square secret keys, access tokens, or application secrets.
  * A public booking-page URL and the embed snippet are not secrets.
  */
+
+/** TODO: Joe — one-line swap when the Square Appointments page exists. No API keys. */
+export const SQUARE_BOOKING_URL = "";
+
 export const site = {
   name: "Team Battle Ready Gaming Trailer",
   shortName: "Team Battle Ready",
@@ -27,18 +31,20 @@ export const site = {
   /** Inbox for quote mail. Leave blank until the mailbox exists. */
   contactEmail: "",
   /**
-   * Hosted Square Appointments page (the public link guests can open).
-   * Not an API key.
+   * Public Square Appointments page. Not an API key.
+   * TODO: Joe — paste the hosted booking URL into SQUARE_BOOKING_URL below.
+   * That one line turns on the Square button. Leave it empty until then.
+   * Book and call stay on /book and tel:+12542515219.
    */
-  squareBookingUrl: "",
+  squareBookingUrl: SQUARE_BOOKING_URL,
   instagram: [
     {
       handle: "@Team.Battle.Ready",
-      href: "https://www.instagram.com/Team.Battle.Ready/",
+      href: "https://instagram.com/Team.Battle.Ready",
     },
     {
       handle: "@TBR.B4TTL3",
-      href: "https://www.instagram.com/TBR.B4TTL3/",
+      href: "https://instagram.com/TBR.B4TTL3",
     },
   ],
   sponsor: "Hakai No Kamigami",

@@ -1,0 +1,16 @@
+---
+interface Props {
+  caption?: string;
+}
+
+const { caption = "Trailer photos coming soon" } = Astro.props;
+---
+
+<figure class="photo-slot photo-placeholder">
+  <div class="photo-mark" role="img" aria-label="Trailer photos coming soon">
+    <span class="photo-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    <p class="photo-tbr" aria-hidden="true">TBR</p>
+    <p class="photo-soon">Trailer photos coming soon</p>
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>

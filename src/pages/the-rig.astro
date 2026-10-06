@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
 
 const owned = [
   ["Gaming stations", "6. Each station has a chair, a monitor, and a Nintendo Switch."],
@@ -144,16 +145,11 @@ const photos = [
     <div class="wrap">
       <h2 id="photo-title" class="metal">Photo slots</h2>
       <p class="lede">
-        No stock gamers. Drop files in <code>public/photos/</code> and swap these frames when you have rights to the picture.
+        Trailer photos coming soon. No stock gamers and no fake trailer pictures. Drop files in <code>public/photos/</code> after the next event and swap these frames.
       </p>
       <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1rem">
         {photos.map((caption) => (
-          <figure class="photo-slot">
-            <figcaption>
-              <span class="todo">[TODO: Joe]</span>
-              {caption}
-            </figcaption>
-          </figure>
+          <PhotoPlaceholder caption={`Trailer photos coming soon. ${caption}`} />
         ))}
       </div>
       <p style="margin-top: 1.5rem"><a class="btn btn-primary" href="/book">Check My Date</a></p>

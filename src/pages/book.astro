@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
-import { site, textHref } from "../config/site";
+import { callHref, site, textHref } from "../config/site";
 import { addons, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
 ---
 
@@ -120,7 +120,7 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
         Square Dashboard → Appointments → Online Booking → Embed code.
         Paste only the public widget snippet (the div and script Square gives you).
         Do not paste API keys, access tokens, webhook secrets, or application secrets.
-        Then set squareBookingUrl in src/config/site.ts to the hosted public booking page.
+        Then set SQUARE_BOOKING_URL in src/config/site.ts. That one line fills squareBookingUrl.
         Delete the placeholder div once the snippet is in place.
       -->
       <div id="square-appointments-embed" class="panel" tabindex="-1" data-slot="square-appointments" style="margin-top: 1rem">
@@ -137,9 +137,10 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
         ) : (
           <p class="muted">
             <span class="todo">[TODO: Joe]</span>
-            Set <code>squareBookingUrl</code> in <code>src/config/site.ts</code> so this button can open the hosted Square page if the embed is blocked.
+            Set <code>SQUARE_BOOKING_URL</code> in <code>src/config/site.ts</code> when the public Square page exists. Until then, call or text (254) 251-5219. Do not invent a Square link.
           </p>
         )}
+        <a class="btn btn-ghost" href={callHref()}>Call (254) 251-5219</a>
         <a class="btn btn-ghost" href={textHref()}>Text (254) 251-5219</a>
         <a class="btn btn-ghost" href="/contact">Email a quote</a>
       </div>

@@ -62,10 +62,10 @@ Edit these before the domain is advertised:
 
 1. **Phone** — set to (254) 251-5219 (`phoneE164` `12542515219` in `src/config/site.ts`). Text and Call use that line.
 2. **Email** — `contactEmail` in the same file. The quote form builds a message and opens `mailto:` only after this is set.
-3. **Square** — embed snippet in `src/pages/book.astro`, and `squareBookingUrl` in `src/config/site.ts`. No API keys.
+3. **Square** — set `SQUARE_BOOKING_URL` in `src/config/site.ts` to the public Appointments page. That one line fills `squareBookingUrl`. Paste the embed in `src/pages/book.astro`. No API keys. Book and call stay on `/book` and (254) 251-5219 until that URL exists.
 4. **Rate card sign-off** — prices, zones, discounts, and policies live in `src/data/pricing.ts`. They are the launch draft. Change them there; the pages read that file.
 5. **Remaining measurements** — station and console counts are filled on `/the-rig` (6 Switch stations, about 4 Xbox, 3 PS5, 8 Roblox/Minecraft tablets). Generator output is 13.5 kW. Model, decibels, length, screen size, and parking footprint are still `[TODO: Joe]`.
-6. **Photos** — put files in `public/photos/` and replace the dashed frames. No stock gamers. No wrapped-trailer art. Magnets or a banner are fine. Optional launch flyer: `public/brand/tbr-flyer-launch.png` (the home page shows it if that file exists). That flyer is not the color system.
+6. **Photos** — trailer pictures are not in yet. Hero, packages, and The Rig use branded “Trailer photos coming soon” frames. Put real files in `public/photos/` after the event and replace those frames. No stock gamers. No wrapped-trailer art. No invented trailer photos. Magnets or a banner are fine. Optional launch flyer: `public/brand/tbr-flyer-launch.png` (the home page shows it if that file exists). That flyer is not the color system.
 7. **Storage address** — travel zones assume a Killeen base. Recompute `/areas` if the lot is somewhere else.
 8. **Bio** — replace the About stub with facts you want public. No home address, no gate codes, no minors’ last names.
 9. **Google Business Profile** — add the real link when it exists. Do not type a star rating or review count.

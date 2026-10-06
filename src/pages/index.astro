@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import DateCheck from "../components/DateCheck.astro";
 import FaqList from "../components/FaqList.astro";
 import PackageCard from "../components/PackageCard.astro";
+import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
 import { site, textHref } from "../config/site";
 import { homeFaqs, faqSchema } from "../data/faq";
 import { partyPackages } from "../data/pricing";
@@ -43,7 +44,8 @@ const steps = [
   jsonLd={[localBusinessSchema(), faqSchema(homeFaqs)]}
 >
   <section class="hero">
-    <div class="wrap hero-frame">
+    <div class="wrap hero-grid">
+    <div class="hero-frame">
       <span class="corner tl" aria-hidden="true"></span>
       <span class="corner tr" aria-hidden="true"></span>
       <span class="corner bl" aria-hidden="true"></span>
@@ -62,6 +64,8 @@ const steps = [
       <ul class="value-row">
         {site.values.map((value) => <li>{value}</li>)}
       </ul>
+    </div>
+    <PhotoPlaceholder caption="Trailer photos coming soon. The rig is already in service. These frames stay branded until Joe has pictures from an event." />
     </div>
   </section>
 
