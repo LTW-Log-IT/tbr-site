@@ -72,7 +72,7 @@ export const faqs: FaqItem[] = [
     home: true,
     question: "Is there a military, teacher, or weekday discount?",
     paragraphs: [
-      "Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
+      "Thank you for your service. Discounts are available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
       "Weekday and weekend prices are already the two columns on Skirmish, Mission, Campaign, and the full days.",
     ],
     href: "/military",

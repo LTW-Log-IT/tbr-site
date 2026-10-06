@@ -681,6 +681,23 @@ code {
   font-size: 0.95rem;
 }
 
+.memorial {
+  margin-top: 1.75rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid #7e651c;
+}
+
+.memorial .eyebrow {
+  color: #7e651c;
+}
+
+.memorial-name {
+  color: #7e651c;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .band-grid {
   display: grid;
   gap: 0.8rem;

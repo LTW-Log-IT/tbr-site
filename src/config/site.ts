@@ -24,6 +24,10 @@ export const site = {
     "Climate-controlled mobile video game theater for up to 24 players. Birthdays, unit days, and group events in Killeen, Fort Hood, Temple, and Belton.",
   slogan: "The Party Shows Up Battle Ready.",
   tagline: "Play · Connect · Build · Belong",
+  parent: {
+    name: "Lead the Way Logistics & IT LLC",
+    href: "https://leadthewaylogistics.info",
+  },
   areaLine: "Killeen · Fort Hood · Temple · Belton",
   /**
    * Digits only, country code included, no plus and no spaces.
