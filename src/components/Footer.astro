@@ -1,5 +1,5 @@
 ---
-import { nav, phoneLabel, site } from "../config/site";
+import { footerNav, phoneLabel, site } from "../config/site";
 ---
 
 <footer class="site-footer">
@@ -10,47 +10,49 @@ import { nav, phoneLabel, site } from "../config/site";
       <p class="value-row" style="margin-top: 0.8rem">
         {site.values.join("  ")}
       </p>
-      <p class="fine" style="margin-top: 1rem">
-        Birthdays, family days, and game nights. Killeen, Copperas Cove, Harker Heights, and Nolanville.
-      </p>
-      <p class="fine" style="margin-top: 0.7rem">{site.constructionNote}</p>
+      <p class="fine" style="margin-top: 1rem">{site.constructionNote}</p>
+      <p class="fine" style="margin-top: 0.7rem">{site.climateNote}</p>
       <p class="fine" style="margin-top: 0.7rem">
         The truck and trailer need a driveway or side street where they can legally park. Confirm the spot before the date. If it will not work, call or text and we will figure out another option.
       </p>
       <p class="fine" style="margin-top: 0.7rem">
         Liability. Playing and using the equipment is at the guest’s own risk. Lead the Way Logistics & IT LLC and Team Battle Ready are not liable for injury, property damage, or loss from the rental except where the law requires it. A parent or guardian is responsible for minors. Guests follow the house rules and take care of the gear.
       </p>
+      <aside class="memorial">
+        <p class="eyebrow">In memory</p>
+        <p>
+          <span class="memorial-name">CW4 (Ret.) Luis Bonilla</span>
+          — Rangers Lead the Way. #RLTW
+        </p>
+      </aside>
     </div>
     <div>
       <p class="eyebrow">On this site</p>
       <ul class="footer-links">
         <li><a href="/">Home</a></li>
-        {nav.map((item) => (
+        {footerNav.map((item) => (
           <li><a href={item.href}>{item.label}</a></li>
         ))}
-        <li><a href="/book">Book</a></li>
-        <li><a href="/policies">Policies</a></li>
         <li><a href="/areas/killeen">Killeen</a></li>
+        <li><a href="/areas/copperas-cove">Copperas Cove</a></li>
+        <li><a href="/areas/harker-heights">Harker Heights</a></li>
+        <li><a href="/areas/nolanville">Nolanville</a></li>
       </ul>
     </div>
     <div>
       <p class="eyebrow">Find us</p>
       <ul class="footer-links">
+        <li><a href="tel:+12542515219">Call / text {phoneLabel()}</a></li>
         {site.instagram.map((account) => (
           <li>
             <a href={account.href} rel="noopener noreferrer">{account.handle}</a>
           </li>
         ))}
+        <li><a href="/join">Join TBR</a></li>
+        <li><a href="/book">Book</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
-      <p class="fine" style="margin-top: 0.8rem">
-        Primary {site.instagram[0].handle}. Also {site.instagram[1].handle}.
-      </p>
       <p class="fine" style="margin-top: 0.8rem">Phone: {phoneLabel()}</p>
-      {site.contactEmail && (
-        <p class="fine">
-          Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
-        </p>
-      )}
       <p class="fine" style="margin-top: 0.8rem">{site.domain}</p>
     </div>
   </div>

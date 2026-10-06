@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import PackageCard from "../components/PackageCard.astro";
 import CallToBook from "../components/CallToBook.astro";
 import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
+import { site } from "../config/site";
 import {
   BEYOND_30_NOTE,
   SERVICE_AREA_NOTE,
@@ -33,7 +34,8 @@ const matrix = [
   },
   { label: "Stations", value: () => "6 dedicated, 27-inch monitors" },
   { label: "Multiplayer", value: () => "Certain 4-player games" },
-  { label: "Coach, setup, cleanup", value: () => "Included" },
+  { label: "Attendant, setup, teardown", value: () => "On site the whole booking" },
+  { label: "Wi-Fi", value: () => "Online multiplayer" },
   { label: "Xbox / PS5 / tablets", value: () => "About 4 / 3 / 8 stand-alone 8-inch" },
   { label: "Toddler zone", value: () => `Add-on ${money(75)}` },
   { label: "Tournament pack", value: () => `Add-on ${money(40)}` },
@@ -64,6 +66,41 @@ const matrix = [
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
       </div>
       <p class="muted" style="margin-top: 1rem">Extra time is {money(EXTRA_HALF_HOUR)} per 30 minutes, only if the next slot is open.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="included-title">
+    <div class="wrap">
+      <h2 id="included-title" class="metal">What’s included</h2>
+      <ul class="checks" style="margin-top: 1rem">
+        <li>Trailer arrival, setup, and teardown.</li>
+        <li>6 dedicated stations, each with a 27-inch monitor, a chair, and a console (Xbox Series S/X, PS5, or Switch).</li>
+        <li>About 4 Xbox, 3 PS5s, and 8 stand-alone 8-inch tablets.</li>
+        <li>A game coach on site for the whole booking.</li>
+        <li>Wi-Fi for online multiplayer. Certain games are 4-player.</li>
+        <li>Self-powered 13.5 kW generator. No outlet needed.</li>
+      </ul>
+      <p class="muted" style="margin-top: 0.8rem">{site.constructionNote} {site.climateNote}</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="events-title">
+    <div class="wrap">
+      <h2 id="events-title" class="metal">Birthdays, schools, and family days.</h2>
+      <div class="event-grid" style="margin-top: 1.25rem">
+        <article class="panel">
+          <h3 class="metal">Birthdays</h3>
+          <p class="muted" style="margin-top: 0.55rem">A driveway or side street at the house. Skirmish starts at $349 on a weekday.</p>
+        </article>
+        <article class="panel">
+          <h3 class="metal">Schools and churches</h3>
+          <p class="muted" style="margin-top: 0.55rem">Same trailer, parked where it can legally sit. Verified organizations can ask about the weekday hourly rate. It is not a home-party price.</p>
+        </article>
+        <article class="panel">
+          <h3 class="metal">Military, FRG, and corporate</h3>
+          <p class="muted" style="margin-top: 0.55rem">Unit days, homecomings, and family days at a house or driveway. Fort Hood and other towns outside the four cities are by exception and quoted by text.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -196,11 +233,10 @@ const matrix = [
       <div class="panel">
         <h2 class="metal">Deposit and tax</h2>
         <div class="prose" style="margin-top: 0.8rem">
-          <p>The deposit is a flat {money(DEPOSIT)} on every booking.</p>
-          <p>Cancel 14 or more days out: full deposit refund. Cancel 3–13 days out: the deposit becomes a 12-month credit. Inside 72 hours: the deposit is forfeited.</p>
-          <p>Listed prices exclude tax. The quote adds 8.25% to the subtotal, then subtracts the {money(DEPOSIT)} deposit from that total.</p>
-          <p>Severe weather (lightning, ice, winds above 35 mph, or an NWS warning): free reschedule or full credit. Rain alone does not cancel.</p>
-          <p><a href="/policies">Full draft policy</a></p>
+          <p>The deposit is a flat {money(DEPOSIT)} on every booking, paid on Square after we confirm the day.</p>
+          <p>Listed prices exclude tax. The quote adds 8.25%.</p>
+          <p>Cancellation, reschedule, and when the balance is due are not published yet. Confirm them by text when you book.</p>
+          <p><a href="/policies">Policies</a></p>
         </div>
       </div>
     </div>

@@ -1,0 +1,45 @@
+---
+import CallToBook from "./CallToBook.astro";
+import { phoneLabel, site, textDateHref } from "../config/site";
+
+const steps = [
+  {
+    n: "01",
+    title: "Text your date",
+    body: `Text your date, address, and package to ${phoneLabel()}.`,
+  },
+  {
+    n: "02",
+    title: "We confirm availability",
+    body: "We text back if that day is open. The message alone does not hold the trailer.",
+  },
+  {
+    n: "03",
+    title: "Pay $100 to hold",
+    body: "Pay the $100 Square deposit to hold the date.",
+  },
+];
+---
+
+<div class="booking-steps">
+  <ol class="steps">
+    {steps.map((step) => (
+      <li class="panel step">
+        <p class="step-no">{step.n}</p>
+        <div>
+          <h3 class="metal">{step.title}</h3>
+          <p class="muted" style="margin-top: 0.4rem">{step.body}</p>
+        </div>
+      </li>
+    ))}
+  </ol>
+  <p class="muted" style="margin-top: 0.8rem">
+    The deposit link is
+    <a class="inline-link" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">Square · $100</a>.
+    Package buttons on the booking page stay the full price.
+  </p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href={textDateHref()}>Text us your date</a>
+    <CallToBook />
+  </div>
+</div>

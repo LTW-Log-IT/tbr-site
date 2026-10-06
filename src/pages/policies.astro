@@ -2,15 +2,28 @@
 import CallToBook from "../components/CallToBook.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
+import { phoneLabel, site, squarePackageHref, textDateHref } from "../config/site";
+import { partyPackages } from "../data/pricing";
+
+const squarePackages = partyPackages.flatMap((pkg) => {
+  const rows: { href: string; label: string }[] = [];
+  const weekday = squarePackageHref(pkg.id, "weekday");
+  const weekend = squarePackageHref(pkg.id, "weekend");
+  if (weekday) rows.push({ href: weekday, label: `${pkg.name} Monday–Thursday · $${pkg.weekdayPrice}` });
+  if (weekend && pkg.weekendPrice != null) {
+    rows.push({ href: weekend, label: `${pkg.name} Friday–Sunday · $${pkg.weekendPrice}` });
+  }
+  return rows;
+});
 ---
 
 <BaseLayout
   title="Policies | Team Battle Ready Gaming Trailer"
-  description="Draft deposit, cancellation, weather, food, and damage rules for Team Battle Ready gaming trailer bookings in Central Texas."
+  description="The $100 deposit, Square links, driveway parking, and liability for Team Battle Ready. Cancellation and the balance are confirmed by text. They are not published as a rule yet."
 >
-  <PageHero eyebrow="Draft policy" title="The rules, in plain English." crumb="Policies">
+  <PageHero eyebrow="Policies" title="What is set, and what is not." crumb="Policies">
     <p>
-      This is the launch draft, dated October 6, 2026. It is not legal advice. Call or text (254) 251-5219 to hold the date.
+      Deposit, payment, parking, and liability are below. Cancellation, reschedule, and the balance are blank until Joe sets them. Ask by text. This is not a finished legal policy.
     </p>
   </PageHero>
 
@@ -18,57 +31,76 @@ import PageHero from "../components/PageHero.astro";
     <div class="wrap">
       <h2>Deposit</h2>
       <p>
-        The deposit is a flat $100 on every booking: Skirmish, Mission, Campaign, a 6- or 8-hour full day, and the Monday–Thursday rate for verified organizations. That hourly rate is for schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. It is not a home-party price. Add-ons, travel, tax, and the $25 discount do not change the deposit.
+        The deposit is a flat $100 on every booking. Call or text {phoneLabel()} first so we can confirm the day. Then pay the deposit on Square to hold it.
       </p>
       <p>
-        Prices on the card exclude tax. Quotes and booking totals add 8.25% to the subtotal. The $100 deposit comes off that tax-included total.
+        <a class="btn btn-primary" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">Pay deposit · $100</a>
       </p>
+      <p>Prices on the card exclude tax. Quotes add 8.25%.</p>
+
+      <h2>Square package links</h2>
       <p>
-        Call or text (254) 251-5219 to arrange the $100 deposit. The balance is due before the event. Cash or Zelle on arrival is fine when you agree to it on the call.
+        These charge the full package price. The $25 ID discount is not built into the link. Call or text if Square cannot adjust it. Discounts do not stack. Travel and extra time stay full price.
       </p>
-      <h2>Cancellation</h2>
-      <p>Cancel 14 or more days before the event and the deposit is refunded in full.</p>
-      <p>Cancel 3 to 13 days out and the deposit becomes a credit good for 12 months. It is not returned as cash.</p>
-      <p>Cancel inside 72 hours and the deposit is forfeited.</p>
+      <ul>
+        {squarePackages.map((row) => (
+          <li><a href={row.href} target="_blank" rel="noopener noreferrer">{row.label}</a></li>
+        ))}
+      </ul>
+
+      <h2>Balance</h2>
+      <div class="tbd">
+        <p class="eyebrow">Not set yet</p>
+        <p>When the rest of the bill is due is not published. Confirm the balance when you book. Text {phoneLabel()}.</p>
+      </div>
+
+      <h2>Cancellation and reschedule</h2>
+      <div class="tbd">
+        <p class="eyebrow">Not set yet</p>
+        <p>There is no cancellation window, fee, or credit rule on this site. Ask when you book.</p>
+      </div>
+
       <h2>Weather</h2>
-      <p>
-        Rain alone does not cancel. The cabin is climate-controlled on purpose. Lightning, ice, winds above 35 mph, or a National Weather Service warning: you get a free reschedule or a full credit. You choose.
-      </p>
-      <h2>Late start</h2>
-      <p>
-        The clock starts at the scheduled time. If the driveway or parking spot is not ready, the coach waits up to 30 minutes. Time lost after that is not added to the back of the event, because the next slot may belong to someone else.
-      </p>
-      <h2>Travel</h2>
-      <p>
-        Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Those cities sit within about 30 miles of Killeen. Outside that area, trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required. The town list is on the <a href="/areas">areas page</a>. A distance that was wrong because we mis-measured the address gets fixed before the date.
-      </p>
-      <h2>Food, drink, and gum</h2>
-      <p>They stay outside the trailer. A violation is a $75 cleaning fee on this draft.</p>
-      <h2>Damage</h2>
-      <p>Damage is billed at replacement cost to the card on file. Normal wear on a controller is not damage. A broken screen is.</p>
-      <h2>Ratings and supervision</h2>
-      <p>
-        The host sets the game-rating limit and is responsible for telling us. The coach enforces the limit you set. The host also supplies any adult supervision the venue requires beyond the coach.
-      </p>
-      <h2>Photos</h2>
-      <p>
-        Photos of an event go on a social feed only with the booking host’s consent. Say so on the booking if faces should stay off.
-      </p>
-      <h2>Discounts</h2>
-      <p>
-        Active duty, veterans, first responders, and teachers: $25 off the package price, or off the Monday–Thursday hourly total. Bring an ID. Discounts do not stack. The $25 does not come off travel, add-ons, or extra time. Square charges the full package price. Call or text to apply the discount.
-      </p>
+      <div class="tbd">
+        <p class="eyebrow">Not set yet</p>
+        <p>Weather rules are not published. Ask when you book. {site.climateNote}</p>
+      </div>
+
       <h2>Parking</h2>
       <p>
-        The truck and trailer need a driveway or a side street where they can legally park for the booking. Confirm that spot before the date. If parking will not work, call or text and we will figure out another option.
+        The truck and trailer need a driveway or a side street where they can legally park for the booking, on level space. Confirm that spot before the date. If parking will not work, call or text and we will figure out another option.
       </p>
+
+      <h2>Power</h2>
+      <p>The trailer is self-powered with a 13.5 kW generator. No household outlet is needed.</p>
+
+      <h2>Food and drinks</h2>
+      <p>Food, drinks, and gum stay outside the trailer.</p>
+
+      <h2>Ratings</h2>
+      <p>The host sets the game-rating limit and tells us when booking. The on-site attendant follows that limit. A parent or guardian is responsible for minors.</p>
+
+      <h2>Attendant and Wi-Fi</h2>
+      <p>A game coach stays on site for the whole booking. Wi-Fi is available for online multiplayer.</p>
+
+      <h2>Discounts</h2>
+      <p>
+        Active duty, veterans, first responders, and teachers: $25 off the package price, or off the Monday–Thursday hourly total, with an ID. Discounts do not stack.
+      </p>
+
+      <h2>Travel</h2>
+      <p>
+        Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Outside that area, including Fort Hood, trips are by exception only. They have to be approved ahead of time. The trip is quoted by text. Prices vary. A minimum of 4 hours may be required. The town list is on the <a href="/areas">areas page</a>.
+      </p>
+
       <h2>Liability</h2>
       <p>
         Assumption of risk. Participation and use of the equipment are at the guest’s own risk. Lead the Way Logistics & IT LLC and Team Battle Ready are not liable for injury, property damage, or loss arising from the rental, except as required by law. A parent or guardian is responsible for minors. Guests follow the house rules and take care of the gear.
       </p>
-      <h2>Changes</h2>
+
+      <p>{site.constructionNote}</p>
       <p>
-        The version that applies is the one you accept at booking. If this page changes later, existing deposits keep the rules from the day they were paid.
+        <a class="btn btn-primary" href={textDateHref()}>Text us your date</a>
       </p>
       <p><CallToBook /></p>
     </div>

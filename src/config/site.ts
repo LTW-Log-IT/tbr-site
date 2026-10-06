@@ -21,7 +21,7 @@ export const site = {
   url: "https://tbr.leadthewaylogistics.info",
   repo: "https://github.com/LTW-Log-IT/tbr-site",
   description:
-    "Climate-controlled mobile game room with 6 dedicated gaming stations. Birthdays, BBQs, and game nights in Killeen, Copperas Cove, Harker Heights, and Nolanville.",
+    "Mobile game room with 6 dedicated gaming stations. Birthdays, BBQs, and game nights in Killeen, Copperas Cove, Harker Heights, and Nolanville. The trailer is still under construction.",
   slogan: "The Party Shows Up Battle Ready.",
   tagline: "Play · Connect · Build · Belong",
   parent: {
@@ -31,6 +31,9 @@ export const site = {
   areaLine: "Killeen · Copperas Cove · Harker Heights · Nolanville",
   constructionNote:
     "The gaming trailer is still under construction. Rental availability is limited until it is complete.",
+  /** Not live. Do not describe the cabin as climate-controlled. */
+  climateNote:
+    "Climate control (A/C and heat) is being installed as part of the build. It is not live yet.",
   /**
    * Digits only, country code included, no plus and no spaces.
    * Joe confirmed this line for every call and text CTA.
@@ -75,19 +78,25 @@ export const site = {
 
 export const primaryNav = [
   { href: "/packages", label: "Packages" },
-  { href: "/the-rig", label: "The Rig" },
-  { href: "/join", label: "Join TBR" },
-] as const;
-
-export const moreNav = [
-  { href: "/military", label: "Military" },
-  { href: "/areas", label: "Areas" },
   { href: "/faq", label: "FAQ" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ] as const;
 
-export const nav = [...primaryNav, ...moreNav];
+/** Pages that stay off the top bar. Linked from the footer. */
+export const footerNav = [
+  { href: "/book", label: "Book" },
+  { href: "/contact", label: "Contact" },
+  { href: "/join", label: "Join TBR" },
+  { href: "/packages", label: "Packages" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/areas", label: "Areas" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/policies", label: "Policies" },
+  { href: "/the-rig", label: "The Rig" },
+  { href: "/military", label: "Military" },
+  { href: "/about", label: "About" },
+] as const;
+
+export const nav = footerNav;
 
 export function phoneReady(): boolean {
   return site.phoneE164.trim().length > 0;
@@ -99,6 +108,13 @@ export function callHref(): string {
 
 export function textHref(): string {
   return phoneReady() ? `sms:+${site.phoneE164}` : "/contact#text";
+}
+
+/** Text with the three things Joe needs before he can confirm a day. */
+export function textDateHref(): string {
+  if (!phoneReady()) return "/contact#text";
+  const body = "Date:\nAddress:\nPackage:";
+  return `sms:+${site.phoneE164}?body=${encodeURIComponent(body)}`;
 }
 
 export function phoneLabel(): string {

@@ -2,7 +2,7 @@
 import CallToBook from "../../components/CallToBook.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { BEYOND_30_NOTE, SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } from "../../data/pricing";
+import { SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } from "../../data/pricing";
 ---
 
 <BaseLayout
@@ -11,7 +11,10 @@ import { BEYOND_30_NOTE, SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } fr
 >
   <PageHero eyebrow="Where we go" title="Killeen, Copperas Cove, Harker Heights, and Nolanville." crumb="Areas">
     <p>
-      {SERVICE_AREA_NOTE} Most bookings are a driveway in those cities. {BEYOND_30_NOTE}
+      {SERVICE_AREA_NOTE} Most bookings are a driveway in those cities. Weekday parties start at $349.
+    </p>
+    <p>
+      Outside those four cities, including Fort Hood, needs advance coordination and approval. The trip is quoted by text. Prices vary. A 4-hour minimum may apply.
     </p>
   </PageHero>
 
@@ -52,7 +55,7 @@ import { BEYOND_30_NOTE, SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } fr
             <p class="muted" style="margin-top: 0.5rem">{town.blurb}</p>
             {town.href && (
               <p style="margin-top: 0.8rem">
-                <a class="inline-link" href={town.href}>Killeen city page</a>
+                <a class="inline-link" href={town.href}>{town.name} page</a>
               </p>
             )}
           </article>

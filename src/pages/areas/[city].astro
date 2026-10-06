@@ -1,0 +1,62 @@
+---
+import CallToBook from "../../components/CallToBook.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import { site, textDateHref } from "../../config/site";
+import { cities, type CityPage } from "../../data/cities";
+
+export function getStaticPaths() {
+  return cities.map((city) => ({
+    params: { city: city.slug },
+    props: { city },
+  }));
+}
+
+interface Props {
+  city: CityPage;
+}
+
+const { city } = Astro.props;
+---
+
+<BaseLayout title={`${city.name} Gaming Trailer | Team Battle Ready`} description={city.description}>
+  <PageHero
+    eyebrow={`${city.name}, Texas`}
+    title={city.title}
+    crumb={city.name}
+    parent={{ href: "/areas", label: "Areas" }}
+  >
+    <p>{city.lede}</p>
+    <p>{site.constructionNote} {site.climateNote}</p>
+  </PageHero>
+
+  <article class="section prose" style="padding-top: 0.5rem">
+    <div class="wrap">
+      <h2>Starts at $349</h2>
+      <p>
+        Skirmish is 2 hours at $349 Monday–Thursday and $399 Friday–Sunday. Mission is 3 hours at $449 / $499. Campaign is 4 hours at $549 / $599. Prices exclude tax. The quote adds 8.25%. The deposit is a flat $100 after we confirm the day.
+      </p>
+      <h2>What people book in {city.name}</h2>
+      <ul>
+        <li>Birthdays at the house.</li>
+        <li>Schools and churches, at a place the trailer can legally park.</li>
+        <li>Military family days, homecomings, and unit days at a house or driveway.</li>
+      </ul>
+      {city.local.map((paragraph) => <p>{paragraph}</p>)}
+      <h2>Included</h2>
+      <p>
+        Six stations with 27-inch monitors and consoles, 8 stand-alone 8-inch tablets, a game coach on site the whole booking, Wi-Fi for online multiplayer, and a self-powered 13.5 kW generator. No outlet needed. Setup and teardown are included.
+      </p>
+      <p>
+        <a class="btn btn-primary" href={`/book?town=${city.slug}`}>Book {city.name}</a>
+      </p>
+      <p>
+        <a class="btn btn-ghost" href={textDateHref()}>Text us your date</a>
+        <CallToBook />
+      </p>
+      <p>
+        Neighboring towns are on the <a href="/areas">areas page</a>. Gear details are on <a href="/the-rig">The Rig</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

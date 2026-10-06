@@ -104,17 +104,18 @@ GitHub Pages on this domain is the locked target. If you ever move:
 
 | Path | What it is |
 |---|---|
-| `/` | Home, package cards, date check, FAQ, book CTA |
-| `/packages` | Comparison, add-ons, travel, discounts, deposit summary |
-| `/book` | Call / text, request form, price estimate |
+| `/` | Lean party page: hero, three packages, what’s inside, area, discount, FAQ |
+| `/packages` | Comparison, what’s included, event types, travel, deposit |
+| `/book` | Three booking steps, Square pay, rental form, price estimate |
 | `/the-rig` | Spec sheet with open measurements |
-| `/areas` | Zone and town list |
-| `/areas/killeen` | Sample city page |
+| `/areas` | Four usual cities, and exception towns quoted by text |
+| `/areas/killeen` | Killeen, plus Cove, Harker Heights, and Nolanville city pages |
+| `/gallery` | Empty photo slots and an empty reviews slot |
 | `/military` | Fort Hood, units, schools |
 | `/about` | Car club and trailer story |
 | `/contact` | Text, call, rental interest form |
 | `/join` | Community list: tournaments, events, discounts, giveaways |
 | `/faq` | Full FAQ |
-| `/policies` | Draft deposit and cancellation rules |
+| `/policies` | $100 deposit, Square links, driveway, liability. Cancellation and balance are blank until set. |
 
-Desktop header: logo, Packages, The Rig, Join TBR, a More menu (Military, Areas, FAQ, About, Contact), and Call / Text to book. Instagram is in the footer and the mobile menu. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).
+Desktop header: logo, Packages, FAQ, and Book Now. Join TBR, contact, areas, and the other pages are in the footer. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).

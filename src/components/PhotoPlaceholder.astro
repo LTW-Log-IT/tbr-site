@@ -3,16 +3,17 @@ import { site } from "../config/site";
 
 interface Props {
   caption?: string;
+  mark?: string;
 }
 
-const { caption = "Trailer photos coming soon" } = Astro.props;
+const { caption = "Trailer photos coming soon", mark = "Trailer photos coming soon" } = Astro.props;
 ---
 
 <figure class="photo-slot photo-placeholder">
   <div class="photo-mark">
     <span class="photo-bars" aria-hidden="true"><span></span><span></span><span></span></span>
     <img class="brand-logo brand-logo-photo" src={site.logo.plate} alt="B4TTL3" width="2096" height="944" />
-    <p class="photo-soon">Trailer photos coming soon</p>
+    <p class="photo-soon">{mark}</p>
   </div>
   <figcaption>{caption}</figcaption>
 </figure>

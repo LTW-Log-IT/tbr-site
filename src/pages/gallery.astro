@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
+import CallToBook from "../components/CallToBook.astro";
+import { site } from "../config/site";
+
+const slots = [
+  "Exterior of the unwrapped trailer.",
+  "The six stations with the monitors on.",
+  "Consoles and the eight tablets.",
+  "The trailer at a driveway.",
+];
+---
+
+<BaseLayout
+  title="Gallery | Team Battle Ready Gaming Trailer"
+  description="Photos coming soon. The Team Battle Ready gaming trailer is still under construction. No reviews yet."
+>
+  <PageHero eyebrow="Gallery" title="Photos coming soon — trailer under construction." crumb="Gallery">
+    <p>{site.constructionNote} These slots stay empty until there are real trailer photos. No stock pictures.</p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 0.5rem">
+    <div class="wrap grid gap-4 md:grid-cols-2">
+      {slots.map((caption) => (
+        <PhotoPlaceholder mark="Photos coming soon" caption={`Photos coming soon — trailer under construction. ${caption}`} />
+      ))}
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <p class="eyebrow">Reviews</p>
+      <h2 id="reviews-title" class="metal">Reviews coming soon — be one of our first.</h2>
+      <div class="empty-slot" style="margin-top: 1rem">
+        <p class="eyebrow">Empty slot</p>
+        <p>No reviews yet. No stars and no quotes until a real party leaves one.</p>
+      </div>
+      <p style="margin-top: 1.25rem"><CallToBook /></p>
+    </div>
+  </section>
+</BaseLayout>

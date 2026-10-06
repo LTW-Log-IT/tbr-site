@@ -54,18 +54,21 @@ export const SERVICE_AREA_NOTE =
 
 /** Public copy for any pin outside those cities. No dollar amount. */
 export const BEYOND_30_NOTE =
-  "Outside that area, trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required.";
+  "Outside that area, including Fort Hood, trips are by exception only. They have to be coordinated and approved ahead of time. The trip is quoted by text. Prices vary. A minimum of 4 hours may be required.";
 
 const outsideBlurb =
   "Outside the usual cities. By exception only. Approve ahead. Prices vary. A 4-hour minimum may apply.";
 
 const sharedIncludes = [
-  "Trailer, coach, setup, and cleanup",
+  "On-site attendant for the whole booking",
+  "Trailer arrival, setup, and teardown",
   "6 dedicated gaming stations",
   "Each station: 27-inch gaming monitor, gaming chair, and a console (Xbox Series S/X, PS5, or Switch)",
   "Certain games are 4-player multiplayer",
+  "Wi-Fi for online multiplayer",
   "About 4 Xbox, 3 PS5s, and various games",
   "8 stand-alone 8-inch tablets for younger kids (Roblox and Minecraft)",
+  "Self-powered 13.5 kW generator — no outlet needed",
 ];
 
 export const packages: CatalogPackage[] = [
@@ -195,11 +198,11 @@ export const startWindows = [
 ] as const;
 
 export const towns: Town[] = [
-  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Usual area. Travel is free. The trailer is stored in Killeen." },
-  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, blurb: "Usual area, west of Killeen. Travel is free." },
-  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, blurb: "Usual area, next to Killeen. Travel is free." },
-  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, blurb: "Usual area. Travel is free." },
-  { id: "fort-hood", name: "Fort Hood", zoneId: "beyond", fee: null, blurb: "Outside the usual cities. Driveway bookings are by exception only. Approve ahead. Prices vary. A 4-hour minimum may apply." },
+  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Usual area. Travel is free. Weekday parties start at $349. The trailer is stored in Killeen." },
+  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, href: "/areas/copperas-cove", blurb: "Usual area, west of Killeen. Travel is free. Weekday parties start at $349." },
+  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, href: "/areas/harker-heights", blurb: "Usual area, next to Killeen. Travel is free. Weekday parties start at $349." },
+  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, href: "/areas/nolanville", blurb: "Usual area. Travel is free. Weekday parties start at $349." },
+  { id: "fort-hood", name: "Fort Hood", zoneId: "beyond", fee: null, blurb: "Outside the four usual cities. By exception only. Approve ahead. Quoted by text. Prices vary. A 4-hour minimum may apply." },
   { id: "belton", name: "Belton", zoneId: "beyond", fee: null, blurb: outsideBlurb },
   { id: "kempner", name: "Kempner", zoneId: "beyond", fee: null, blurb: outsideBlurb },
   { id: "temple", name: "Temple", zoneId: "beyond", fee: null, blurb: outsideBlurb },

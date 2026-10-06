@@ -40,7 +40,7 @@ import { partyPackages, towns } from "../data/pricing";
       const town = towns.find((item) => item.id === select.value);
       if (!town || town.fee !== 0) {
         const name = town?.name ?? "This trip";
-        out.textContent = `${name} is outside Killeen, Copperas Cove, Harker Heights, and Nolanville. That trip is by exception only. It has to be approved ahead of time. Prices vary. A 4-hour minimum may be required.`;
+        out.textContent = `${name} is outside Killeen, Copperas Cove, Harker Heights, and Nolanville. That trip is by exception only. It has to be approved ahead of time. The trip is quoted by text. Prices vary. A 4-hour minimum may be required.`;
         return;
       }
       out.textContent = `${town.name} is in the usual area. Travel is free.`;
