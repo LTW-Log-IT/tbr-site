@@ -30,8 +30,8 @@ const squarePackages = partyPackages.flatMap((pkg) => {
 
   <section class="section" style="padding-top: 0.25rem" aria-labelledby="how-title">
     <div class="wrap">
-      <p class="eyebrow">How booking works</p>
-      <h2 id="how-title" class="metal">Three steps.</h2>
+      <p class="eyebrow">Three steps</p>
+      <h2 id="how-title" class="metal">How booking works</h2>
       <div style="margin-top: 1.25rem">
         <BookingSteps />
       </div>
@@ -90,7 +90,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
         data-sms={site.phoneE164}
       >
         <p class="eyebrow">Rental interest</p>
-        <h2 id="request-title" class="metal" style="font-size: 2rem">Request a date</h2>
+        <h2 id="request-title" class="metal card-title">Request a date</h2>
         <p class="muted">This does not hold the trailer. {phoneLabel()} does. Joining the community is a <a class="inline-link" href="/join">separate form</a>.</p>
         <input type="hidden" name="form_id" value="rental" />
         <input type="hidden" name="_subject" value="TBR trailer rental interest" />
@@ -156,7 +156,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
       </form>
       <aside class="panel">
         <p class="eyebrow">The real path</p>
-        <h2 class="metal" style="font-size: 2rem">We’ll text you back</h2>
+        <h2 class="metal card-title">We’ll text you back</h2>
         <p class="muted" style="margin-top: 0.7rem">
           Call or text {phoneLabel()}. If the request opens your text app, send it. If it does not, call. Joe will call you back.
         </p>
@@ -243,7 +243,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
 
       <aside class="panel" aria-live="polite" id="estimate-panel">
         <p class="eyebrow">Planning total</p>
-        <h2 class="metal" style="font-size: 2rem" id="estimate-title">Mission</h2>
+        <h2 class="metal card-title" id="estimate-title">Mission</h2>
         <dl id="estimate-lines"></dl>
         <div class="total-row"><span>Subtotal</span><span id="estimate-subtotal">—</span></div>
         <div class="total-row"><span>Tax 8.25%</span><span id="estimate-tax">—</span></div>
