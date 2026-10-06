@@ -90,15 +90,15 @@ export const faqs: FaqItem[] = [
     id: "ages",
     question: "What ages can play, and who picks the game ratings?",
     paragraphs: [
-      "The room is built for up to 24 players. The host sets the rating limit, and the coach follows it. Say the limit when you book if younger kids will be in the mix with older ones.",
-      "Younger kids use the 8 eight-inch tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
+      "The host sets the rating limit, and the coach follows it. Say the limit when you book if younger kids will be in the mix with older ones.",
+      "Younger kids use the 8 stand-alone 8-inch tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
     ],
   },
   {
     id: "players",
     question: "How many players fit?",
     paragraphs: [
-      "Up to 24 at a time in the trailer. A 6-hour or 8-hour booking uses that same room.",
+      "The trailer has 6 dedicated gaming stations, each with a 27-inch monitor, a chair, and a console. Certain games are 4-player multiplayer. Younger kids can use the 8 stand-alone 8-inch tablets. A 6-hour or 8-hour booking uses that same room.",
     ],
   },
   {

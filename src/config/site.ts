@@ -21,7 +21,7 @@ export const site = {
   url: "https://tbr.leadthewaylogistics.info",
   repo: "https://github.com/LTW-Log-IT/tbr-site",
   description:
-    "Climate-controlled mobile video game theater for up to 24 players. Birthdays, BBQs, and game nights in Killeen, Copperas Cove, Harker Heights, and Nolanville.",
+    "Climate-controlled mobile game room with 6 dedicated gaming stations. Birthdays, BBQs, and game nights in Killeen, Copperas Cove, Harker Heights, and Nolanville.",
   slogan: "The Party Shows Up Battle Ready.",
   tagline: "Play · Connect · Build · Belong",
   parent: {

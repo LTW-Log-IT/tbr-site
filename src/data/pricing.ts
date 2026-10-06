@@ -61,9 +61,11 @@ const outsideBlurb =
 
 const sharedIncludes = [
   "Trailer, coach, setup, and cleanup",
-  "Up to 24 players at a time",
-  "6 stations: monitor, chair, and a console (Xbox Series S/X, PS5, or Switch)",
-  "About 4 Xbox, 3 PS5s, 8 eight-inch tablets, and various games",
+  "6 dedicated gaming stations",
+  "Each station: 27-inch gaming monitor, gaming chair, and a console (Xbox Series S/X, PS5, or Switch)",
+  "Certain games are 4-player multiplayer",
+  "About 4 Xbox, 3 PS5s, and various games",
+  "8 stand-alone 8-inch tablets for younger kids (Roblox and Minecraft)",
 ];
 
 export const packages: CatalogPackage[] = [
@@ -153,7 +155,7 @@ export const addons: Addon[] = [
     id: "toddler",
     name: "Toddler zone",
     price: 75,
-    detail: "Younger-kids setup. The trailer already carries 8 eight-inch tablets for Roblox and Minecraft.",
+    detail: "Younger-kids setup. The trailer already carries 8 stand-alone 8-inch tablets for Roblox and Minecraft.",
   },
   {
     id: "tournament",
