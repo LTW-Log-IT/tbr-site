@@ -233,6 +233,28 @@ code {
   width: 100%;
 }
 
+.pay-links {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.pay-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pay-grid .btn {
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .pay-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1100px) {
+  .pay-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+
 .site-header {
   position: sticky;
   top: 0;

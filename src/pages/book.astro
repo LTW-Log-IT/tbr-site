@@ -2,13 +2,24 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CallToBook from "../components/CallToBook.astro";
 import PageHero from "../components/PageHero.astro";
-import { phoneLabel, site, textHref } from "../config/site";
-import { addons, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
+import { phoneLabel, site, squarePackageHref, textHref } from "../config/site";
+import { addons, DEPOSIT, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
+
+const squarePackages = partyPackages.flatMap((pkg) => {
+  const rows: { href: string; name: string; when: string; price: number }[] = [];
+  const weekday = squarePackageHref(pkg.id, "weekday");
+  const weekend = squarePackageHref(pkg.id, "weekend");
+  if (weekday) rows.push({ href: weekday, name: pkg.name, when: "Mon–Thu", price: pkg.weekdayPrice });
+  if (weekend && pkg.weekendPrice != null) {
+    rows.push({ href: weekend, name: pkg.name, when: "Fri–Sun", price: pkg.weekendPrice });
+  }
+  return rows;
+});
 ---
 
 <BaseLayout
   title="Call or Text to Book | Team Battle Ready Gaming Trailer"
-  description="Book the Team Battle Ready gaming trailer by calling or texting (254) 251-5219. Optional request form. Quotes add 8.25% tax. Deposit is $100."
+  description="Book the Team Battle Ready gaming trailer by calling or texting (254) 251-5219. Pay the $100 deposit or a package with Square. Quotes add 8.25% tax."
 >
   <PageHero eyebrow="Booking" title="Call / Text to book." crumb="Book">
     <p>
@@ -20,6 +31,29 @@ import { addons, discounts, groupPackage, money, partyPackages, startWindows, to
       <a class="btn btn-ghost" href={textHref()}>Text {phoneLabel()}</a>
     </div>
   </PageHero>
+
+  <section class="section" id="pay" style="padding-top: 0.5rem" aria-labelledby="pay-title">
+    <div class="wrap">
+      <p class="eyebrow">Square</p>
+      <h2 id="pay-title" class="metal">Pay with Square</h2>
+      <p class="lede">
+        Call or text {phoneLabel()} to hold the date. These links take the deposit or a package price and open in a new tab.
+        Listed prices exclude tax. Square tax may be configured separately.
+      </p>
+      <p style="margin-top: 1.25rem">
+        <a class="btn btn-primary" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">
+          Pay deposit · {money(DEPOSIT)}
+        </a>
+      </p>
+      <div class="pay-grid" style="margin-top: 1rem">
+        {squarePackages.map((item) => (
+          <a class="btn btn-ghost" href={item.href} target="_blank" rel="noopener noreferrer">
+            Pay {item.name} · {item.when} · {money(item.price)}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <section class="section" style="padding-top: 0.5rem" aria-labelledby="request-title">
     <div class="wrap grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">

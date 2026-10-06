@@ -1,12 +1,11 @@
 /**
  * Public site configuration.
  *
- * Joe: fill the blank strings before launch.
  * Do not commit payment-processor secret keys.
- * Soft launch does not use online booking.
+ * A date is still held on the phone. Square links below are payment checkouts only.
  */
 
-/** Unused for soft launch. Leave empty. Do not render this on the site. */
+/** No booking widget. Leave empty. Do not render this on the site. */
 export const SQUARE_BOOKING_URL = "";
 
 export const site = {
@@ -34,8 +33,17 @@ export const site = {
   phoneDisplay: "(254) 251-5219",
   /** Inbox for quote mail. Leave blank until the mailbox exists. */
   contactEmail: "",
-  /** Unused. Soft-launch booking is the phone, not this field. */
+  /** Unused. There is no booking embed. Payment links are squareLinks. */
   squareBookingUrl: SQUARE_BOOKING_URL,
+  squareLinks: {
+    skirmishWeekday: "https://square.link/u/21bQRel6",
+    skirmishWeekend: "https://square.link/u/5R7cP5FD",
+    missionWeekday: "https://square.link/u/9wDVTX7l",
+    missionWeekend: "https://square.link/u/lz1PWoJw",
+    campaignWeekday: "https://square.link/u/3Ynzwgh7",
+    campaignWeekend: "https://square.link/u/uAEwAXqA",
+    deposit: "https://square.link/u/46Ep3lcE",
+  },
   instagram: [
     {
       handle: "@Team.Battle.Ready",
@@ -73,4 +81,16 @@ export function textHref(): string {
 
 export function phoneLabel(): string {
   return site.phoneDisplay.trim() || "(254) 251-5219";
+}
+
+const squarePackageKey = {
+  skirmish: { weekday: "skirmishWeekday", weekend: "skirmishWeekend" },
+  mission: { weekday: "missionWeekday", weekend: "missionWeekend" },
+  campaign: { weekday: "campaignWeekday", weekend: "campaignWeekend" },
+} as const;
+
+export function squarePackageHref(id: string, day: "weekday" | "weekend"): string | undefined {
+  if (!(id in squarePackageKey)) return undefined;
+  const key = squarePackageKey[id as keyof typeof squarePackageKey][day];
+  return site.squareLinks[key];
 }

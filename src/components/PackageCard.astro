@@ -1,12 +1,15 @@
 ---
 import CallToBook from "./CallToBook.astro";
-import { money, type CatalogPackage } from "../data/pricing";
+import { site, squarePackageHref } from "../config/site";
+import { DEPOSIT, money, type CatalogPackage } from "../data/pricing";
 
 interface Props {
   pkg: CatalogPackage;
 }
 
 const { pkg } = Astro.props;
+const weekdayPay = squarePackageHref(pkg.id, "weekday");
+const weekendPay = pkg.weekendPrice == null ? undefined : squarePackageHref(pkg.id, "weekend");
 ---
 
 <article class="pkg-card" id={pkg.id}>
@@ -29,5 +32,20 @@ const { pkg } = Astro.props;
   </ul>
   {pkg.note && <p class="muted">{pkg.note}</p>}
   <CallToBook />
+  <div class="pay-links">
+    {weekdayPay && (
+      <a class="btn btn-ghost btn-block" href={weekdayPay} target="_blank" rel="noopener noreferrer">
+        Pay package · Mon–Thu {money(pkg.weekdayPrice)}
+      </a>
+    )}
+    {weekendPay && (
+      <a class="btn btn-ghost btn-block" href={weekendPay} target="_blank" rel="noopener noreferrer">
+        Pay package · Fri–Sun {money(pkg.weekendPrice ?? pkg.weekdayPrice)}
+      </a>
+    )}
+    <a class="btn btn-ghost btn-block" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">
+      Pay deposit · {money(DEPOSIT)}
+    </a>
+  </div>
   <a class="inline-link" href={`/book?pkg=${pkg.id}`}>Request a date</a>
 </article>

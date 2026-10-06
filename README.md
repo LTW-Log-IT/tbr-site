@@ -50,7 +50,7 @@ Primary buttons use `tel:+12542515219` and read **Call / Text to book**.
 
 `/book` is phone-first. The short **Request a date** form does not hold the trailer. If `contactEmail` is set in `src/config/site.ts`, submit opens `mailto:` with the fields filled in. Until that inbox exists, submit opens an SMS to (254) 251-5219 with the same note, and the page tells the guest Joe will call or text back. There is no form backend.
 
-`SQUARE_BOOKING_URL` stays empty and is not shown. Do not add an online-booking embed for soft launch.
+`SQUARE_BOOKING_URL` stays empty. There is no booking embed. Payment checkouts live in `site.squareLinks`: the $100 deposit and Skirmish, Mission, and Campaign for weekday and weekend. `/book` lists them under Pay with Square. Package cards link the same checkouts as secondary buttons. Call / Text still holds the date. Listed prices exclude tax. Square tax may be configured separately.
 
 The planner on `/book` is a price estimate. It adds 8.25% tax. It does not check availability and it does not take the deposit.
 
@@ -68,7 +68,7 @@ Edit these before the domain is advertised:
 8. **Google Business Profile** — add the real link when it exists. Do not type a star rating or review count.
 9. **Insurance and background checks** — do not claim “fully insured” or “background-checked” until those are done. Schools and units will ask for a COI and a W-9.
 10. **Attorney** — have a Texas attorney read `/policies` before the first deposit.
-11. **Balance** — soft launch collects the $100 deposit by phone. Do not advertise an automatic card charge.
+11. **Balance** — the $100 deposit can be paid with the Square deposit link or arranged on the phone. Do not add a card-on-file charge.
 12. **Sales tax** — quotes add 8.25%. Confirm amusement-tax treatment and the permit with the Texas Comptroller. A tax-exempt booking needs a Texas exemption certificate.
 13. **Fort Cavazos access** — write only the gate steps you are allowed to publish.
 14. **Past 60 miles** — travel is a quote. Do not invent a fee.
