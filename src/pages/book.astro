@@ -7,14 +7,9 @@ import { phoneLabel, site, squarePackageHref, textDateHref, textHref } from "../
 import { addons, COMMUNITY_DISCOUNT, DEPOSIT, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
 
 const squarePackages = partyPackages.flatMap((pkg) => {
-  const rows: { href: string; name: string; when: string; price: number }[] = [];
-  const weekday = squarePackageHref(pkg.id, "weekday");
-  const weekend = squarePackageHref(pkg.id, "weekend");
-  if (weekday) rows.push({ href: weekday, name: pkg.name, when: "Mon–Thu", price: pkg.weekdayPrice });
-  if (weekend && pkg.weekendPrice != null) {
-    rows.push({ href: weekend, name: pkg.name, when: "Fri–Sun", price: pkg.weekendPrice });
-  }
-  return rows;
+  const href = squarePackageHref(pkg.id);
+  if (!href) return [];
+  return [{ href, name: pkg.name, price: pkg.weekdayPrice }];
 });
 ---
 
@@ -53,10 +48,9 @@ const squarePackages = partyPackages.flatMap((pkg) => {
         These Square buttons charge the full package price. With an ID, active duty, veterans, first responders, and teachers get {money(COMMUNITY_DISCOUNT)} off once. Discounts do not stack. Travel and add-ons stay full price. Call or text {phoneLabel()} to apply the discount if Square cannot adjust it.
       </p>
       <ul class="checks" style="margin-top: 1rem">
-        {partyPackages.filter((pkg) => pkg.weekendPrice != null).map((pkg) => (
+        {partyPackages.map((pkg) => (
           <li>
-            {pkg.name} {pkg.timeLabel}: {money(pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekdayPrice - COMMUNITY_DISCOUNT)} Mon–Thu
-            · {money(pkg.weekendPrice ?? pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money((pkg.weekendPrice ?? pkg.weekdayPrice) - COMMUNITY_DISCOUNT)} Fri–Sun
+            {pkg.name} {pkg.timeLabel}: {money(pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekdayPrice - COMMUNITY_DISCOUNT)}
           </li>
         ))}
       </ul>
@@ -68,7 +62,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
       <div class="pay-grid" style="margin-top: 1rem">
         {squarePackages.map((item) => (
           <a class="btn btn-ghost" href={item.href} target="_blank" rel="noopener noreferrer">
-            Pay {item.name} · {item.when} · {money(item.price)}
+            Pay {item.name} · {money(item.price)}
           </a>
         ))}
       </div>
@@ -183,7 +177,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
             <optgroup label="Named packages">
               {partyPackages.map((pkg) => (
                 <option value={pkg.id} selected={pkg.id === "mission"}>
-                  {pkg.name} · {pkg.timeLabel} · {money(pkg.weekdayPrice)} weekdays / {money(pkg.weekendPrice ?? pkg.weekdayPrice)} weekends
+                  {pkg.name} · {pkg.timeLabel} · {money(pkg.weekdayPrice)}
                 </option>
               ))}
             </optgroup>
@@ -204,7 +198,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
             </select>
           </label>
         </div>
-        <p class="muted">Monday–Thursday and Friday–Sunday are different prices. This total is a quote, not a held date.</p>
+        <p class="muted">The price is the same every day. This total is a quote, not a held date.</p>
         <label>
           Town
           <select id="town" name="town">

@@ -6,14 +6,9 @@ import { phoneLabel, site, squarePackageHref, textDateHref } from "../config/sit
 import { partyPackages } from "../data/pricing";
 
 const squarePackages = partyPackages.flatMap((pkg) => {
-  const rows: { href: string; label: string }[] = [];
-  const weekday = squarePackageHref(pkg.id, "weekday");
-  const weekend = squarePackageHref(pkg.id, "weekend");
-  if (weekday) rows.push({ href: weekday, label: `${pkg.name} Monday–Thursday · $${pkg.weekdayPrice}` });
-  if (weekend && pkg.weekendPrice != null) {
-    rows.push({ href: weekend, label: `${pkg.name} Friday–Sunday · $${pkg.weekendPrice}` });
-  }
-  return rows;
+  const href = squarePackageHref(pkg.id);
+  if (!href) return [];
+  return [{ href, label: `${pkg.name} · $${pkg.weekdayPrice}` }];
 });
 ---
 

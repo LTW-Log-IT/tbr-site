@@ -27,7 +27,7 @@ export function localBusinessSchema() {
       "@type": name === "Fort Hood" ? "AdministrativeArea" : "City",
       name,
     })),
-    priceRange: "$349–$999",
+    priceRange: "$349–$949",
     makesOffer: partyPackages.map((pkg) => ({
       "@type": "Offer",
       name: `${pkg.name} — ${pkg.timeLabel} gaming trailer package`,

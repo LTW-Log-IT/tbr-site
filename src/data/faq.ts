@@ -24,7 +24,7 @@ export const faqs: FaqItem[] = [
     home: true,
     question: "How much does a party cost?",
     paragraphs: [
-      "Starts at $349. That is Skirmish, 2 hours, Monday–Thursday. Friday–Sunday Skirmish is $399. Mission is 3 hours at $449 / $499. Campaign is 4 hours at $549 / $599. A 6-hour full day is $749 / $799. An 8-hour full day is $949 / $999. Extra time is $50 per 30 minutes when the next slot is open.",
+      "Starts at $349. Skirmish is 2 hours at $349. Mission is 3 hours at $449. Campaign is 4 hours at $549. A 6-hour full day is $749. An 8-hour full day is $949. The price is the same every day. Extra time is $50 per 30 minutes when the next slot is open.",
       "Prices on the card exclude tax. The booking quote adds 8.25%.",
       "Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Outside that area, including Fort Hood, trips are by exception only. They have to be approved ahead of time. The trip is quoted by text. Prices vary. A minimum of 4 hours may be required.",
     ],
@@ -147,7 +147,7 @@ export const faqs: FaqItem[] = [
     id: "discount",
     question: "Is there a military, teacher, or first responder discount?",
     paragraphs: [
-      "Thank you for your service. Active duty, veterans, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. That is a flat $25, once. Discounts do not stack. It does not come off travel or extra time. Square charges the full package price. Call or text to apply the $25.",
+      "Thank you for your service. Active duty, veterans, first responders, and teachers get $25 off the package price, or off the organization hourly total, with an ID. That is a flat $25, once. Discounts do not stack. It does not come off travel or extra time. Square charges the full package price. Call or text to apply the $25. Skirmish is $349 − $25 = $324.",
     ],
     href: "/military",
     linkLabel: "Military discount",
@@ -163,8 +163,8 @@ export const faqs: FaqItem[] = [
     id: "lengths",
     question: "What is the difference between Skirmish, Mission, and Campaign?",
     paragraphs: [
-      "Same trailer, same attendant, same Wi-Fi. The difference is time and the weekday versus weekend price.",
-      "Skirmish is 2 hours, $349 Monday–Thursday and $399 Friday–Sunday. Mission is 3 hours, $449 / $499. Campaign is 4 hours, $549 / $599.",
+      "Same trailer, same attendant, same Wi-Fi. The difference is time. The price is the same every day.",
+      "Skirmish is 2 hours at $349. Mission is 3 hours at $449. Campaign is 4 hours at $549.",
     ],
     href: "/packages",
     linkLabel: "Compare the packages",

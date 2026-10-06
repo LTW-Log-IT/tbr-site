@@ -40,8 +40,8 @@ const skirmish = buildEstimate({
   addonIds: ["tournament"],
   date: "2026-10-10",
 });
-close(skirmish!.subtotal, 414, "skirmish weekend discount addon, no published travel");
-close(skirmish!.total, taxed(414), "skirmish total");
+close(skirmish!.subtotal, 364, "skirmish flat price, discount, addon, no published travel");
+close(skirmish!.total, taxed(364), "skirmish total");
 close(skirmish!.deposit, 100, "skirmish deposit");
 assert(skirmish!.lines.some((line) => line.amount === -25), "flat 25 discount");
 assert(!skirmish!.lines.some((line) => line.label.includes("Temple") && line.amount !== 0), "temple travel not priced");
@@ -53,8 +53,8 @@ const campaign = buildEstimate({
   discount: "none",
   addonIds: [],
 });
-close(campaign!.subtotal, 599, "unset date uses weekend rate");
-assert(campaign!.notes.some((note) => note.includes("549")), "weekday price noted");
+close(campaign!.subtotal, 549, "unset date uses the flat rate");
+assert(!campaign!.notes.some((note) => note.toLowerCase().includes("weekend")), "no weekend rate note");
 assert(campaign!.notes.some((note) => note.includes("8.25%")), "tax note");
 
 const bumped = buildEstimate({
@@ -71,6 +71,10 @@ assert(bumped!.notes.some((note) => note.includes("Verified organizations")), "o
 assert(bumped!.notes.some((note) => note.includes("Not for residential")), "not a home-party rate");
 assert(partyPackages.every((pkg) => pkg.hourly !== true), "party card has no hourly rate");
 assert(!packages.some((pkg) => pkg.weekdayPrice === 299 || pkg.weekendPrice === 299), "no 299 menu price");
+assert(
+  packages.filter((pkg) => !pkg.hourly).every((pkg) => pkg.weekendPrice === pkg.weekdayPrice),
+  "named packages are one price every day",
+);
 
 const group = buildEstimate({
   packageId: "group",
@@ -104,7 +108,7 @@ const waco = buildEstimate({
   addonIds: [],
   date: "2026-10-11",
 });
-close(waco!.subtotal, 799, "beyond 30 excludes travel");
+close(waco!.subtotal, 749, "beyond 30 excludes travel");
 assert(waco!.notes.some((note) => note.includes("approved ahead")), "waco approval note");
 assert(waco!.notes.some((note) => note.includes("4 hours")), "waco minimum note");
 
@@ -125,8 +129,8 @@ const extra = buildEstimate({
   extraHalfHours: 1,
   date: "2026-10-09",
 });
-close(extra!.subtotal, 999 + 50, "full day extra half, travel not priced");
-close(extra!.total, taxed(1049), "full day taxed");
+close(extra!.subtotal, 949 + 50, "full day extra half, travel not priced");
+close(extra!.total, taxed(999), "full day taxed");
 assert(extra!.notes.some((note) => note.includes("Prices vary")), "georgetown prices vary");
 close(extra!.deposit, 100, "deposit stays 100 on the long day");
 

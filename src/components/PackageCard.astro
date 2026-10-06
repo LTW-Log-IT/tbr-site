@@ -9,13 +9,12 @@ interface Props {
 }
 
 const { pkg, compact = false } = Astro.props;
-const weekdayPay = squarePackageHref(pkg.id, "weekday");
-const weekendPay = pkg.weekendPrice == null ? undefined : squarePackageHref(pkg.id, "weekend");
+const packagePay = squarePackageHref(pkg.id);
 ---
 
 <article class="pkg-card" id={pkg.id}>
   <p class="pkg-kicker">
-    <span>{pkg.hourly ? "Weekdays" : "Mon–Thu / Fri–Sun"}</span>
+    <span>{pkg.hourly ? "Mon–Thu" : "Any day"}</span>
   </p>
   <h3 class="metal">{pkg.name}</h3>
   <p class="pkg-meta">{pkg.timeLabel}</p>
@@ -24,7 +23,6 @@ const weekendPay = pkg.weekendPrice == null ? undefined : squarePackageHref(pkg.
   ) : (
     <>
       <p class="pkg-price">{money(pkg.weekdayPrice)}</p>
-      <p class="pkg-meta">Fri–Sun {money(pkg.weekendPrice ?? pkg.weekdayPrice)}</p>
     </>
   )}
   <p class="muted">{pkg.summary}</p>
@@ -37,15 +35,11 @@ const weekendPay = pkg.weekendPrice == null ? undefined : squarePackageHref(pkg.
   {!compact && (
     pkg.hourly ? (
       <p class="muted">
-        $25 off the weekday total once with an ID, not $25 an hour. One discount per booking. Discounts do not stack. Travel and add-ons stay full price. Call or text to apply it.
+        $25 off the hourly total once with an ID, not $25 an hour. One discount per booking. Discounts do not stack. Travel and add-ons stay full price. Call or text to apply it.
       </p>
     ) : (
       <p class="muted">
-        $25 off with an ID: {money(pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekdayPrice - COMMUNITY_DISCOUNT)} Mon–Thu
-        {pkg.weekendPrice != null && (
-          <> · {money(pkg.weekendPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekendPrice - COMMUNITY_DISCOUNT)} Fri–Sun</>
-        )}
-        . One discount per booking. Discounts do not stack. Travel and add-ons stay full price. Square charges the full package price. Call or text to take the $25 off.
+        $25 off with an ID: {money(pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekdayPrice - COMMUNITY_DISCOUNT)}. One discount per booking. Discounts do not stack. Travel and add-ons stay full price. Square charges the full package price. Call or text to take the $25 off.
       </p>
     )
   )}
@@ -56,14 +50,9 @@ const weekendPay = pkg.weekendPrice == null ? undefined : squarePackageHref(pkg.
   )}
   {!compact && (
   <div class="pay-links">
-    {weekdayPay && (
-      <a class="btn btn-ghost btn-block" href={weekdayPay} target="_blank" rel="noopener noreferrer">
-        Pay package · Mon–Thu {money(pkg.weekdayPrice)}
-      </a>
-    )}
-    {weekendPay && (
-      <a class="btn btn-ghost btn-block" href={weekendPay} target="_blank" rel="noopener noreferrer">
-        Pay package · Fri–Sun {money(pkg.weekendPrice ?? pkg.weekdayPrice)}
+    {packagePay && (
+      <a class="btn btn-ghost btn-block" href={packagePay} target="_blank" rel="noopener noreferrer">
+        Pay package · {money(pkg.weekdayPrice)}
       </a>
     )}
     <a class="btn btn-ghost btn-block" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">

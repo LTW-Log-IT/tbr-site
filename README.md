@@ -54,7 +54,7 @@ Primary buttons use `tel:+12542515219` and read **Call / Text to book**.
 
 There is no form backend until Joe pastes two different Formspree URLs into `site.forms.rental` and `site.forms.join` in `src/config/site.ts`. While those are blank, submit opens `mailto:` if `contactEmail` is set, and otherwise opens a text to (254) 251-5219. The subject and `form_id` keep rental leads separate from community members. Do not point both URLs at the same Formspree form.
 
-`SQUARE_BOOKING_URL` stays empty. There is no booking embed. Payment checkouts live in `site.squareLinks`: the $100 deposit and Skirmish, Mission, and Campaign for weekday and weekend. `/book` lists them under Pay with Square. Package cards link the same checkouts as secondary buttons. Call / Text still holds the date. Listed prices exclude tax. Square tax may be configured separately.
+`SQUARE_BOOKING_URL` stays empty. There is no booking embed. Payment checkouts live in `site.squareLinks`: the $100 deposit and one link each for Skirmish, Mission, and Campaign. The price is the same every day. `/book` lists them under Pay with Square. Package cards link the same checkouts as secondary buttons. Call / Text still holds the date. Listed prices exclude tax. Square tax may be configured separately.
 
 The planner on `/book` is a price estimate. It adds 8.25% tax. It does not check availability and it does not take the deposit.
 
@@ -77,17 +77,17 @@ Edit these before the domain is advertised:
 13. **Fort Hood** — an area name only. It is outside the usual cities, so travel there is by exception, not a published $0. Do not explain installation access, gates, passes, or MWR. Bookings on the site are driveway and residential.
 14. **Service area** — free travel in Killeen, Copperas Cove, Harker Heights, and Nolanville (about 30 miles of Killeen). Everywhere else is by exception: approve ahead, prices vary, a 4-hour minimum may apply. Do not publish an outside fee.
 15. **No VR** — do not add a headset line. The live room is consoles and tablets.
-16. **Discount** — active duty, veterans, first responders, and teachers get a flat $25 off the package or weekday hourly total, once, with an ID. Discounts do not stack. It does not come off travel, add-ons, or extra time. Square links stay the full package price. Call or text to apply the $25.
+16. **Discount** — active duty, veterans, first responders, and teachers get a flat $25 off the package or the organization hourly total, once, with an ID. Discounts do not stack. It does not come off travel, add-ons, or extra time. Square links stay the full package price. Call or text to apply the $25. Skirmish is $349 − $25 = $324.
 
-Canonical prices live in `src/data/pricing.ts`:
+Canonical prices live in `src/data/pricing.ts`. The price is the same every day:
 
-| Package | Mon–Thu | Fri–Sun |
-|---|---:|---:|
-| Skirmish, 2 hr | $349 | $399 |
-| Mission, 3 hr | $449 | $499 |
-| Campaign, 4 hr | $549 | $599 |
-| Full day, 6 hr | $749 | $799 |
-| Full day, 8 hr | $949 | $999 |
+| Package | Price |
+|---|---:|
+| Skirmish, 2 hr | $349 |
+| Mission, 3 hr | $449 |
+| Campaign, 4 hr | $549 |
+| Full day, 6 hr | $749 |
+| Full day, 8 hr | $949 |
 
 Organization rate: $125/hr Monday–Thursday, 3-hour minimum, verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not a residential package. Extra time is $50 per 30 minutes. Deposit is a flat $100. Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Outside those cities, trips are by exception: approve ahead, prices vary, and a 4-hour minimum may apply. Do not publish an outside fee. Menu prices exclude tax. Quotes add 8.25%. Do not market invoicing or purchase orders as a welcome perk. The trailer is still under construction, and rental availability is limited until it is complete.
 

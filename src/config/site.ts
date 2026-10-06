@@ -55,12 +55,9 @@ export const site = {
   /** Unused. There is no booking embed. Payment links are squareLinks. */
   squareBookingUrl: SQUARE_BOOKING_URL,
   squareLinks: {
-    skirmishWeekday: "https://square.link/u/21bQRel6",
-    skirmishWeekend: "https://square.link/u/5R7cP5FD",
-    missionWeekday: "https://square.link/u/9wDVTX7l",
-    missionWeekend: "https://square.link/u/lz1PWoJw",
-    campaignWeekday: "https://square.link/u/3Ynzwgh7",
-    campaignWeekend: "https://square.link/u/uAEwAXqA",
+    skirmish: "https://square.link/u/21bQRel6",
+    mission: "https://square.link/u/9wDVTX7l",
+    campaign: "https://square.link/u/3Ynzwgh7",
     deposit: "https://square.link/u/46Ep3lcE",
   },
   instagram: [
@@ -122,13 +119,13 @@ export function phoneLabel(): string {
 }
 
 const squarePackageKey = {
-  skirmish: { weekday: "skirmishWeekday", weekend: "skirmishWeekend" },
-  mission: { weekday: "missionWeekday", weekend: "missionWeekend" },
-  campaign: { weekday: "campaignWeekday", weekend: "campaignWeekend" },
+  skirmish: "skirmish",
+  mission: "mission",
+  campaign: "campaign",
 } as const;
 
-export function squarePackageHref(id: string, day: "weekday" | "weekend"): string | undefined {
+export function squarePackageHref(id: string): string | undefined {
   if (!(id in squarePackageKey)) return undefined;
-  const key = squarePackageKey[id as keyof typeof squarePackageKey][day];
+  const key = squarePackageKey[id as keyof typeof squarePackageKey];
   return site.squareLinks[key];
 }

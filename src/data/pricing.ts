@@ -1,4 +1,4 @@
-/** Canonical rate card. Weekday is Mon–Thu. Weekend is Fri–Sun. Prices exclude 8.25% tax. */
+/** Canonical rate card. Named packages are one price every day. Prices exclude 8.25% tax. */
 
 export type ZoneId = "free" | "beyond";
 export type PackageGroup = "priced" | "hourly";
@@ -9,9 +9,9 @@ export interface CatalogPackage {
   group: PackageGroup;
   minutes: number;
   timeLabel: string;
-  /** Weekday Mon–Thu price. Hourly packages store the per-hour rate here. */
+  /** Flat package price, any day. Hourly packages store the per-hour rate here. */
   weekdayPrice: number;
-  /** Weekend Fri–Sun price. Null on the weekday hourly group rate. */
+  /** Same as weekdayPrice on named packages. Null on the Monday–Thursday organization rate. */
   weekendPrice: number | null;
   hourly?: boolean;
   summary: string;
@@ -79,8 +79,8 @@ export const packages: CatalogPackage[] = [
     minutes: 120,
     timeLabel: "2 hr",
     weekdayPrice: 349,
-    weekendPrice: 399,
-    summary: "Two hours. Weekdays are $349. Friday through Sunday is $399.",
+    weekendPrice: 349,
+    summary: "Two hours. $349 any day.",
     includes: sharedIncludes,
   },
   {
@@ -90,8 +90,8 @@ export const packages: CatalogPackage[] = [
     minutes: 180,
     timeLabel: "3 hr",
     weekdayPrice: 449,
-    weekendPrice: 499,
-    summary: "Three hours. Weekdays are $449. Friday through Sunday is $499.",
+    weekendPrice: 449,
+    summary: "Three hours. $449 any day.",
     includes: sharedIncludes,
   },
   {
@@ -101,8 +101,8 @@ export const packages: CatalogPackage[] = [
     minutes: 240,
     timeLabel: "4 hr",
     weekdayPrice: 549,
-    weekendPrice: 599,
-    summary: "Four hours. Weekdays are $549. Friday through Sunday is $599.",
+    weekendPrice: 549,
+    summary: "Four hours. $549 any day.",
     includes: sharedIncludes,
   },
   {
@@ -112,8 +112,8 @@ export const packages: CatalogPackage[] = [
     minutes: 360,
     timeLabel: "6 hr",
     weekdayPrice: 749,
-    weekendPrice: 799,
-    summary: "Six hours for schools, units, and long parties. $749 weekday, $799 weekend.",
+    weekendPrice: 749,
+    summary: "Six hours for schools, units, and long parties. $749 any day.",
     includes: [...sharedIncludes, "Same trailer for the full six hours"],
   },
   {
@@ -123,8 +123,8 @@ export const packages: CatalogPackage[] = [
     minutes: 480,
     timeLabel: "8 hr",
     weekdayPrice: 949,
-    weekendPrice: 999,
-    summary: "Eight hours. $949 weekday, $999 weekend.",
+    weekendPrice: 949,
+    summary: "Eight hours. $949 any day.",
     includes: [...sharedIncludes, "Same trailer for the full eight hours"],
   },
   {
@@ -198,10 +198,10 @@ export const startWindows = [
 ] as const;
 
 export const towns: Town[] = [
-  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Usual area. Travel is free. Weekday parties start at $349. The trailer is stored in Killeen." },
-  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, href: "/areas/copperas-cove", blurb: "Usual area, west of Killeen. Travel is free. Weekday parties start at $349." },
-  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, href: "/areas/harker-heights", blurb: "Usual area, next to Killeen. Travel is free. Weekday parties start at $349." },
-  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, href: "/areas/nolanville", blurb: "Usual area. Travel is free. Weekday parties start at $349." },
+  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Usual area. Travel is free. Parties start at $349. The trailer is stored in Killeen." },
+  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, href: "/areas/copperas-cove", blurb: "Usual area, west of Killeen. Travel is free. Parties start at $349." },
+  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, href: "/areas/harker-heights", blurb: "Usual area, next to Killeen. Travel is free. Parties start at $349." },
+  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, href: "/areas/nolanville", blurb: "Usual area. Travel is free. Parties start at $349." },
   { id: "fort-hood", name: "Fort Hood", zoneId: "beyond", fee: null, blurb: "Outside the four usual cities. By exception only. Approve ahead. Quoted by text. Prices vary. A 4-hour minimum may apply." },
   { id: "belton", name: "Belton", zoneId: "beyond", fee: null, blurb: outsideBlurb },
   { id: "kempner", name: "Kempner", zoneId: "beyond", fee: null, blurb: outsideBlurb },
@@ -321,13 +321,7 @@ export function buildEstimate(input: {
     }
     lines.push({ label: `Group rate · ${hours} hr × ${money(GROUP_HOURLY)}`, amount: hours * GROUP_HOURLY });
   } else {
-    const weekend = kind !== "weekday";
-    const amount = weekend ? pkg.weekendPrice ?? pkg.weekdayPrice : pkg.weekdayPrice;
-    const when = kind === "weekday" ? "Mon–Thu" : kind === "weekend" ? "Fri–Sun" : "Fri–Sun rate until you pick a date";
-    lines.push({ label: `${pkg.name} · ${pkg.timeLabel} · ${when}`, amount });
-    if (kind === "unset") {
-      notes.push(`Monday–Thursday for this package is ${money(pkg.weekdayPrice)}. This quote uses the Friday–Sunday price until a date is chosen.`);
-    }
+    lines.push({ label: `${pkg.name} · ${pkg.timeLabel}`, amount: pkg.weekdayPrice });
   }
 
   if (input.discount === "community") {

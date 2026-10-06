@@ -25,12 +25,8 @@ import {
 const matrix = [
   { label: "Time", value: (id: string) => partyPackages.find((p) => p.id === id)!.timeLabel },
   {
-    label: "Monday–Thursday",
+    label: "Price",
     value: (id: string) => money(partyPackages.find((p) => p.id === id)!.weekdayPrice),
-  },
-  {
-    label: "Friday–Sunday",
-    value: (id: string) => money(partyPackages.find((p) => p.id === id)!.weekendPrice ?? 0),
   },
   { label: "Stations", value: () => "6 dedicated, 27-inch monitors" },
   { label: "Multiplayer", value: () => "Certain 4-player games" },
@@ -46,18 +42,18 @@ const matrix = [
 
 <BaseLayout
   title="Packages and Pricing | Team Battle Ready Gaming Trailer"
-  description="Skirmish $349/$399, Mission $449/$499, Campaign $549/$599. Six- and eight-hour full days. Home parties use those packages. Verified organizations have a separate weekday hourly rate. Quotes add 8.25% tax."
+  description="Skirmish $349, Mission $449, Campaign $549, any day. Six- and eight-hour full days. Home parties use those packages. Verified organizations have a separate Monday–Thursday hourly rate. Quotes add 8.25% tax."
 >
   <PageHero eyebrow="Rate card" title="Packages and prices." crumb="Packages">
     <p>
-      Weekday means Monday–Thursday. Weekend means Friday–Sunday. Prices exclude tax. The quote adds 8.25%.
+      The price is the same every day. Prices exclude tax. The quote adds 8.25%.
     </p>
   </PageHero>
 
   <section class="section" style="padding-top: 1.5rem">
     <div class="wrap">
       <h2 class="metal">Skirmish, Mission, Campaign</h2>
-      <p class="lede">The first price is Monday–Thursday. The line under it is Friday–Sunday.</p>
+      <p class="lede">Skirmish $349, Mission $449, Campaign $549. Same price Monday through Sunday.</p>
       <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1.25rem">
         <PhotoPlaceholder caption="Trailer photos coming soon. Package art stays typographic until the trailer is photographed." />
         <PhotoPlaceholder caption="Trailer photos coming soon. Unwrapped trailer. Magnets or a banner are fine. No wrap." />
@@ -90,11 +86,11 @@ const matrix = [
       <div class="event-grid" style="margin-top: 1.25rem">
         <article class="panel">
           <h3 class="metal">Birthdays</h3>
-          <p class="muted" style="margin-top: 0.55rem">A driveway or side street at the house. Skirmish starts at $349 on a weekday.</p>
+          <p class="muted" style="margin-top: 0.55rem">A driveway or side street at the house. Skirmish is $349 any day.</p>
         </article>
         <article class="panel">
           <h3 class="metal">Schools and churches</h3>
-          <p class="muted" style="margin-top: 0.55rem">Same trailer, parked where it can legally sit. Verified organizations can ask about the weekday hourly rate. It is not a home-party price.</p>
+          <p class="muted" style="margin-top: 0.55rem">Same trailer, parked where it can legally sit. Verified organizations can ask about the Monday–Thursday hourly rate. It is not a home-party price.</p>
         </article>
         <article class="panel">
           <h3 class="metal">Military, FRG, and corporate</h3>
@@ -109,7 +105,7 @@ const matrix = [
       <h2 id="compare-title" class="metal">Compare them</h2>
       <div class="table-wrap" style="margin-top: 1rem">
         <table class="data">
-          <caption>Weekday and weekend prices for each named package. Swipe sideways on a phone.</caption>
+          <caption>One price every day for each named package. Swipe sideways on a phone.</caption>
           <thead>
             <tr>
               <th scope="col"> </th>
@@ -225,7 +221,7 @@ const matrix = [
       <div class="panel">
         <h2 id="discount-title" class="metal">Discount</h2>
         <ul class="checks" style="margin-top: 0.8rem">
-          <li>Active duty, veteran, first responder, or teacher: {money(COMMUNITY_DISCOUNT)} off the package or the weekday hourly total. ID only.</li>
+          <li>Active duty, veteran, first responder, or teacher: {money(COMMUNITY_DISCOUNT)} off the package or the organization hourly total. ID only.</li>
           <li>Discounts do not stack. One {money(COMMUNITY_DISCOUNT)} off per booking.</li>
         </ul>
         <p class="muted" style="margin-top: 0.8rem">Travel, add-ons, and extra time stay full price. Prices still exclude tax. Square charges the full package price. Call or text to apply the {money(COMMUNITY_DISCOUNT)}.</p>
