@@ -21,14 +21,16 @@ export const site = {
   url: "https://tbr.leadthewaylogistics.info",
   repo: "https://github.com/LTW-Log-IT/tbr-site",
   description:
-    "Climate-controlled mobile video game theater for up to 24 players. Birthdays, unit days, and group events in Killeen, Fort Hood, Temple, and Belton.",
+    "Climate-controlled mobile video game theater for up to 24 players. Birthdays, BBQs, and game nights in Killeen, Copperas Cove, Harker Heights, and Nolanville.",
   slogan: "The Party Shows Up Battle Ready.",
   tagline: "Play · Connect · Build · Belong",
   parent: {
     name: "Lead the Way Logistics & IT LLC",
     href: "https://leadthewaylogistics.info",
   },
-  areaLine: "Killeen · Fort Hood · Temple · Belton",
+  areaLine: "Killeen · Copperas Cove · Harker Heights · Nolanville",
+  constructionNote:
+    "The gaming trailer is still under construction. Rental availability is limited until it is complete.",
   /**
    * Digits only, country code included, no plus and no spaces.
    * Joe confirmed this line for every call and text CTA.

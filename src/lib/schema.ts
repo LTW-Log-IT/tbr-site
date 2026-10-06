@@ -3,10 +3,10 @@ import { partyPackages } from "../data/pricing";
 
 const areas = [
   "Killeen",
-  "Fort Hood",
+  "Copperas Cove",
   "Harker Heights",
   "Nolanville",
-  "Copperas Cove",
+  "Fort Hood",
   "Belton",
   "Temple",
 ];

@@ -2,16 +2,16 @@
 import CallToBook from "../../components/CallToBook.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
-import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
+import { BEYOND_30_NOTE, SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } from "../../data/pricing";
 ---
 
 <BaseLayout
   title="Service Area | Team Battle Ready Gaming Trailer"
-  description="Travel for the Team Battle Ready gaming trailer from Killeen: free within 30 miles, $50 for 31–45, $90 for 46–60. Past 60 miles is a quote."
+  description="The usual area is Killeen, Copperas Cove, Harker Heights, and Nolanville. Travel there is free. Other towns are by exception only."
 >
-  <PageHero eyebrow="Where we roll" title="Towns, miles, and the fee." crumb="Areas">
+  <PageHero eyebrow="Where we go" title="Killeen, Copperas Cove, Harker Heights, and Nolanville." crumb="Areas">
     <p>
-      Travel is free within 30 miles of Killeen. Fort Hood is inside that fee. Most bookings are a driveway in the Killeen–Fort Hood area.
+      {SERVICE_AREA_NOTE} Most bookings are a driveway in those cities. {BEYOND_30_NOTE}
     </p>
   </PageHero>
 
@@ -19,7 +19,7 @@ import { feeLabel, towns, zoneFor, zones } from "../../data/pricing";
     <div class="wrap">
       <div class="table-wrap">
         <table class="data">
-          <caption>Flat trip fee by mileage. Distance is one-way from Killeen.</caption>
+          <caption>The usual cities are within about 30 miles of Killeen. Outside that area there is no published fee.</caption>
           <thead>
             <tr>
               <th scope="col">Band</th>

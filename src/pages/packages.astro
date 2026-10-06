@@ -5,6 +5,8 @@ import PackageCard from "../components/PackageCard.astro";
 import CallToBook from "../components/CallToBook.astro";
 import PhotoPlaceholder from "../components/PhotoPlaceholder.astro";
 import {
+  BEYOND_30_NOTE,
+  SERVICE_AREA_NOTE,
   COMMUNITY_DISCOUNT,
   DEPOSIT,
   EXTRA_HALF_HOUR,
@@ -43,7 +45,7 @@ const matrix = [
   title="Packages and Pricing | Team Battle Ready Gaming Trailer"
   description="Skirmish $349/$399, Mission $449/$499, Campaign $549/$599. Six- and eight-hour full days. Home parties use those packages. Verified organizations have a separate weekday hourly rate. Quotes add 8.25% tax."
 >
-  <PageHero eyebrow="Rate card" title="Every number, on the page." crumb="Packages">
+  <PageHero eyebrow="Rate card" title="Packages and prices." crumb="Packages">
     <p>
       Weekday means Monday–Thursday. Weekend means Friday–Sunday. Prices exclude tax. The quote adds 8.25%.
     </p>
@@ -110,9 +112,9 @@ const matrix = [
         </article>
       </div>
       <p class="muted" style="margin-top: 1rem">
-        Invoice and PO are available for verified units, schools, and nonprofits. Net-15 on the draft terms.
-        <a class="inline-link" href="/military"> Military page</a> ·
-        <a class="inline-link" href="/contact"> quote form</a>
+        <a class="inline-link" href="/military">Military page</a>
+        ·
+        <a class="inline-link" href="/contact">Quote form</a>
       </p>
     </div>
   </section>
@@ -148,11 +150,11 @@ const matrix = [
     <div class="wrap">
       <h2 id="travel-title" class="metal">Travel from Killeen</h2>
       <p class="lede">
-        One-way distance. The fee is flat for the trip. Free within 30 miles, {money(50)} for 31–45, {money(90)} for 46–60. Past 60 miles is a quote.
+        {SERVICE_AREA_NOTE} {BEYOND_30_NOTE}
       </p>
       <div class="table-wrap" style="margin-top: 1rem">
         <table class="data">
-          <caption>Mileage bands assume the trailer lives in Killeen.</caption>
+          <caption>Travel is free in the four usual cities. Outside that area there is no published price.</caption>
           <thead>
             <tr>
               <th scope="col">Band</th>
@@ -174,7 +176,7 @@ const matrix = [
         </table>
       </div>
       <p class="muted" style="margin-top: 0.8rem">
-        Fort Hood is inside the free radius, same as Killeen. Most bookings are a driveway.
+        Most bookings are a driveway in Killeen, Copperas Cove, Harker Heights, or Nolanville. Travel outside those cities is not included in the package price.
         <a class="inline-link" href="/areas"> Town-by-town list.</a>
       </p>
     </div>

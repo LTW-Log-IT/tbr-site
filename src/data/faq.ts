@@ -15,7 +15,7 @@ export const faqs: FaqItem[] = [
     paragraphs: [
       "Skirmish is 2 hours at $349 Monday–Thursday and $399 Friday–Sunday. Mission is 3 hours at $449 / $499. Campaign is 4 hours at $549 / $599. A 6-hour full day is $749 / $799. An 8-hour full day is $949 / $999. Extra time is $50 per 30 minutes when the next slot is open.",
       "Home parties use those packages. Prices on the card exclude tax. The booking quote adds 8.25% for taxable jobs. Tax is not built into the menu price.",
-      "Travel is separate. It is free within 30 miles, $50 from 31–45 miles, and $90 from 46–60 miles. Past 60 miles is a quote.",
+      "Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville, within about 30 miles of Killeen. Outside that area, trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required.",
     ],
     href: "/packages",
     linkLabel: "See the full rate card",
@@ -35,11 +35,10 @@ export const faqs: FaqItem[] = [
   {
     id: "travel",
     home: true,
-    question: "Do you charge travel in Killeen, Fort Hood, or Belton?",
+    question: "Do you charge travel in Killeen, Copperas Cove, Harker Heights, or Nolanville?",
     paragraphs: [
-      "Not when the pin is within 30 miles. Killeen, Fort Hood, Harker Heights, Nolanville, Copperas Cove, Belton, and Kempner are free on this card.",
-      "Temple, Salado, Gatesville, Lampasas, Florence, Jarrell, and Troy are the 31–45 mile band at $50. A pin at 30 miles or under is still free. Georgetown, Moody, and Burnet are 46–60 miles at $90.",
-      "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum. Bands are measured from Killeen.",
+      "No. Those four cities are the usual area, within about 30 miles of Killeen. Travel there is free.",
+      "Fort Hood, Belton, Kempner, Temple, and every other town are outside that area. Those trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required.",
     ],
     href: "/areas",
     linkLabel: "Look up a town",
@@ -99,7 +98,7 @@ export const faqs: FaqItem[] = [
     id: "players",
     question: "How many players fit?",
     paragraphs: [
-      "Up to 24 at a time in the trailer. A 6-hour or 8-hour full day rotates people through that same room instead of promising 100 controllers at once.",
+      "Up to 24 at a time in the trailer. A 6-hour or 8-hour booking uses that same room.",
     ],
   },
   {
@@ -113,11 +112,10 @@ export const faqs: FaqItem[] = [
     linkLabel: "Compare the packages",
   },
   {
-    id: "invoice",
-    question: "Do you invoice schools, units, and nonprofits?",
+    id: "groups",
+    question: "Who can use the $125 hourly rate?",
     paragraphs: [
-      "Yes. Verified schools, churches, units, and nonprofits can be invoiced. Draft terms are net-15, and a purchase order is fine when the organization requires one.",
-      "Those organizations can also use a Monday–Thursday rate of $125 an hour with a 3-hour minimum, if they have a tax-exempt certificate or a purchase order. It is not a birthday or home-party price. Residential bookings stay on Skirmish, Mission, Campaign, or a full day.",
+      "Verified schools, churches, units, and nonprofits can use $125 an hour on Monday–Thursday with a 3-hour minimum, if they have a tax-exempt certificate or a purchase order. It is not a birthday or home-party price. Residential bookings stay on Skirmish, Mission, Campaign, or a full day.",
       "Quotes show 8.25% tax. Tax-exempt groups need a Texas exemption certificate on file. We do not mark a booking tax-exempt without it.",
     ],
     href: "/contact",

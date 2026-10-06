@@ -23,7 +23,7 @@ const squarePackages = partyPackages.flatMap((pkg) => {
 >
   <PageHero eyebrow="Booking" title="Call / Text to book." crumb="Book">
     <p>
-      Soft launch holds a date on the phone. Call or text {phoneLabel()}. Joe will call you back.
+      Call or text {phoneLabel()} to hold the date. Joe will call you back. {site.constructionNote}
       The quote below adds 8.25% tax. The deposit is a flat {money(100)}. Listed prices exclude tax.
     </p>
     <div class="cta-row">
@@ -171,9 +171,10 @@ const squarePackages = partyPackages.flatMap((pkg) => {
             {towns.map((town) => (
               <option value={town.id} selected={town.id === "killeen"}>{town.name}</option>
             ))}
-            <option value="beyond">Past 60 miles</option>
+            <option value="beyond">Outside the usual area</option>
           </select>
         </label>
+        <p class="muted">Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville, within about 30 miles of Killeen. Outside that area, trips are by exception only and have to be approved ahead of time. Prices vary. A 4-hour minimum may be required. That travel cost is not in this quote.</p>
         <div class="grid gap-4 md:grid-cols-2">
           <label>
             Organization hours

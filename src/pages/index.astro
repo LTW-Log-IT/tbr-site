@@ -19,7 +19,7 @@ const steps = [
   {
     n: "01",
     title: "Check the date",
-    body: "Pick a package, a town, and a start window. The travel fee for that town is on the card before anyone takes a deposit.",
+    body: "Pick a package, a town, and a start window. Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Anywhere else needs approval before the date.",
   },
   {
     n: "02",
@@ -28,12 +28,12 @@ const steps = [
   },
   {
     n: "03",
-    title: "We roll in",
-    body: "Level ground, the 13.5 kW generator on, cabin cooled, short briefing. The trailer is unwrapped. Magnets or a banner are fine.",
+    title: "We set up",
+    body: "Level ground, the 13.5 kW generator on, cabin cooled. The trailer is unwrapped. Magnets or a banner are fine.",
   },
   {
     n: "04",
-    title: "Play it out",
+    title: "Play",
     body: "Six gaming stations, each with a monitor, a chair, and a console (Xbox Series S/X, PS5, or Switch). Add-ons are extra.",
   },
 ];
@@ -41,7 +41,7 @@ const steps = [
 
 <BaseLayout
   title="The Party Shows Up Battle Ready | Team Battle Ready"
-  description="Mobile video game theater for up to 24 players in Killeen, Fort Hood, Temple, and Belton. Skirmish from $349 on weekdays. Check a date and hold the trailer with a $100 deposit."
+  description="Mobile video game theater for up to 24 players in Killeen, Copperas Cove, Harker Heights, and Nolanville. Skirmish from $349 on weekdays. The trailer is still under construction, so rental dates are limited."
   jsonLd={[localBusinessSchema(), faqSchema(homeFaqs)]}
 >
   <section class="hero">
@@ -52,12 +52,13 @@ const steps = [
       <span class="corner bl" aria-hidden="true"></span>
       <span class="corner br" aria-hidden="true"></span>
       <div class="speed-stack" aria-hidden="true"><span></span><span></span><span></span></div>
-      <p class="eyebrow">B4TTL3 · Central Texas · Car club × gaming trailer</p>
+      <p class="eyebrow">Killeen · Copperas Cove · Harker Heights · Nolanville</p>
       <h1 class="metal">The Party Shows Up Battle Ready.</h1>
       <img class="brand-logo brand-logo-hero" src={site.logo.chrome} alt="B4TTL3" width="2096" height="944" />
       <p class="lede">
-        Mobile video game theater for up to 24 players. Killeen • Fort Hood • Temple • Belton.
+        Mobile video game theater for up to 24 players. Killeen, Copperas Cove, Harker Heights, and Nolanville.
       </p>
+      <p class="muted">{site.constructionNote}</p>
       <div class="hero-actions">
         <CallToBook />
         <a class="btn btn-ghost" href={text}>Text Us</a>
@@ -66,7 +67,7 @@ const steps = [
         {site.values.map((value) => <li>{value}</li>)}
       </ul>
     </div>
-    <PhotoPlaceholder caption="Trailer photos coming soon. The rig is already in service. These frames stay branded until Joe has pictures from an event." />
+    <PhotoPlaceholder caption="Trailer photos coming soon." />
     </div>
   </section>
 
@@ -75,7 +76,7 @@ const steps = [
       <ul class="trust">
         <li>Up to 24 players</li>
         <li>Climate-controlled cabin</li>
-        <li>Travel fee by town</li>
+        <li>Free in four cities</li>
         <li>$100 deposit</li>
         <li>14+ days: full refund</li>
         <li>$25 military, responder, teacher</li>
@@ -86,7 +87,7 @@ const steps = [
   <section class="section" style="padding-top: 0" aria-labelledby="check-title">
     <div class="wrap">
       <p class="eyebrow">Date check</p>
-      <h2 id="check-title" class="metal">See the town fee, then check the day.</h2>
+      <h2 id="check-title" class="metal">See if the town is in the usual area.</h2>
       <p class="lede">A date is held when you call or text (254) 251-5219. This form only carries the package and town to the request page.</p>
       <div style="margin: 1rem 0 1.25rem">
         <CallToBook />
@@ -113,8 +114,8 @@ const steps = [
 
   <section class="section" style="padding-top: 0" aria-labelledby="how-title">
     <div class="wrap">
-      <p class="eyebrow">How a mission runs</p>
-      <h2 id="how-title" class="metal">Four steps. One trailer.</h2>
+      <p class="eyebrow">How booking works</p>
+      <h2 id="how-title" class="metal">Four steps.</h2>
       <div class="steps" style="margin-top: 1.5rem">
         {steps.map((step) => (
           <article class="panel step">
@@ -127,7 +128,7 @@ const steps = [
         ))}
       </div>
       <p class="muted" style="margin-top: 1rem">
-        On the trailer now: 6 gaming stations, each with a gaming monitor, a gaming chair, and a console (Xbox Series S/X, PS5, or Nintendo Switch). Also about 4 Xbox, 3 PS5s, and 8 eight-inch tablets for Roblox and Minecraft, plus various games. Station-monitor sizes and the measured parking length are the open lines on <a class="inline-link" href="/the-rig">The Rig</a>.
+        On the trailer now: 6 gaming stations, each with a gaming monitor, a gaming chair, and a console (Xbox Series S/X, PS5, or Nintendo Switch). Also about 4 Xbox, 3 PS5s, and 8 eight-inch tablets for Roblox and Minecraft, plus various games. Monitor sizes and the measured parking length are still open on <a class="inline-link" href="/the-rig">The Rig</a>.
       </p>
     </div>
   </section>
@@ -135,11 +136,11 @@ const steps = [
   <section class="section" style="padding-top: 0" aria-labelledby="crossover-title">
     <div class="wrap grid gap-6 lg:grid-cols-2 lg:items-stretch">
       <div>
-        <p class="eyebrow">Gaming × car club</p>
-        <h2 id="crossover-title" class="metal">Same crew. Night roads and night screens.</h2>
+        <p class="eyebrow">Car club</p>
+        <h2 id="crossover-title" class="metal">The club and the trailer.</h2>
         <div class="prose" style="margin-top: 1rem">
           <p>
-            Team Battle Ready is a Central Texas car club that also rolls a gaming trailer. Meets and cruises on one side. Birthdays, unit days, and driveway missions on the other. Play, connect, build, belong.
+            Team Battle Ready is a Central Texas car club with a gaming trailer. Meets and cruises are the club. Birthdays, BBQs, and game nights are the trailer.
           </p>
           <p>
             Follow the cars and the trailer at {site.instagram.map((account, index) => (
@@ -150,7 +151,7 @@ const steps = [
             ))}.
           </p>
           <p>
-            Club perks on the launch flyer — decals, shop discounts, meets, cruises — belong to the car club, not to a trailer booking. Membership signups are not on this site yet. Instagram is the crew channel.
+            Club perks on the launch flyer — decals, shop discounts, meets, cruises — are for the car club, not a trailer booking. Membership signups are not on this site. Instagram is where the club posts.
           </p>
         </div>
       </div>
@@ -180,12 +181,12 @@ const steps = [
 
   <section class="section" style="padding-top: 0" aria-labelledby="groups-title">
     <div class="wrap">
-      <p class="eyebrow">Fort Hood and groups</p>
-      <h2 id="groups-title" class="metal">Built for family days in Killeen and Fort Hood.</h2>
+      <p class="eyebrow">Families and groups</p>
+      <h2 id="groups-title" class="metal">Family days in Killeen, Cove, Harker Heights, and Nolanville.</h2>
       <div class="band-grid" style="margin-top: 1.25rem">
         <a class="band-card" href="/military">
           <h3 class="metal">Thank you for your service</h3>
-          <p class="muted">Discounts for active duty and veterans. $25 off once for military, first responders, and teachers with an ID. Discounts do not stack. Travel and add-ons stay full price. Invoice and PO welcome. Driveway bookings in the Killeen–Fort Hood area are the usual plan.</p>
+          <p class="muted">Discounts for active duty and veterans. $25 off once for military, first responders, and teachers with an ID. Discounts do not stack. Travel and add-ons stay full price. Most bookings are a driveway in Killeen, Copperas Cove, Harker Heights, or Nolanville.</p>
         </a>
         <a class="band-card" href="/military#groups">
           <h3 class="metal">Schools and organizations</h3>
@@ -198,7 +199,7 @@ const steps = [
   <section class="section" style="padding-top: 0" aria-labelledby="faq-title">
     <div class="wrap">
       <p class="eyebrow">FAQ</p>
-      <h2 id="faq-title" class="metal">Before you ask the group chat.</h2>
+      <h2 id="faq-title" class="metal">Common questions.</h2>
       <div style="margin-top: 1rem">
         <FaqList items={homeFaqs} />
       </div>
@@ -209,10 +210,10 @@ const steps = [
   <section class="final-cta" aria-labelledby="final-title">
     <div class="wrap">
       <div class="slash">
-        <p>Check the date. Leave the deposit. Show up battle ready.</p>
+        <p>Call or text (254) 251-5219 to hold the date.</p>
       </div>
       <h2 id="final-title" class="metal" style="margin-top: 1.5rem">The trailer holds one booking at a time.</h2>
-      <p class="lede">Killeen, Fort Hood, Temple, Belton, and every town on the travel card.</p>
+      <p class="lede">Killeen, Copperas Cove, Harker Heights, and Nolanville are the usual area. Other towns are by exception.</p>
       <div class="cta-row">
         <CallToBook />
         <a class="btn btn-ghost" href={text}>Text Us</a>

@@ -70,8 +70,8 @@ Edit these before the domain is advertised:
 10. **Attorney** — have a Texas attorney read `/policies` before the first deposit.
 11. **Balance** — the $100 deposit can be paid with the Square deposit link or arranged on the phone. Do not add a card-on-file charge.
 12. **Sales tax** — quotes add 8.25%. Confirm amusement-tax treatment and the permit with the Texas Comptroller. A tax-exempt booking needs a Texas exemption certificate.
-13. **Fort Hood** — use the name only as a travel area ($0 inside 30 miles), same as Killeen. Do not explain installation access, gates, passes, or MWR. Bookings on the site are driveway and residential.
-14. **Past 60 miles** — travel is a quote. Do not invent a fee.
+13. **Fort Hood** — an area name only. It is outside the usual cities, so travel there is by exception, not a published $0. Do not explain installation access, gates, passes, or MWR. Bookings on the site are driveway and residential.
+14. **Service area** — free travel in Killeen, Copperas Cove, Harker Heights, and Nolanville (about 30 miles of Killeen). Everywhere else is by exception: approve ahead, prices vary, a 4-hour minimum may apply. Do not publish an outside fee.
 15. **No VR** — do not add a headset line. The live room is consoles and tablets.
 16. **Discount** — active duty, veterans, first responders, and teachers get a flat $25 off the package or weekday hourly total, once, with an ID. Discounts do not stack. It does not come off travel, add-ons, or extra time. Square links stay the full package price. Call or text to apply the $25.
 
@@ -85,7 +85,7 @@ Canonical prices live in `src/data/pricing.ts`:
 | Full day, 6 hr | $749 | $799 |
 | Full day, 8 hr | $949 | $999 |
 
-Organization rate: $125/hr Monday–Thursday, 3-hour minimum, verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not a residential package. Extra time is $50 per 30 minutes. Deposit is a flat $100. Travel is free within 30 miles, $50 for 31–45, and $90 for 46–60. Menu prices exclude tax. Quotes add 8.25%.
+Organization rate: $125/hr Monday–Thursday, 3-hour minimum, verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order. Not a residential package. Extra time is $50 per 30 minutes. Deposit is a flat $100. Travel is free in Killeen, Copperas Cove, Harker Heights, and Nolanville. Outside those cities, trips are by exception: approve ahead, prices vary, and a 4-hour minimum may apply. Do not publish an outside fee. Menu prices exclude tax. Quotes add 8.25%. Do not market invoicing or purchase orders as a welcome perk. The trailer is still under construction, and rental availability is limited until it is complete.
 
 Domain DNS for `tbr.leadthewaylogistics.info` is Bridge’s job. Do not change `site` or `base` in `astro.config.mjs` unless the hostname changes.
 

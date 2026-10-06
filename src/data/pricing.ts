@@ -1,6 +1,6 @@
 /** Canonical rate card. Weekday is Mon–Thu. Weekend is Fri–Sun. Prices exclude 8.25% tax. */
 
-export type ZoneId = "free" | "mid" | "outer" | "quote";
+export type ZoneId = "free" | "beyond";
 export type PackageGroup = "priced" | "hourly";
 
 export interface CatalogPackage {
@@ -23,7 +23,7 @@ export interface Town {
   id: string;
   name: string;
   zoneId: ZoneId;
-  /** Null means past 60 miles: quote, no published fee. */
+  /** Null means outside the usual cities: no published fee. By exception. */
   fee: number | null;
   blurb: string;
   href?: string;
@@ -44,11 +44,20 @@ export const GROUP_MIN_HOURS = 3;
 export const COMMUNITY_DISCOUNT = 25;
 
 export const zones = [
-  { id: "free", name: "Within 30 miles", miles: "0–30 miles", fee: 0 },
-  { id: "mid", name: "31–45 miles", miles: "31–45 miles", fee: 50 },
-  { id: "outer", name: "46–60 miles", miles: "46–60 miles", fee: 90 },
-  { id: "quote", name: "Past 60 miles", miles: "61+ miles", fee: null },
+  { id: "free", name: "Usual area", miles: "Killeen, Copperas Cove, Harker Heights, Nolanville", fee: 0 },
+  { id: "beyond", name: "Outside that area", miles: "By exception", fee: null },
 ] as const;
+
+/** Named default. About 30 miles of Killeen. Travel is free. */
+export const SERVICE_AREA_NOTE =
+  "The usual area is Killeen, Copperas Cove, Harker Heights, and Nolanville, within about 30 miles of Killeen. Travel there is free.";
+
+/** Public copy for any pin outside those cities. No dollar amount. */
+export const BEYOND_30_NOTE =
+  "Outside that area, trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required.";
+
+const outsideBlurb =
+  "Outside the usual cities. By exception only. Approve ahead. Prices vary. A 4-hour minimum may apply.";
 
 const sharedIncludes = [
   "Trailer, coach, setup, and cleanup",
@@ -100,7 +109,7 @@ export const packages: CatalogPackage[] = [
     weekdayPrice: 749,
     weekendPrice: 799,
     summary: "Six hours for schools, units, and long parties. $749 weekday, $799 weekend.",
-    includes: [...sharedIncludes, "Rotations through the same room"],
+    includes: [...sharedIncludes, "Same trailer for the full six hours"],
   },
   {
     id: "full-8",
@@ -111,7 +120,7 @@ export const packages: CatalogPackage[] = [
     weekdayPrice: 949,
     weekendPrice: 999,
     summary: "Eight hours. $949 weekday, $999 weekend.",
-    includes: [...sharedIncludes, "Built for festivals and all-day events"],
+    includes: [...sharedIncludes, "Same trailer for the full eight hours"],
   },
   {
     id: "group",
@@ -184,28 +193,28 @@ export const startWindows = [
 ] as const;
 
 export const towns: Town[] = [
-  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Stored in Killeen. Travel is free inside 30 miles." },
-  { id: "fort-hood", name: "Fort Hood", zoneId: "free", fee: 0, blurb: "Inside 30 miles, same as Killeen. Driveway bookings in the area." },
-  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, blurb: "Next to Killeen. Free travel." },
-  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, blurb: "Between Killeen and Belton. Free travel." },
-  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, blurb: "West of Killeen, inside 30 miles." },
-  { id: "belton", name: "Belton", zoneId: "free", fee: 0, blurb: "The square and the UMHB area stay inside the free radius." },
-  { id: "kempner", name: "Kempner", zoneId: "free", fee: 0, blurb: "West of the Cove. Free travel on this card." },
-  { id: "temple", name: "Temple", zoneId: "mid", fee: 50, blurb: "31–45 miles on this card. $50. A pin at 30 miles or under is free." },
-  { id: "salado", name: "Salado", zoneId: "mid", fee: 50, blurb: "South of Belton. 31–45 mile band, $50." },
-  { id: "gatesville", name: "Gatesville", zoneId: "mid", fee: 50, blurb: "West into Coryell County. $50." },
-  { id: "lampasas", name: "Lampasas", zoneId: "mid", fee: 50, blurb: "31–45 mile band, $50." },
-  { id: "florence", name: "Florence", zoneId: "mid", fee: 50, blurb: "Toward Williamson County. $50." },
-  { id: "jarrell", name: "Jarrell", zoneId: "mid", fee: 50, blurb: "Between Salado and Georgetown. $50." },
-  { id: "troy", name: "Troy", zoneId: "mid", fee: 50, blurb: "East of Temple. $50." },
-  { id: "georgetown", name: "Georgetown", zoneId: "outer", fee: 90, blurb: "46–60 miles. $90." },
-  { id: "moody", name: "Moody", zoneId: "outer", fee: 90, blurb: "Toward Waco. 46–60 mile band, $90." },
-  { id: "burnet", name: "Burnet", zoneId: "outer", fee: 90, blurb: "Hill Country side. $90." },
-  { id: "waco", name: "Waco", zoneId: "quote", fee: null, blurb: "Sits on the far side of 60 miles. Past 60 is a quote, not a flat fee." },
-  { id: "round-rock", name: "Round Rock", zoneId: "quote", fee: null, blurb: "Past 60 miles. Travel is a quote." },
-  { id: "cedar-park", name: "Cedar Park", zoneId: "quote", fee: null, blurb: "Past 60 miles. Travel is a quote." },
-  { id: "leander", name: "Leander", zoneId: "quote", fee: null, blurb: "Past 60 miles. Travel is a quote." },
-  { id: "hutto", name: "Hutto", zoneId: "quote", fee: null, blurb: "Past 60 miles. Travel is a quote." },
+  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Usual area. Travel is free. The trailer is stored in Killeen." },
+  { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, blurb: "Usual area, west of Killeen. Travel is free." },
+  { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, blurb: "Usual area, next to Killeen. Travel is free." },
+  { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, blurb: "Usual area. Travel is free." },
+  { id: "fort-hood", name: "Fort Hood", zoneId: "beyond", fee: null, blurb: "Outside the usual cities. Driveway bookings are by exception only. Approve ahead. Prices vary. A 4-hour minimum may apply." },
+  { id: "belton", name: "Belton", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "kempner", name: "Kempner", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "temple", name: "Temple", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "salado", name: "Salado", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "gatesville", name: "Gatesville", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "lampasas", name: "Lampasas", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "florence", name: "Florence", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "jarrell", name: "Jarrell", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "troy", name: "Troy", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "georgetown", name: "Georgetown", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "moody", name: "Moody", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "burnet", name: "Burnet", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "waco", name: "Waco", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "round-rock", name: "Round Rock", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "cedar-park", name: "Cedar Park", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "leander", name: "Leander", zoneId: "beyond", fee: null, blurb: outsideBlurb },
+  { id: "hutto", name: "Hutto", zoneId: "beyond", fee: null, blurb: outsideBlurb },
 ];
 
 export function zoneFor(zoneId: ZoneId) {
@@ -217,7 +226,7 @@ export function findPackage(id: string) {
 }
 
 export function feeLabel(fee: number | null): string {
-  if (fee === null) return "Quote";
+  if (fee === null) return "By exception";
   return money(fee);
 }
 
@@ -336,20 +345,19 @@ export function buildEstimate(input: {
   }
 
   const town = towns.find((item) => item.id === input.townId);
-  let townName = "Past 60 miles";
+  let townName = "Outside the usual area";
   if (town) {
     townName = town.name;
-    if (town.fee === null) {
-      notes.push(`${town.name} is past 60 miles. Travel is a quote and is not in this total.`);
-    } else {
-      const zone = zoneFor(town.zoneId);
+    if (town.fee === 0) {
       lines.push({
-        label: town.fee === 0 ? `Travel · ${town.name} (within 30 mi)` : `Travel · ${town.name} (${zone.miles})`,
-        amount: town.fee,
+        label: `Travel · ${town.name}`,
+        amount: 0,
       });
+    } else {
+      notes.push(`${town.name} is outside Killeen, Copperas Cove, Harker Heights, and Nolanville. ${BEYOND_30_NOTE} Travel is not in this total.`);
     }
   } else {
-    notes.push("Past 60 miles, travel is a quote and is not in this total.");
+    notes.push(`${BEYOND_30_NOTE} Travel is not in this total.`);
   }
 
   const subtotalCents = lines.reduce((sum, line) => sum + toCents(line.amount), 0);
@@ -384,7 +392,7 @@ function emptyEstimate(pkg: CatalogPackage, townId: string, notes: string[]): Es
   return {
     packageId: pkg.id,
     packageName: pkg.name,
-    townName: town?.name ?? "Past 60 miles",
+    townName: town?.name ?? "Outside the usual area",
     lines: [],
     notes,
     available: false,

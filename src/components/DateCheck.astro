@@ -21,7 +21,7 @@ import { partyPackages, towns } from "../data/pricing";
       {towns.map((town) => (
         <option value={town.id} selected={town.id === "killeen"}>{town.name}</option>
       ))}
-      <option value="beyond">Past 60 miles</option>
+      <option value="beyond">Outside the usual area</option>
     </select>
   </label>
   <div style="align-self: end">
@@ -31,22 +31,19 @@ import { partyPackages, towns } from "../data/pricing";
 </form>
 
 <script>
-  import { feeLabel, towns, zoneFor } from "../data/pricing";
+  import { towns } from "../data/pricing";
 
   const select = document.querySelector<HTMLSelectElement>("#home-town");
   const out = document.querySelector<HTMLElement>("#town-fee");
   if (select && out) {
     const update = () => {
       const town = towns.find((item) => item.id === select.value);
-      if (!town || town.fee === null) {
-        out.textContent = "Past 60 miles, travel is a quote. There is no published fee on the card.";
+      if (!town || town.fee !== 0) {
+        const name = town?.name ?? "This trip";
+        out.textContent = `${name} is outside Killeen, Copperas Cove, Harker Heights, and Nolanville. That trip is by exception only. It has to be approved ahead of time. Prices vary. A 4-hour minimum may be required.`;
         return;
       }
-      const zone = zoneFor(town.zoneId);
-      out.textContent =
-        town.fee === 0
-          ? `${town.name} is within 30 miles. Travel is free.`
-          : `${town.name} is ${zone.miles}. Travel is ${feeLabel(town.fee)}.`;
+      out.textContent = `${town.name} is in the usual area. Travel is free.`;
     };
     select.addEventListener("change", update);
     update();

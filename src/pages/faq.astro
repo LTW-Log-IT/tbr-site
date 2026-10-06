@@ -3,17 +3,18 @@ import CallToBook from "../components/CallToBook.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqList from "../components/FaqList.astro";
 import PageHero from "../components/PageHero.astro";
+import { site } from "../config/site";
 import { faqSchema, faqs } from "../data/faq";
 ---
 
 <BaseLayout
   title="FAQ | Team Battle Ready Gaming Trailer"
-  description="Parking, power, deposits, cancellations, travel fees, and the military discount for the Team Battle Ready gaming trailer around Killeen and Fort Hood."
+  description="Parking, deposits, travel, and the military discount. The usual area is Killeen, Copperas Cove, Harker Heights, and Nolanville. The trailer is still under construction."
   jsonLd={faqSchema(faqs)}
 >
   <PageHero eyebrow="Questions" title="Short answers. The policy has the rest." crumb="FAQ">
     <p>
-      Prices, the deposit, travel, parking, weather, and the military discount. Soft launch holds a date by phone.
+      Prices, the deposit, travel, parking, weather, and the military discount. Call or text (254) 251-5219 to hold the date. {site.constructionNote}
     </p>
   </PageHero>
   <section class="section" style="padding-top: 0.5rem">

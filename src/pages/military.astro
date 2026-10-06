@@ -11,17 +11,17 @@ import { groupPackage, partyPackages } from "../data/pricing";
 >
   <PageHero eyebrow="Fort Hood" title="Thank you for your service." crumb="Military">
     <p>
-      Discounts available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. It is a flat $25, once. Discounts do not stack. Travel and add-ons stay full price. Invoice and PO are welcome. Square charges the full package price. Call or text to apply the $25.
+      Discounts available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. It is a flat $25, once. Discounts do not stack. Travel and add-ons stay full price. Square charges the full package price. Call or text to apply the $25.
     </p>
   </PageHero>
 
   <section class="section prose" style="padding-top: 0.5rem">
     <div class="wrap">
       <p>
-        The same party card covers a backyard BBQ, a birthday, a game night, a family day, a homecoming, a PCS farewell, or an FRG / unit day.
+        The same packages cover a birthday, a BBQ, a game night, or a family day.
       </p>
       <p>
-        The travel fee for Fort Hood on this card is $0, same as Killeen, when the pin is within 30 miles. Most bookings are a driveway or a side street in the Killeen–Fort Hood area.
+        Most bookings are a driveway in Killeen, Copperas Cove, Harker Heights, or Nolanville. Travel there is free. Fort Hood and other towns are outside that area. Those trips are by exception only. They have to be coordinated and approved ahead of time. Prices vary. A minimum of 4 hours may be required.
       </p>
       <p>
         The room is 6 gaming stations. Each one has a gaming monitor, a gaming chair, and a console: Xbox Series S/X, PS5, or Nintendo Switch. Also about 4 Xbox, 3 PS5s, and 8 eight-inch tablets for Roblox and Minecraft, plus various games.
@@ -31,8 +31,8 @@ import { groupPackage, partyPackages } from "../data/pricing";
 
   <section class="section" style="padding-top: 0">
     <div class="wrap">
-      <h2 class="metal">The same party card, named for the event</h2>
-      <p class="lede">Birthdays, BBQs, and family days book Skirmish, Mission, Campaign, or a full day. The hourly rate is not on this row.</p>
+      <h2 class="metal">Birthdays, BBQs, and game nights</h2>
+      <p class="lede">These events use Skirmish, Mission, Campaign, or a full day. The hourly rate is not on this row.</p>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.25rem">
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
       </div>
@@ -42,21 +42,21 @@ import { groupPackage, partyPackages } from "../data/pricing";
   <section class="section" style="padding-top: 0">
     <div class="wrap grid gap-4 md:grid-cols-3">
       <article class="panel">
-        <h2 class="metal" style="font-size: 1.8rem">FRG / unit day</h2>
+        <h2 class="metal" style="font-size: 1.8rem">Birthday</h2>
         <p class="muted" style="margin-top: 0.6rem">
-          A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer family event. The $25 discount applies once. A verified unit with a purchase order can ask about the organization hourly rate. A home party cannot.
+          A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer party. The $25 discount applies once. A verified organization can ask about the hourly rate. A home party cannot.
         </p>
       </article>
       <article class="panel">
-        <h2 class="metal" style="font-size: 1.8rem">Homecoming</h2>
+        <h2 class="metal" style="font-size: 1.8rem">BBQ</h2>
         <p class="muted" style="margin-top: 0.6rem">
-          A homecoming, a family day, or a game night usually fits a Mission or a Campaign. A backyard BBQ often fits a Skirmish. Add a tournament pack or yard games if you want them. They are not included in the package price.
+          A backyard BBQ often fits a Skirmish. A family day or a longer hang usually fits a Mission or a Campaign. Yard games are an add-on. They are not included in the package price.
         </p>
       </article>
       <article class="panel">
-        <h2 class="metal" style="font-size: 1.8rem">PCS farewell</h2>
+        <h2 class="metal" style="font-size: 1.8rem">Game night</h2>
         <p class="muted" style="margin-top: 0.6rem">
-          Same lengths as a homecoming. Book the date when you know it. The trailer can meet you at a driveway.
+          Same lengths as a birthday. A tournament pack is an add-on if you want brackets. Book the date when you know it. The trailer meets you at a driveway.
         </p>
       </article>
     </div>
@@ -65,22 +65,19 @@ import { groupPackage, partyPackages } from "../data/pricing";
   <section class="section" id="groups" style="padding-top: 0">
     <div class="wrap">
       <p class="eyebrow">Schools and other groups</p>
-      <h2 class="metal">Rotations, not a promise of 100 controllers.</h2>
+      <h2 class="metal">Schools and other groups</h2>
       <p class="lede">
-        Killeen ISD, Cove, Belton, and Temple schools, church youth nights, and festival committees all ask the same three things: a price, a certificate of insurance, and whether you can invoice. The other two are not ready to claim. The hourly rate below is for verified organizations only.
+        The hourly rate below is for verified schools, churches, units, and nonprofits. It is not a home-party price.
       </p>
       <div class="grid gap-4 md:grid-cols-2" style="margin-top: 1.25rem">
         <PackageCard pkg={groupPackage} />
       </div>
       <div class="panel" style="margin-top: 1rem">
         <p>
-          A 6-hour full day is $749 Monday–Thursday and $799 Friday–Sunday. Eight hours is $949 / $999. Verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order can use $125 an hour on Monday–Thursday, three hours minimum. That rate is not for residential parties. Up to 24 players at a time, then a rotation.
+          A 6-hour full day is $749 Monday–Thursday and $799 Friday–Sunday. Eight hours is $949 / $999. Verified schools, churches, units, and nonprofits with a tax-exempt certificate or a purchase order can use $125 an hour on Monday–Thursday, three hours minimum. That rate is not for residential parties. Up to 24 players at a time.
         </p>
         <p style="margin-top: 0.8rem">
           Quotes add 8.25% tax. Tax-exempt groups need a Texas exemption certificate.
-        </p>
-        <p class="muted" style="margin-top: 0.7rem">
-          Draft billing for verified units, schools, and nonprofits is net-15, purchase order welcome.
         </p>
         <p style="margin-top: 1rem"><a class="btn btn-primary" href="/contact">Request a quote</a></p>
       </div>

@@ -7,11 +7,11 @@ import { packages, towns } from "../data/pricing";
 
 <BaseLayout
   title="Contact Team Battle Ready | Killeen Gaming Trailer"
-  description="Text or call (254) 251-5219, or send a quote request for the Team Battle Ready gaming trailer in Killeen and Fort Hood."
+  description="Text or call (254) 251-5219, or send a quote request for the Team Battle Ready gaming trailer in Killeen, Copperas Cove, Harker Heights, and Nolanville."
 >
   <PageHero eyebrow="Contact" title="Text, call, or send the date." crumb="Contact">
     <p>
-      Call or text (254) 251-5219 to book. <a href="/book">Request a date</a> if you would rather send the details. Units and schools that need an invoice can use the form. Nothing emails until an inbox exists.
+      Call or text (254) 251-5219 to book. <a href="/book">Request a date</a> if you would rather send the details. Schools and other groups can use the form. Nothing emails until an inbox exists.
     </p>
   </PageHero>
 
@@ -71,7 +71,7 @@ import { packages, towns } from "../data/pricing";
             Town
             <select name="town">
               {towns.map((town) => <option value={town.name}>{town.name}</option>)}
-              <option value="Past 60 miles">Past 60 miles</option>
+              <option value="Outside the usual area">Outside the usual area</option>
             </select>
           </label>
           <label>
@@ -90,27 +90,17 @@ import { packages, towns } from "../data/pricing";
             {packages.map((pkg) => <option value={`${pkg.name} ${pkg.timeLabel}`}>{pkg.name} · {pkg.timeLabel}</option>)}
           </select>
         </label>
-        <div class="grid gap-4 md:grid-cols-2">
-          <label>
-            Purchase order?
-            <select name="po">
-              <option>Not sure</option>
-              <option>Yes</option>
-              <option>No</option>
-            </select>
-          </label>
-          <label>
-            Tax-exempt certificate?
-            <select name="tax">
-              <option>Not sure</option>
-              <option>Yes, we can send it</option>
-              <option>No</option>
-            </select>
-          </label>
-        </div>
+        <label>
+          Tax-exempt certificate?
+          <select name="tax">
+            <option>Not sure</option>
+            <option>Yes, we can send it</option>
+            <option>No</option>
+          </select>
+        </label>
         <label>
           Notes
-          <textarea name="notes" placeholder="Parking limits, ages, invoice contact"></textarea>
+          <textarea name="notes" placeholder="Parking, ages, headcount"></textarea>
         </label>
         <button class="btn btn-primary" type="submit">Prepare this quote</button>
         <p class="status" id="quote-status" role="status"></p>

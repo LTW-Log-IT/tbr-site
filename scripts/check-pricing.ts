@@ -1,4 +1,4 @@
-import { buildEstimate, money, packages, partyPackages, taxOnCents } from "../src/data/pricing.ts";
+import { buildEstimate, money, packages, partyPackages, taxOnCents, towns } from "../src/data/pricing.ts";
 
 function assert(condition: boolean, message: string) {
   if (!condition) {
@@ -40,11 +40,12 @@ const skirmish = buildEstimate({
   addonIds: ["tournament"],
   date: "2026-10-10",
 });
-close(skirmish!.subtotal, 464, "skirmish weekend discount travel addon");
-close(skirmish!.total, taxed(464), "skirmish total");
+close(skirmish!.subtotal, 414, "skirmish weekend discount addon, no published travel");
+close(skirmish!.total, taxed(414), "skirmish total");
 close(skirmish!.deposit, 100, "skirmish deposit");
 assert(skirmish!.lines.some((line) => line.amount === -25), "flat 25 discount");
-assert(skirmish!.lines.some((line) => line.amount === 50 && line.label.includes("Temple")), "temple travel 50");
+assert(!skirmish!.lines.some((line) => line.label.includes("Temple") && line.amount !== 0), "temple travel not priced");
+assert(skirmish!.notes.some((note) => note.includes("approved ahead")), "temple needs approval");
 
 const campaign = buildEstimate({
   packageId: "campaign",
@@ -103,8 +104,9 @@ const waco = buildEstimate({
   addonIds: [],
   date: "2026-10-11",
 });
-close(waco!.subtotal, 799, "past 60 excludes travel");
-assert(waco!.notes.some((note) => note.includes("quote")), "waco quote note");
+close(waco!.subtotal, 799, "beyond 30 excludes travel");
+assert(waco!.notes.some((note) => note.includes("approved ahead")), "waco approval note");
+assert(waco!.notes.some((note) => note.includes("4 hours")), "waco minimum note");
 
 const favors = buildEstimate({
   packageId: "skirmish",
@@ -123,8 +125,9 @@ const extra = buildEstimate({
   extraHalfHours: 1,
   date: "2026-10-09",
 });
-close(extra!.subtotal, 999 + 50 + 90, "full day extra half outer travel");
-close(extra!.total, taxed(1139), "full day taxed");
+close(extra!.subtotal, 999 + 50, "full day extra half, travel not priced");
+close(extra!.total, taxed(1049), "full day taxed");
+assert(extra!.notes.some((note) => note.includes("Prices vary")), "georgetown prices vary");
 close(extra!.deposit, 100, "deposit stays 100 on the long day");
 
 const discountedTravel = buildEstimate({
@@ -134,8 +137,13 @@ const discountedTravel = buildEstimate({
   addonIds: [],
   date: "2026-10-06",
 });
-close(discountedTravel!.subtotal, 374, "discount does not touch the 50 travel fee");
-close(discountedTravel!.tax, 30.86, "tax on 374");
+close(discountedTravel!.subtotal, 324, "discount does not invent a travel fee");
+close(discountedTravel!.tax, 26.73, "tax on 324");
+const usual = ["killeen", "copperas-cove", "harker-heights", "nolanville"];
+assert(usual.every((id) => towns.find((town) => town.id === id)?.fee === 0), "four usual cities are free");
+assert(towns.filter((town) => town.fee === 0).length === 4, "only the four usual cities are free");
+assert(towns.find((town) => town.id === "fort-hood")?.fee === null, "fort hood is outside the usual cities");
+assert(towns.every((town) => town.fee === 0 || town.fee === null), "no published outside fee");
 
 assert(buildEstimate({
   packageId: "nope",
