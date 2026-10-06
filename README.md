@@ -1,10 +1,10 @@
 # Team Battle Ready Gaming Trailer
 
-Static marketing site for **Team Battle Ready** — a Central Texas car club and a mobile gaming trailer serving Killeen, Fort Cavazos, Belton, and the towns on the travel card.
+Static marketing site for **Team Battle Ready** — a Central Texas car club and a mobile gaming trailer serving Killeen, Fort Hood, Belton, and the towns on the travel card.
 
 Visual system: the launch flyer. Deep black and charcoal stage, electric cyan and ice blue call-to-action bars, white and metallic silver type. The mark is Joe’s **B4TTL3** brush logo: `public/brand/b4ttl3-logo-transparent.png` on the header and other light-on-dark chrome, and `public/brand/b4ttl3-logo.png` on dark panels. The values strip is **Drive · Build · Compete · Represent**. **Play · Connect · Build · Belong** can stay in body copy. No invented sponsor besides **Hakai No Kamigami**. The trailer is unwrapped. Magnets or a banner are fine. Do not show a wrap.
 
-Soft launch books by phone: call or text **(254) 251-5219**. `/book` can also open a text or email with the request. A date is not held until Joe confirms it. Facts that are still missing are marked **[TODO: Joe]**.
+Soft launch books by phone: call or text **(254) 251-5219**. `/book` can also open a text or email with the request. A date is not held until Joe confirms it. Open measurements stay in this README. Do not put them on the public pages.
 
 ## Production target
 
@@ -61,7 +61,7 @@ Edit these before the domain is advertised:
 1. **Phone** — set to (254) 251-5219 (`phoneE164` `12542515219` in `src/config/site.ts`). Text and Call use that line.
 2. **Email** — `contactEmail` in `src/config/site.ts`. When it is set, Request a date and the quote form open `mailto:`. While it is blank, Request a date opens a text to (254) 251-5219.
 3. **Rate card sign-off** — prices, zones, discounts, and policies live in `src/data/pricing.ts`. They are the launch draft. Change them there; the pages read that file.
-4. **Remaining measurements** — station and console counts are filled on `/the-rig` (6 Switch stations, about 4 Xbox, 3 PS5, 8 Roblox/Minecraft tablets). Generator output is 13.5 kW. Model, decibels, length, screen size, and parking footprint are still `[TODO: Joe]`.
+4. **Remaining measurements** — the room is 6 gaming stations (monitor, chair, and a console: Xbox Series S/X, PS5, or Switch), about 4 Xbox, 3 PS5s, 8 eight-inch tablets, and various games. Generator output is 13.5 kW. Model, decibels, station-monitor size, and the measured parking footprint are still open.
 5. **Photos** — trailer pictures are not in yet. Hero, packages, and The Rig use branded “Trailer photos coming soon” frames. Put real files in `public/photos/` after the event and replace those frames. No stock gamers. No wrapped-trailer art. No invented trailer photos. Magnets or a banner are fine. Drop the launch flyer at `public/brand/tbr-flyer-launch.png` and the home page will show it. That flyer is the color system.
 6. **Storage address** — travel zones assume a Killeen base. Recompute `/areas` if the lot is somewhere else.
 7. **Bio** — replace the About stub with facts you want public. No home address, no gate codes, no minors’ last names.
@@ -70,7 +70,7 @@ Edit these before the domain is advertised:
 10. **Attorney** — have a Texas attorney read `/policies` before the first deposit.
 11. **Balance** — the $100 deposit can be paid with the Square deposit link or arranged on the phone. Do not add a card-on-file charge.
 12. **Sales tax** — quotes add 8.25%. Confirm amusement-tax treatment and the permit with the Texas Comptroller. A tax-exempt booking needs a Texas exemption certificate.
-13. **Fort Cavazos access** — write only the gate steps you are allowed to publish.
+13. **Fort Hood** — driveway bookings in the Killeen–Fort Hood area are the public offer. On-post access is optional and arranged by the host. Do not publish gate steps you have not confirmed.
 14. **Past 60 miles** — travel is a quote. Do not invent a fee.
 15. **No VR** — do not add a headset line. The live room is consoles and tablets.
 16. **Discount** — military, first responders, and teachers get a flat $25 off the package or weekday hourly total. It does not come off travel, add-ons, or extra time.
@@ -106,7 +106,7 @@ GitHub Pages on this domain is the locked target. If you ever move:
 | `/the-rig` | Spec sheet with open measurements |
 | `/areas` | Zone and town list |
 | `/areas/killeen` | Sample city page |
-| `/military` | Fort Cavazos, units, schools |
+| `/military` | Fort Hood, units, schools |
 | `/about` | Car club and trailer story |
 | `/contact` | Text, call, quote form |
 | `/faq` | Full FAQ |

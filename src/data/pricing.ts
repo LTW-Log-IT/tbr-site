@@ -53,7 +53,8 @@ export const zones = [
 const sharedIncludes = [
   "Trailer, coach, setup, and cleanup",
   "Up to 24 players at a time",
-  "6 Switch stations, about 4 Xbox, 3 PS5s",
+  "6 stations: monitor, chair, and a console (Xbox Series S/X, PS5, or Switch)",
+  "About 4 Xbox, 3 PS5s, 8 eight-inch tablets, and various games",
 ];
 
 export const packages: CatalogPackage[] = [
@@ -143,7 +144,7 @@ export const addons: Addon[] = [
     id: "toddler",
     name: "Toddler zone",
     price: 75,
-    detail: "Younger-kids setup. The trailer already carries 8 tablets for Roblox and Minecraft.",
+    detail: "Younger-kids setup. The trailer already carries 8 eight-inch tablets for Roblox and Minecraft.",
   },
   {
     id: "tournament",
@@ -184,7 +185,7 @@ export const startWindows = [
 
 export const towns: Town[] = [
   { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Home base. Travel is free inside 30 miles." },
-  { id: "fort-cavazos", name: "Fort Cavazos", zoneId: "free", fee: 0, blurb: "Inside 30 miles for the fee. Installation access is a separate step." },
+  { id: "fort-hood", name: "Fort Hood", zoneId: "free", fee: 0, blurb: "Inside 30 miles, same as Killeen. Driveway bookings are the usual plan. On-post access is optional and arranged by the host." },
   { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, blurb: "Next to Killeen. Free travel." },
   { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, blurb: "Between Killeen and Belton. Free travel." },
   { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, blurb: "West of Killeen, inside 30 miles." },

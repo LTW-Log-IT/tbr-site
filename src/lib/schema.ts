@@ -3,7 +3,7 @@ import { partyPackages } from "../data/pricing";
 
 const areas = [
   "Killeen",
-  "Fort Cavazos",
+  "Fort Hood",
   "Harker Heights",
   "Nolanville",
   "Copperas Cove",
@@ -24,7 +24,7 @@ export function localBusinessSchema() {
     image: `${site.url}${site.logo.chrome}`,
     slogan: site.slogan,
     areaServed: areas.map((name) => ({
-      "@type": name === "Fort Cavazos" ? "AdministrativeArea" : "City",
+      "@type": name === "Fort Hood" ? "AdministrativeArea" : "City",
       name,
     })),
     priceRange: "$349–$999",

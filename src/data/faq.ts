@@ -35,9 +35,9 @@ export const faqs: FaqItem[] = [
   {
     id: "travel",
     home: true,
-    question: "Do you charge travel in Killeen, Fort Cavazos, or Belton?",
+    question: "Do you charge travel in Killeen, Fort Hood, or Belton?",
     paragraphs: [
-      "Not when the pin is within 30 miles. Killeen, Fort Cavazos, Harker Heights, Nolanville, Copperas Cove, Belton, and Kempner are free on this card.",
+      "Not when the pin is within 30 miles. Killeen, Fort Hood, Harker Heights, Nolanville, Copperas Cove, Belton, and Kempner are free on this card.",
       "Temple, Salado, Gatesville, Lampasas, Florence, Jarrell, and Troy are the 31–45 mile band at $50. A pin at 30 miles or under is still free. Georgetown, Moody, and Burnet are 46–60 miles at $90.",
       "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum. Bands are measured from a Killeen home base.",
     ],
@@ -49,6 +49,7 @@ export const faqs: FaqItem[] = [
     home: true,
     question: "Where does the trailer park, and do you need our power?",
     paragraphs: [
+      "The truck and trailer need a driveway or a side street where they can legally park for the booking. Confirm that spot before the date. If parking will not work, call or text (254) 251-5219 and we will figure out another option.",
       "Plan on about 50–60 feet of level space for the tow vehicle and the trailer together, clear of low branches, with a way to pull out. Apartment offices and city parks need their own permission. A pavilion reservation is not automatically a yes for a trailer.",
       "The trailer brings a 13.5 kW generator. Do not plan on a bedroom outlet or a kitchen circuit. Food, drinks, and gum stay outside. The trailer is unwrapped. Magnets or a banner are fine. It does not wear a full wrap.",
     ],
@@ -71,11 +72,11 @@ export const faqs: FaqItem[] = [
     home: true,
     question: "Is there a military, teacher, or weekday discount?",
     paragraphs: [
-      "Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
-      "Weekday and weekend prices are already the two columns on Skirmish, Mission, Campaign, and the full days. This is not a Department of Defense program, and the site does not use official Army insignia.",
+      "Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
+      "Weekday and weekend prices are already the two columns on Skirmish, Mission, Campaign, and the full days.",
     ],
     href: "/military",
-    linkLabel: "Fort Cavazos and unit events",
+    linkLabel: "Fort Hood and unit events",
   },
   {
     id: "food",
@@ -91,7 +92,7 @@ export const faqs: FaqItem[] = [
     question: "What ages can play, and who picks the game ratings?",
     paragraphs: [
       "The room is built for up to 24 players. The host sets the rating limit, and the coach follows it. Say the limit when you book if younger kids will be in the mix with older ones.",
-      "Younger kids use the 8 tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
+      "Younger kids use the 8 eight-inch tablets for Roblox and Minecraft. A toddler zone is a $75 add-on if you want that setup called out on the booking.",
     ],
   },
   {
@@ -113,10 +114,10 @@ export const faqs: FaqItem[] = [
   },
   {
     id: "on-post",
-    question: "Can you come on Fort Cavazos?",
+    question: "Can you come on Fort Hood?",
     paragraphs: [
-      "On-post events are part of the offer: unit days, FRG gatherings, BOSS events, homecomings, and PCS farewells. The travel fee on this card is $0 when the pin is within 30 miles. Getting through the gate is not.",
-      "Installation access, a pass or a sponsor, and any MWR vendor steps have to be confirmed for the specific date. A booking on this site is not an endorsement by Fort Cavazos or the Department of Defense.",
+      "Driveway parties in the Killeen–Fort Hood area are the usual booking. The travel fee is $0 when the pin is within 30 miles, same as Killeen.",
+      "On-post is optional. If you want the trailer on the installation, you coordinate the sponsor, pass, or gate process, and any MWR steps for an official event. If that is uncertain, book a driveway off post or call and we will sort a pin that works.",
     ],
     href: "/military",
     linkLabel: "Military page",

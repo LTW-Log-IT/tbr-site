@@ -21,9 +21,9 @@ export const site = {
   url: "https://tbr.leadthewaylogistics.info",
   repo: "https://github.com/LTW-Log-IT/tbr-site",
   description:
-    "Climate-controlled mobile video game theater for up to 24 players. Birthdays, unit days, and group events in Killeen, Fort Cavazos, Temple, and Belton.",
+    "Climate-controlled mobile video game theater for up to 24 players. Birthdays, unit days, and group events in Killeen, Fort Hood, Temple, and Belton.",
   slogan: "The Party Shows Up Battle Ready.",
-  areaLine: "Killeen · Fort Cavazos · Temple · Belton",
+  areaLine: "Killeen · Fort Hood · Temple · Belton",
   /**
    * Digits only, country code included, no plus and no spaces.
    * Joe confirmed this line for every call and text CTA.
