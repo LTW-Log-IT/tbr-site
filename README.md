@@ -118,4 +118,4 @@ GitHub Pages on this domain is the locked target. If you ever move:
 | `/faq` | Full FAQ |
 | `/policies` | $100 deposit, Square links, driveway, liability. Cancellation and balance are blank until set. |
 
-Desktop header: logo, Packages, FAQ, and Book Now. Join TBR, contact, areas, and the other pages are in the footer. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).
+Desktop header: logo, Packages, FAQ, Join, and Book Now. Contact, areas, and the other pages are in the footer. Join TBR stays in the footer too. Instagram: [@Team.Battle.Ready](https://www.instagram.com/Team.Battle.Ready/) and [@TBR.B4TTL3](https://www.instagram.com/TBR.B4TTL3/).
