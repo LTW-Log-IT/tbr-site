@@ -170,7 +170,7 @@ export const discounts = [
   { id: "none", label: "No discount" },
   {
     id: "community",
-    label: "Military, first responder, or teacher — $25 off",
+    label: "Military, veteran, first responder, or teacher — $25 off once, ID",
   },
 ] as const;
 
@@ -184,8 +184,8 @@ export const startWindows = [
 ] as const;
 
 export const towns: Town[] = [
-  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Home base. Travel is free inside 30 miles." },
-  { id: "fort-hood", name: "Fort Hood", zoneId: "free", fee: 0, blurb: "Inside 30 miles, same as Killeen. Driveway bookings are the usual plan. On-post access is optional and arranged by the host." },
+  { id: "killeen", name: "Killeen", zoneId: "free", fee: 0, href: "/areas/killeen", blurb: "Stored in Killeen. Travel is free inside 30 miles." },
+  { id: "fort-hood", name: "Fort Hood", zoneId: "free", fee: 0, blurb: "Inside 30 miles, same as Killeen. Driveway bookings in the area." },
   { id: "harker-heights", name: "Harker Heights", zoneId: "free", fee: 0, blurb: "Next to Killeen. Free travel." },
   { id: "nolanville", name: "Nolanville", zoneId: "free", fee: 0, blurb: "Between Killeen and Belton. Free travel." },
   { id: "copperas-cove", name: "Copperas Cove", zoneId: "free", fee: 0, blurb: "West of Killeen, inside 30 miles." },
@@ -318,7 +318,7 @@ export function buildEstimate(input: {
 
   if (input.discount === "community") {
     lines.push({ label: "Military, first responder, or teacher", amount: -COMMUNITY_DISCOUNT });
-    notes.push("$25 off the package price. Travel, add-ons, and extra time stay full price. Bring an ID.");
+    notes.push("$25 off once with an ID. Discounts do not stack. Travel, add-ons, and extra time stay full price. Square charges the full package price. Call or text to apply the discount.");
   }
 
   const selected = new Set(input.addonIds);

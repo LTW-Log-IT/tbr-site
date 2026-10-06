@@ -7,24 +7,21 @@ import { groupPackage, partyPackages } from "../data/pricing";
 
 <BaseLayout
   title="Thank you for your service | Team Battle Ready"
-  description="Thank you for your service. $25 off for active duty, veterans, first responders, and teachers around Fort Hood and Killeen. Flat $25, once. Travel and add-ons stay full price."
+  description="Thank you for your service. $25 off once with an ID for active duty, veterans, first responders, and teachers around Fort Hood and Killeen. Discounts do not stack. Travel and add-ons stay full price."
 >
   <PageHero eyebrow="Fort Hood" title="Thank you for your service." crumb="Military">
     <p>
-      Discounts available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. It is a flat $25, once. Travel and add-ons stay full price. Invoice and PO are welcome.
+      Discounts available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. It is a flat $25, once. Discounts do not stack. Travel and add-ons stay full price. Invoice and PO are welcome. Square charges the full package price. Call or text to apply the $25.
     </p>
   </PageHero>
 
   <section class="section prose" style="padding-top: 0.5rem">
     <div class="wrap">
       <p>
-        The same party card covers a birthday, a unit day, an FRG event, a BOSS gathering, a homecoming, or a PCS farewell.
+        The same party card covers a backyard BBQ, a birthday, a game night, a family day, a homecoming, a PCS farewell, or an FRG / unit day.
       </p>
       <p>
         The travel fee for Fort Hood on this card is $0, same as Killeen, when the pin is within 30 miles. Most bookings are a driveway or a side street in the Killeen–Fort Hood area.
-      </p>
-      <p>
-        Getting the trailer onto the installation is optional, and it is the host’s step. If you want it on post, you line up a sponsor or a pass and whatever the gate asks that day. An official event may also have MWR vendor steps. If that is uncertain, book the driveway and call or text. A home booking does not depend on the gate.
       </p>
       <p>
         The room is 6 gaming stations. Each one has a gaming monitor, a gaming chair, and a console: Xbox Series S/X, PS5, or Nintendo Switch. Also about 4 Xbox, 3 PS5s, and 8 eight-inch tablets for Roblox and Minecraft, plus various games.
@@ -35,7 +32,7 @@ import { groupPackage, partyPackages } from "../data/pricing";
   <section class="section" style="padding-top: 0">
     <div class="wrap">
       <h2 class="metal">The same party card, named for the event</h2>
-      <p class="lede">Units and families book Skirmish, Mission, Campaign, or a full day. The hourly rate is not on this row.</p>
+      <p class="lede">Birthdays, BBQs, and family days book Skirmish, Mission, Campaign, or a full day. The hourly rate is not on this row.</p>
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3" style="margin-top: 1.25rem">
         {partyPackages.map((pkg) => <PackageCard pkg={pkg} />)}
       </div>
@@ -45,7 +42,7 @@ import { groupPackage, partyPackages } from "../data/pricing";
   <section class="section" style="padding-top: 0">
     <div class="wrap grid gap-4 md:grid-cols-3">
       <article class="panel">
-        <h2 class="metal" style="font-size: 1.8rem">Unit / FRG / BOSS</h2>
+        <h2 class="metal" style="font-size: 1.8rem">FRG / unit day</h2>
         <p class="muted" style="margin-top: 0.6rem">
           A Campaign is four hours at $549 on a weekday and $599 Friday–Sunday. A six- or eight-hour full day covers a longer family event. The $25 discount applies once. A verified unit with a purchase order can ask about the organization hourly rate. A home party cannot.
         </p>
@@ -53,7 +50,7 @@ import { groupPackage, partyPackages } from "../data/pricing";
       <article class="panel">
         <h2 class="metal" style="font-size: 1.8rem">Homecoming</h2>
         <p class="muted" style="margin-top: 0.6rem">
-          Most homecomings fit a Mission or a Campaign. Add a tournament pack or yard games if you want them. They are not included in the package price.
+          A homecoming, a family day, or a game night usually fits a Mission or a Campaign. A backyard BBQ often fits a Skirmish. Add a tournament pack or yard games if you want them. They are not included in the package price.
         </p>
       </article>
       <article class="panel">

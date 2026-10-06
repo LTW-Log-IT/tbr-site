@@ -39,7 +39,7 @@ export const faqs: FaqItem[] = [
     paragraphs: [
       "Not when the pin is within 30 miles. Killeen, Fort Hood, Harker Heights, Nolanville, Copperas Cove, Belton, and Kempner are free on this card.",
       "Temple, Salado, Gatesville, Lampasas, Florence, Jarrell, and Troy are the 31–45 mile band at $50. A pin at 30 miles or under is still free. Georgetown, Moody, and Burnet are 46–60 miles at $90.",
-      "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum. Bands are measured from a Killeen home base.",
+      "Waco, Round Rock, Cedar Park, Leander, and Hutto sit past 60 miles. Past 60 is a quote. There is no published minimum. Bands are measured from Killeen.",
     ],
     href: "/areas",
     linkLabel: "Look up a town",
@@ -72,11 +72,11 @@ export const faqs: FaqItem[] = [
     home: true,
     question: "Is there a military, teacher, or weekday discount?",
     paragraphs: [
-      "Thank you for your service. Discounts are available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID or a unit email. That is a flat $25, once. It does not come off travel, add-ons, or extra time.",
+      "Thank you for your service. Discounts are available for active duty and veterans. Military, first responders, and teachers get $25 off the package price, or off the weekday hourly total, with an ID. That is a flat $25, once. Discounts do not stack, even if you qualify in more than one category. It does not come off travel, add-ons, or extra time. Square charges the full package price. Call or text to apply the $25.",
       "Weekday and weekend prices are already the two columns on Skirmish, Mission, Campaign, and the full days.",
     ],
     href: "/military",
-    linkLabel: "Fort Hood and unit events",
+    linkLabel: "Military discount",
   },
   {
     id: "food",
@@ -111,16 +111,6 @@ export const faqs: FaqItem[] = [
     ],
     href: "/packages",
     linkLabel: "Compare the packages",
-  },
-  {
-    id: "on-post",
-    question: "Can you come on Fort Hood?",
-    paragraphs: [
-      "Driveway parties in the Killeen–Fort Hood area are the usual booking. The travel fee is $0 when the pin is within 30 miles, same as Killeen.",
-      "On-post is optional. If you want the trailer on the installation, you coordinate the sponsor, pass, or gate process, and any MWR steps for an official event. If that is uncertain, book a driveway off post or call and we will sort a pin that works.",
-    ],
-    href: "/military",
-    linkLabel: "Military page",
   },
   {
     id: "invoice",

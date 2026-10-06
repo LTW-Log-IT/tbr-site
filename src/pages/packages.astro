@@ -102,7 +102,7 @@ const matrix = [
             Friday, Saturday, and Sunday stay on Skirmish, Mission, Campaign, or a full day.
           </p>
           <p class="muted" style="margin-top: 0.8rem">
-            The {money(COMMUNITY_DISCOUNT)} military, first responder, and teacher discount comes off the hourly total once.
+            The {money(COMMUNITY_DISCOUNT)} military, veteran, first responder, and teacher discount comes off the hourly total once, with an ID. Discounts do not stack.
             Travel and add-ons stay full price. The quote still adds 8.25% unless an exemption certificate is on file.
           </p>
           <p style="margin-top: 1rem"><CallToBook /></p>
@@ -146,7 +146,7 @@ const matrix = [
 
   <section class="section" style="padding-top: 0" aria-labelledby="travel-title">
     <div class="wrap">
-      <h2 id="travel-title" class="metal">Travel from a Killeen base</h2>
+      <h2 id="travel-title" class="metal">Travel from Killeen</h2>
       <p class="lede">
         One-way distance. The fee is flat for the trip. Free within 30 miles, {money(50)} for 31–45, {money(90)} for 46–60. Past 60 miles is a quote.
       </p>
@@ -174,7 +174,7 @@ const matrix = [
         </table>
       </div>
       <p class="muted" style="margin-top: 0.8rem">
-        Fort Hood is inside the free radius, same as Killeen. Most bookings are a driveway. On-post access is optional and arranged by the host.
+        Fort Hood is inside the free radius, same as Killeen. Most bookings are a driveway.
         <a class="inline-link" href="/areas"> Town-by-town list.</a>
       </p>
     </div>
@@ -185,9 +185,10 @@ const matrix = [
       <div class="panel">
         <h2 id="discount-title" class="metal">Discount</h2>
         <ul class="checks" style="margin-top: 0.8rem">
-          <li>Military, first responder, or teacher: {money(COMMUNITY_DISCOUNT)} off the package or the weekday hourly total. ID or unit email.</li>
+          <li>Active duty, veteran, first responder, or teacher: {money(COMMUNITY_DISCOUNT)} off the package or the weekday hourly total. ID only.</li>
+          <li>Discounts do not stack. One {money(COMMUNITY_DISCOUNT)} off per booking.</li>
         </ul>
-        <p class="muted" style="margin-top: 0.8rem">It applies once. Travel, add-ons, and extra time stay full price. Prices still exclude tax.</p>
+        <p class="muted" style="margin-top: 0.8rem">Travel, add-ons, and extra time stay full price. Prices still exclude tax. Square charges the full package price. Call or text to apply the {money(COMMUNITY_DISCOUNT)}.</p>
       </div>
       <div class="panel">
         <h2 class="metal">Deposit and tax</h2>

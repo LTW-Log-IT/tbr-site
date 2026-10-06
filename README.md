@@ -63,17 +63,17 @@ Edit these before the domain is advertised:
 3. **Rate card sign-off** — prices, zones, discounts, and policies live in `src/data/pricing.ts`. They are the launch draft. Change them there; the pages read that file.
 4. **Remaining measurements** — the room is 6 gaming stations (monitor, chair, and a console: Xbox Series S/X, PS5, or Switch), about 4 Xbox, 3 PS5s, 8 eight-inch tablets, and various games. Generator output is 13.5 kW. Model, decibels, station-monitor size, and the measured parking footprint are still open.
 5. **Photos** — trailer pictures are not in yet. Hero, packages, and The Rig use branded “Trailer photos coming soon” frames. Put real files in `public/photos/` after the event and replace those frames. No stock gamers. No wrapped-trailer art. No invented trailer photos. Magnets or a banner are fine. Drop the launch flyer at `public/brand/tbr-flyer-launch.png` and the home page will show it. That flyer is the color system.
-6. **Storage address** — travel zones assume a Killeen base. Recompute `/areas` if the lot is somewhere else.
+6. **Storage address** — travel zones assume the trailer is stored in Killeen. Recompute `/areas` if the lot is somewhere else.
 7. **Bio** — replace the About stub with facts you want public. No home address, no gate codes, no minors’ last names.
 8. **Google Business Profile** — add the real link when it exists. Do not type a star rating or review count.
 9. **Insurance and background checks** — do not claim “fully insured” or “background-checked” until those are done. Schools and units will ask for a COI and a W-9.
 10. **Attorney** — have a Texas attorney read `/policies` before the first deposit.
 11. **Balance** — the $100 deposit can be paid with the Square deposit link or arranged on the phone. Do not add a card-on-file charge.
 12. **Sales tax** — quotes add 8.25%. Confirm amusement-tax treatment and the permit with the Texas Comptroller. A tax-exempt booking needs a Texas exemption certificate.
-13. **Fort Hood** — driveway bookings in the Killeen–Fort Hood area are the public offer. On-post access is optional and arranged by the host. Do not publish gate steps you have not confirmed.
+13. **Fort Hood** — use the name only as a travel area ($0 inside 30 miles), same as Killeen. Do not explain installation access, gates, passes, or MWR. Bookings on the site are driveway and residential.
 14. **Past 60 miles** — travel is a quote. Do not invent a fee.
 15. **No VR** — do not add a headset line. The live room is consoles and tablets.
-16. **Discount** — military, first responders, and teachers get a flat $25 off the package or weekday hourly total. It does not come off travel, add-ons, or extra time.
+16. **Discount** — active duty, veterans, first responders, and teachers get a flat $25 off the package or weekday hourly total, once, with an ID. Discounts do not stack. It does not come off travel, add-ons, or extra time. Square links stay the full package price. Call or text to apply the $25.
 
 Canonical prices live in `src/data/pricing.ts`:
 

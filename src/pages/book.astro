@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CallToBook from "../components/CallToBook.astro";
 import PageHero from "../components/PageHero.astro";
 import { phoneLabel, site, squarePackageHref, textHref } from "../config/site";
-import { addons, DEPOSIT, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
+import { addons, COMMUNITY_DISCOUNT, DEPOSIT, discounts, groupPackage, money, partyPackages, startWindows, towns } from "../data/pricing";
 
 const squarePackages = partyPackages.flatMap((pkg) => {
   const rows: { href: string; name: string; when: string; price: number }[] = [];
@@ -39,7 +39,16 @@ const squarePackages = partyPackages.flatMap((pkg) => {
       <p class="lede">
         Call or text {phoneLabel()} to hold the date. These links take the deposit or a package price and open in a new tab.
         Listed prices exclude tax. Square tax may be configured separately.
+        These Square buttons charge the full package price. With an ID, active duty, veterans, first responders, and teachers get {money(COMMUNITY_DISCOUNT)} off once. Discounts do not stack. Travel and add-ons stay full price. Call or text {phoneLabel()} to apply the discount if Square cannot adjust it.
       </p>
+      <ul class="checks" style="margin-top: 1rem">
+        {partyPackages.filter((pkg) => pkg.weekendPrice != null).map((pkg) => (
+          <li>
+            {pkg.name} {pkg.timeLabel}: {money(pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money(pkg.weekdayPrice - COMMUNITY_DISCOUNT)} Mon–Thu
+            · {money(pkg.weekendPrice ?? pkg.weekdayPrice)} − {money(COMMUNITY_DISCOUNT)} = {money((pkg.weekendPrice ?? pkg.weekdayPrice) - COMMUNITY_DISCOUNT)} Fri–Sun
+          </li>
+        ))}
+      </ul>
       <p style="margin-top: 1.25rem">
         <a class="btn btn-primary" href={site.squareLinks.deposit} target="_blank" rel="noopener noreferrer">
           Pay deposit · {money(DEPOSIT)}
