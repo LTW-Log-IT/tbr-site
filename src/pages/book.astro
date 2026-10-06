@@ -76,9 +76,19 @@ const squarePackages = partyPackages.flatMap((pkg) => {
 
   <section class="section" style="padding-top: 0.5rem" aria-labelledby="request-title">
     <div class="wrap grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-      <form id="request-date" class="panel grid gap-4">
+      <form
+        id="request-date"
+        class="lead-form panel grid gap-4"
+        data-lead="rental"
+        data-endpoint={site.forms.rental}
+        data-email={site.contactEmail}
+        data-sms={site.phoneE164}
+      >
+        <p class="eyebrow">Rental interest</p>
         <h2 id="request-title" class="metal" style="font-size: 2rem">Request a date</h2>
-        <p class="muted">This does not hold the trailer. {phoneLabel()} does. We’ll text you back.</p>
+        <p class="muted">This does not hold the trailer. {phoneLabel()} does. Joining the community is a <a class="inline-link" href="/join">separate form</a>.</p>
+        <input type="hidden" name="form_id" value="rental" />
+        <input type="hidden" name="_subject" value="TBR trailer rental interest" />
         <label>
           Name
           <input id="req-name" name="name" autocomplete="name" required />
@@ -86,38 +96,57 @@ const squarePackages = partyPackages.flatMap((pkg) => {
         <div class="grid gap-4 md:grid-cols-2">
           <label>
             Phone
-            <input id="req-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+            <input id="req-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
           </label>
           <label>
             Email
             <input id="req-email" name="email" type="email" autocomplete="email" />
           </label>
         </div>
-        <p class="muted">Phone or email. One of them is enough.</p>
         <div class="grid gap-4 md:grid-cols-2">
           <label>
             Preferred date
-            <input id="req-date" name="date" type="date" />
+            <input id="req-date" name="preferred_date" type="date" />
           </label>
           <label>
-            Package
-            <select id="req-pkg" name="package">
-              <option value="Skirmish">Skirmish</option>
-              <option value="Mission" selected>Mission</option>
-              <option value="Campaign">Campaign</option>
-              <option value="Other">Other</option>
+            Preferred time
+            <select id="req-time" name="preferred_time">
+              <option value="">Not sure</option>
+              {startWindows.map((window) => <option value={window.label}>{window.label}</option>)}
             </select>
           </label>
         </div>
         <label>
-          Notes
-          <textarea id="req-notes" name="notes" placeholder="Town, headcount, full day, or a verified organization"></textarea>
+          Package interest
+          <select id="req-pkg" name="package">
+            <option value="Not sure">Not sure yet</option>
+            {partyPackages.map((pkg) => <option value={pkg.id}>{pkg.name} · {pkg.timeLabel}</option>)}
+          </select>
         </label>
-        <button class="btn btn-primary" type="submit">Send this request</button>
-        <p class="status" id="request-status" role="status"></p>
-        <label id="request-preview-label" hidden>
+        <label>
+          City
+          <select id="req-city" name="city">
+            {towns.map((town) => <option value={town.id}>{town.name}</option>)}
+            <option value="outside">Outside the usual area</option>
+          </select>
+        </label>
+        <label>
+          Driveway parking
+          <select name="driveway">
+            <option value="Not sure yet">Not sure yet</option>
+            <option value="Yes, driveway or side street can fit the truck and trailer">Yes, driveway or side street can fit the truck and trailer</option>
+            <option value="No, we need another option">No, we need another option</option>
+          </select>
+        </label>
+        <label>
+          Notes
+          <textarea id="req-notes" name="notes" placeholder="Ages, a second date, or a school or church group"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">Send rental interest</button>
+        <p class="status" data-lead-status role="status"></p>
+        <label data-lead-preview-label hidden>
           Message to copy
-          <textarea id="request-preview" readonly></textarea>
+          <textarea data-lead-preview readonly></textarea>
         </label>
       </form>
       <aside class="panel">
@@ -355,73 +384,24 @@ const squarePackages = partyPackages.flatMap((pkg) => {
   }
 </script>
 
-<script define:vars={{ contactEmail: site.contactEmail, smsTo: site.phoneE164 }}>
-  const form = document.querySelector("#request-date");
-  const status = document.querySelector("#request-status");
-  const preview = document.querySelector("#request-preview");
-  const previewLabel = document.querySelector("#request-preview-label");
-  const nameInput = document.querySelector("#req-name");
-  const phoneInput = document.querySelector("#req-phone");
-  const emailInput = document.querySelector("#req-email");
-  const dateInput = document.querySelector("#req-date");
+<script>
   const pkgInput = document.querySelector("#req-pkg");
+  const dateInput = document.querySelector("#req-date");
+  const cityInput = document.querySelector("#req-city");
   const notesInput = document.querySelector("#req-notes");
-
   if (
-    form instanceof HTMLFormElement &&
-    status instanceof HTMLElement &&
-    preview instanceof HTMLTextAreaElement &&
-    previewLabel instanceof HTMLElement &&
-    nameInput instanceof HTMLInputElement &&
-    phoneInput instanceof HTMLInputElement &&
-    emailInput instanceof HTMLInputElement &&
-    dateInput instanceof HTMLInputElement &&
     pkgInput instanceof HTMLSelectElement &&
+    dateInput instanceof HTMLInputElement &&
+    cityInput instanceof HTMLSelectElement &&
     notesInput instanceof HTMLTextAreaElement
   ) {
     const params = new URLSearchParams(window.location.search);
-    const named = { skirmish: "Skirmish", mission: "Mission", campaign: "Campaign" };
     const pkg = params.get("pkg") ?? "";
-    if (pkg && pkg in named) pkgInput.value = named[pkg];
-    else if (pkg) pkgInput.value = "Other";
+    if (pkg && [...pkgInput.options].some((option) => option.value === pkg)) pkgInput.value = pkg;
     const dateValue = params.get("date");
     if (dateValue && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) dateInput.value = dateValue;
-    const town = params.get("town");
-    if (town && !notesInput.value) {
-      const extra = pkg && !(pkg in named) ? `${pkg} · ${town}` : town;
-      notesInput.value = extra;
-    }
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const phone = phoneInput.value.trim();
-      const email = emailInput.value.trim();
-      if (!phone && !email) {
-        status.textContent = "Add a phone number or an email so Joe can reach you. Or call (254) 251-5219.";
-        phoneInput.focus();
-        return;
-      }
-      const lines = [
-        "Team Battle Ready date request",
-        `Name: ${nameInput.value.trim()}`,
-        phone ? `Phone: ${phone}` : "",
-        email ? `Email: ${email}` : "",
-        dateInput.value ? `Preferred date: ${dateInput.value}` : "Preferred date: not chosen",
-        `Package: ${pkgInput.value}`,
-        notesInput.value.trim() ? `Notes: ${notesInput.value.trim()}` : "",
-        "Please call or text me back. The date is not held until we talk.",
-      ].filter(Boolean);
-      const body = lines.join("\n");
-      previewLabel.hidden = false;
-      preview.value = body;
-      if (contactEmail) {
-        const subject = encodeURIComponent("Team Battle Ready date request");
-        window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
-        status.textContent = "Your email app should open with this request. Joe will call or text you back. If it does not, call (254) 251-5219.";
-        return;
-      }
-      window.location.href = `sms:+${smsTo}?body=${encodeURIComponent(body)}`;
-      status.textContent = "Your text app should open with this request. Joe will call or text you back. If it does not open, call (254) 251-5219.";
-    });
+    const town = params.get("town") ?? "";
+    if (town && [...cityInput.options].some((option) => option.value === town)) cityInput.value = town;
+    else if (town && !notesInput.value) notesInput.value = town;
   }
 </script>

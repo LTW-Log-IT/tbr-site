@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import { site } from "../config/site";
+
+const interests = ["Tournaments", "Events", "Casual play", "Giveaways"];
+const cities = ["Killeen", "Copperas Cove", "Harker Heights", "Nolanville", "Other"];
+---
+
+<BaseLayout
+  title="Join TBR | Team Battle Ready Gaming Community"
+  description="Join the Team Battle Ready gaming community for tournaments, events, member discounts, and giveaways. This list does not book the trailer."
+>
+  <PageHero eyebrow="Gaming community" title="Join TBR." crumb="Join TBR">
+    <p>
+      Tournaments, gaming events, member discounts, and free giveaways. Play together, compete, and bring the family. {site.tagline}.
+    </p>
+  </PageHero>
+
+  <section class="section" style="padding-top: 0.5rem">
+    <div class="wrap grid gap-4 md:grid-cols-3">
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.7rem">Tournaments and events</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          Scheduled play for people who want a bracket, and hangouts for people who just want a game night.
+        </p>
+      </article>
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.7rem">Member discounts</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          Community members hear about discounts first. A trailer booking is separate and still uses the published package price.
+        </p>
+      </article>
+      <article class="panel">
+        <h2 class="metal" style="font-size: 1.7rem">Giveaways</h2>
+        <p class="muted" style="margin-top: 0.6rem">
+          Free giveaways go to people on this list. Follow {site.instagram[0].handle} for the announcements.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0">
+    <div class="wrap grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+      <div class="prose">
+        <h2>Play together</h2>
+        <p>
+          This page is the Team Battle Ready gaming community. It is for people who want to play, compete, and show up with family. It is not a trailer rental request.
+        </p>
+        <p>
+          {site.constructionNote} To ask about a date for the trailer, use <a href="/book">Request a date</a> or <a href="/contact">Contact</a>.
+        </p>
+        <p class="poster-sponsor">{site.tagline}</p>
+      </div>
+      <form
+        id="join-tbr"
+        class="lead-form panel grid gap-4"
+        data-lead="join"
+        data-endpoint={site.forms.join}
+        data-email={site.contactEmail}
+        data-sms={site.phoneE164}
+      >
+        <p class="eyebrow">Community list</p>
+        <h2 class="metal" style="font-size: 1.8rem">Join the community</h2>
+        <p class="muted">This form does not rent the trailer.</p>
+        <input type="hidden" name="form_id" value="join" />
+        <input type="hidden" name="_subject" value="TBR community join" />
+        <label>
+          Name
+          <input name="name" autocomplete="name" required />
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Phone
+            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" />
+          </label>
+        </div>
+        <label>
+          Instagram handle
+          <input name="instagram" placeholder="@name" autocomplete="off" />
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Xbox gamertag
+            <input name="xbox_gamertag" autocomplete="off" />
+          </label>
+          <label>
+            Fortnite name
+            <input name="fortnite" autocomplete="off" />
+          </label>
+        </div>
+        <label>
+          Other tags
+          <input name="other_tags" placeholder="PSN, Switch, Discord" autocomplete="off" />
+        </label>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Age range
+            <select name="age_range">
+              <option value="">Prefer not to say</option>
+              <option>Under 13</option>
+              <option>13–17</option>
+              <option>18+</option>
+            </select>
+          </label>
+          <label>
+            City
+            <select name="city">
+              <option value="">Not sure</option>
+              {cities.map((city) => <option value={city}>{city}</option>)}
+            </select>
+          </label>
+        </div>
+        <label>
+          Guardian note
+          <textarea name="guardian_note" placeholder="If a minor is joining, a parent or guardian can leave a name and phone here."></textarea>
+        </label>
+        <fieldset class="checks-field">
+          <legend>Interests</legend>
+          {interests.map((interest) => (
+            <label class="checkline">
+              <input type="checkbox" name="interests" value={interest} />
+              <span>{interest}</span>
+            </label>
+          ))}
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Join the community</button>
+        <p class="status" data-lead-status role="status"></p>
+        <label data-lead-preview-label hidden>
+          Message to copy
+          <textarea data-lead-preview readonly></textarea>
+        </label>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

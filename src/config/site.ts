@@ -40,6 +40,15 @@ export const site = {
   phoneDisplay: "(254) 251-5219",
   /** Inbox for quote mail. Leave blank until the mailbox exists. */
   contactEmail: "",
+  /**
+   * Optional Formspree endpoints. Leave blank until Joe creates two forms.
+   * Rental and community must be different IDs so the lists stay separate.
+   * Example: "https://formspree.io/f/abcdwxyz"
+   */
+  forms: {
+    rental: "",
+    join: "",
+  },
   /** Unused. There is no booking embed. Payment links are squareLinks. */
   squareBookingUrl: SQUARE_BOOKING_URL,
   squareLinks: {
@@ -71,6 +80,7 @@ export const nav = [
   { href: "/areas", label: "Areas" },
   { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
+  { href: "/join", label: "Join TBR" },
 ] as const;
 
 export function phoneReady(): boolean {

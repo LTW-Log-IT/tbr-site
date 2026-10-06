@@ -2,16 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/PageHero.astro";
 import { phoneLabel, site } from "../config/site";
-import { packages, towns } from "../data/pricing";
+import { partyPackages, startWindows, towns } from "../data/pricing";
 ---
 
 <BaseLayout
-  title="Contact Team Battle Ready | Killeen Gaming Trailer"
-  description="Text or call (254) 251-5219, or send a quote request for the Team Battle Ready gaming trailer in Killeen, Copperas Cove, Harker Heights, and Nolanville."
+  title="Rent the trailer | Team Battle Ready"
+  description="Call or text (254) 251-5219 to rent the Team Battle Ready gaming trailer. The contact form is for rental interest only."
 >
-  <PageHero eyebrow="Contact" title="Text, call, or send the date." crumb="Contact">
+  <PageHero eyebrow="Rent the trailer" title="Call, text, or send a rental request." crumb="Contact">
     <p>
-      Call or text (254) 251-5219 to book. <a href="/book">Request a date</a> if you would rather send the details. Schools and other groups can use the form. Nothing emails until an inbox exists.
+      Call or text {phoneLabel()} to hold a date. The form is rental interest only. It does not hold the trailer, and it is not the community list. {site.constructionNote} Community signups go to <a href="/join">Join TBR</a>.
     </p>
   </PageHero>
 
@@ -48,94 +48,79 @@ import { packages, towns } from "../data/pricing";
         )}
       </div>
 
-      <form id="quote-form" class="panel grid gap-4">
-        <h2 class="metal" style="font-size: 1.8rem">Quote request</h2>
+      <form
+        id="rental-interest"
+        class="lead-form panel grid gap-4"
+        data-lead="rental"
+        data-endpoint={site.forms.rental}
+        data-email={site.contactEmail}
+        data-sms={site.phoneE164}
+      >
+        <p class="eyebrow">Rental interest</p>
+        <h2 class="metal" style="font-size: 1.8rem">Rent the trailer</h2>
+        <p class="muted">Booking interest only. Call or text still holds the date. {site.constructionNote}</p>
+        <input type="hidden" name="form_id" value="rental" />
+        <input type="hidden" name="_subject" value="TBR trailer rental interest" />
         <label>
           Name
           <input name="name" autocomplete="name" required />
         </label>
-        <label>
-          Email
-          <input name="email" type="email" autocomplete="email" required />
-        </label>
-        <label>
-          Phone
-          <input name="phone" type="tel" autocomplete="tel" />
-        </label>
-        <label>
-          Organization
-          <input name="org" autocomplete="organization" />
-        </label>
         <div class="grid gap-4 md:grid-cols-2">
           <label>
-            Town
-            <select name="town">
-              {towns.map((town) => <option value={town.name}>{town.name}</option>)}
-              <option value="Outside the usual area">Outside the usual area</option>
-            </select>
+            Phone
+            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required />
           </label>
           <label>
-            Headcount
-            <input name="headcount" inputmode="numeric" />
+            Email
+            <input name="email" type="email" autocomplete="email" />
+          </label>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          <label>
+            Preferred date
+            <input name="preferred_date" type="date" />
+          </label>
+          <label>
+            Preferred time
+            <select name="preferred_time">
+              <option value="">Not sure</option>
+              {startWindows.map((window) => <option value={window.label}>{window.label}</option>)}
+            </select>
           </label>
         </div>
         <label>
-          Date options
-          <input name="dates" placeholder="Two or three dates if you have them" />
-        </label>
-        <label>
-          Package
-          <select name="pkg">
+          Package interest
+          <select name="package">
             <option value="Not sure">Not sure yet</option>
-            {packages.map((pkg) => <option value={`${pkg.name} ${pkg.timeLabel}`}>{pkg.name} · {pkg.timeLabel}</option>)}
+            {partyPackages.map((pkg) => <option value={`${pkg.name} ${pkg.timeLabel}`}>{pkg.name} · {pkg.timeLabel}</option>)}
           </select>
         </label>
         <label>
-          Tax-exempt certificate?
-          <select name="tax">
-            <option>Not sure</option>
-            <option>Yes, we can send it</option>
-            <option>No</option>
+          City
+          <select name="city">
+            {towns.map((town) => <option value={town.name}>{town.name}</option>)}
+            <option value="Outside the usual area">Outside the usual area</option>
+          </select>
+        </label>
+        <label>
+          Driveway parking
+          <select name="driveway">
+            <option value="Not sure yet">Not sure yet</option>
+            <option value="Yes, driveway or side street can fit the truck and trailer">Yes, driveway or side street can fit the truck and trailer</option>
+            <option value="No, we need another option">No, we need another option</option>
           </select>
         </label>
         <label>
           Notes
-          <textarea name="notes" placeholder="Parking, ages, headcount"></textarea>
+          <textarea name="notes" placeholder="Ages, a second date, or a school or church group"></textarea>
         </label>
-        <button class="btn btn-primary" type="submit">Prepare this quote</button>
-        <p class="status" id="quote-status" role="status"></p>
-        <label id="quote-preview-label" hidden>
+        <button class="btn btn-primary" type="submit">Send rental interest</button>
+        <p class="status" data-lead-status role="status"></p>
+        <label data-lead-preview-label hidden>
           Message to copy
-          <textarea id="quote-preview" readonly></textarea>
+          <textarea data-lead-preview readonly></textarea>
         </label>
       </form>
     </div>
   </section>
 </BaseLayout>
-
-<script define:vars={{ contactEmail: site.contactEmail }}>
-  const form = document.querySelector("#quote-form");
-  const status = document.querySelector("#quote-status");
-  const preview = document.querySelector("#quote-preview");
-  const previewLabel = document.querySelector("#quote-preview-label");
-  if (form instanceof HTMLFormElement && status && preview instanceof HTMLTextAreaElement && previewLabel instanceof HTMLElement) {
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const lines = [];
-      for (const [key, value] of data.entries()) {
-        if (typeof value === "string" && value.trim()) lines.push(`${key}: ${value.trim()}`);
-      }
-      const body = lines.join("\n");
-      previewLabel.hidden = false;
-      preview.value = body;
-      if (!contactEmail) {
-        status.textContent = "This message was not emailed. Call or text (254) 251-5219. The note is in the box if you want to copy it.";
-        return;
-      }
-      const subject = encodeURIComponent("Team Battle Ready quote");
-      window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
-      status.textContent = "Your email app should open with this quote. If it does not, copy the box.";
-    });
-  }
-</script>
