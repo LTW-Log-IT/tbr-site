@@ -46,7 +46,7 @@ const flyerPerks = [
           <ul class="poster-values">
             {site.values.map((value) => <li>{value}</li>)}
           </ul>
-          <p class="poster-sponsor">Flyer sponsor · {site.sponsor}</p>
+          <p class="poster-sponsor">{site.tagline}</p>
         </div>
         <div class="panel" style="margin-top: 0.8rem">
           <h2 class="metal" style="font-size: 1.7rem">From the launch flyer</h2>
@@ -58,10 +58,7 @@ const flyerPerks = [
       </div>
     </div>
     <div class="wrap prose" style="margin-top: 2rem">
-      <h2>Sponsor line</h2>
-      <p>
-        The launch flyer credits one sponsor: {site.sponsor}. This site does not add co-sponsors, trophies, or certifications that are not in writing.
-      </p>
+      <h2>Find the crew</h2>
       <p>
         Instagram: {site.instagram.map((account, index) => (
           <>

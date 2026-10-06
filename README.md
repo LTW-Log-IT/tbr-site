@@ -2,7 +2,7 @@
 
 Static marketing site for **Team Battle Ready** — a Central Texas car club and a mobile gaming trailer serving Killeen, Fort Hood, Belton, and the towns on the travel card.
 
-Visual system: the launch flyer. Deep black and charcoal stage, electric cyan and ice blue call-to-action bars, white and metallic silver type. The mark is Joe’s **B4TTL3** brush logo: `public/brand/b4ttl3-logo-transparent.png` on the header and other light-on-dark chrome, and `public/brand/b4ttl3-logo.png` on dark panels. The values strip is **Drive · Build · Compete · Represent**. **Play · Connect · Build · Belong** can stay in body copy. No invented sponsor besides **Hakai No Kamigami**. The trailer is unwrapped. Magnets or a banner are fine. Do not show a wrap.
+Visual system: the launch flyer. Deep black and charcoal stage, electric cyan and ice blue call-to-action bars, white and metallic silver type. The mark is Joe’s **B4TTL3** brush logo: `public/brand/b4ttl3-logo-transparent.png` on the header and other light-on-dark chrome, and `public/brand/b4ttl3-logo.png` on dark panels. The public tagline is **Play · Connect · Build · Belong**. Do not name a flyer sponsor on the site. The trailer is unwrapped. Magnets or a banner are fine. Do not show a wrap.
 
 Soft launch books by phone: call or text **(254) 251-5219**. `/book` can also open a text or email with the request. A date is not held until Joe confirms it. Open measurements stay in this README. Do not put them on the public pages.
 

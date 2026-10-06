@@ -23,6 +23,7 @@ export const site = {
   description:
     "Climate-controlled mobile video game theater for up to 24 players. Birthdays, unit days, and group events in Killeen, Fort Hood, Temple, and Belton.",
   slogan: "The Party Shows Up Battle Ready.",
+  tagline: "Play · Connect · Build · Belong",
   areaLine: "Killeen · Fort Hood · Temple · Belton",
   /**
    * Digits only, country code included, no plus and no spaces.
@@ -54,8 +55,7 @@ export const site = {
       href: "https://instagram.com/TBR.B4TTL3",
     },
   ],
-  sponsor: "Hakai No Kamigami",
-  values: ["Drive.", "Build.", "Compete.", "Represent."],
+  values: ["Play.", "Connect.", "Build.", "Belong."],
 } as const;
 
 export const nav = [
