@@ -19,18 +19,18 @@ import { partyPackages, startWindows, towns } from "../data/pricing";
     <div class="wrap grid gap-6 lg:grid-cols-2">
       <div class="grid gap-4">
         <article class="panel" id="text">
-          <h2 class="metal" style="font-size: 1.8rem">Text</h2>
+          <h2 class="metal card-title">Text</h2>
           <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`sms:+${site.phoneE164}`}>Text {phoneLabel()}</a></p>
           <p class="muted" style="margin-top: 0.7rem">
             Copy if you need it: “Hi Team Battle Ready — I want to check a date for a gaming trailer in [town]. Package: [Skirmish / Mission / Campaign / 6-hour / 8-hour].”
           </p>
         </article>
         <article class="panel" id="call">
-          <h2 class="metal" style="font-size: 1.8rem">Call</h2>
+          <h2 class="metal card-title">Call</h2>
           <p style="margin-top: 0.7rem"><a class="btn btn-primary" href={`tel:+${site.phoneE164}`}>Call {phoneLabel()}</a></p>
         </article>
         <article class="panel" id="instagram">
-          <h2 class="metal" style="font-size: 1.8rem">Instagram</h2>
+          <h2 class="metal card-title">Instagram</h2>
           <p style="margin-top: 0.7rem">
             <a class="btn btn-primary" href={site.instagram[0].href} rel="noopener noreferrer">{site.instagram[0].handle}</a>
           </p>
@@ -40,7 +40,7 @@ import { partyPackages, startWindows, towns } from "../data/pricing";
         </article>
         {site.contactEmail && (
           <article class="panel" id="email">
-            <h2 class="metal" style="font-size: 1.8rem">Email</h2>
+            <h2 class="metal card-title">Email</h2>
             <p class="muted" style="margin-top: 0.7rem">
               <a class="inline-link" href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
             </p>
@@ -57,7 +57,7 @@ import { partyPackages, startWindows, towns } from "../data/pricing";
         data-sms={site.phoneE164}
       >
         <p class="eyebrow">Rental interest</p>
-        <h2 class="metal" style="font-size: 1.8rem">Rent the trailer</h2>
+        <h2 class="metal card-title">Rent the trailer</h2>
         <p class="muted">Booking interest only. Call or text still holds the date. {site.constructionNote}</p>
         <input type="hidden" name="form_id" value="rental" />
         <input type="hidden" name="_subject" value="TBR trailer rental interest" />

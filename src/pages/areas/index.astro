@@ -51,7 +51,7 @@ import { SERVICE_AREA_NOTE, feeLabel, towns, zoneFor, zones } from "../../data/p
         return (
           <article class="panel" id={town.id}>
             <p class="eyebrow">{zone.name} · {feeLabel(town.fee)}</p>
-            <h2 class="metal" style="font-size: 2rem">{town.name}</h2>
+            <h2 class="metal card-title">{town.name}</h2>
             <p class="muted" style="margin-top: 0.5rem">{town.blurb}</p>
             {town.href && (
               <p style="margin-top: 0.8rem">
