@@ -1,0 +1,42 @@
+The typography work is done and builds green, but it is **not committed or pushed**: git has no author identity on this machine, and supplying one was denied by the session's permission mode. There is no commit SHA yet.
+
+The changes were already staged on local `claude/typography` (branched from `origin/main`) by an earlier session. This session I reviewed that diff, re-ran the checks, and retried the commit. `main` and `gh-pages` were not touched.
+
+To finish, run this in the repo (identity copied from the existing commits):
+
+```
+git config user.name "Joe Bonilla"
+git config user.email "joebonilla53@users.noreply.github.com"
+git commit -m "Apply a consistent type scale and fix heading hierarchy"
+git push -u origin claude/typography
+```
+
+## Build result
+- **`npm ci`**: ok, 0 vulnerabilities.
+- **`npm run build`**: ok, 17 pages. It prints one warning, that `/areas/killeen` is defined both as its own page and by `/areas/[city]`.
+- **`node scripts/check-pricing.ts`**: "Pricing checks passed".
+- **Not checked in a browser**: sizes were verified by reading the CSS, not by looking at rendered pages.
+
+## What changed
+- **Type scale**: `src/styles/global.css` now has `clamp()`-based custom properties in `:root`, and `h1`–`h4` take their size from them globally.
+
+  | Level | Size |
+  |---|---|
+  | Hero H1 | 2.75–4.75rem |
+  | Page H1 | 2.375–3.5rem |
+  | Section H2 | 2–2.75rem |
+  | Card/step H3 | 1.375–1.625rem |
+  | Body | 17px |
+  | Eyebrow | 13px |
+
+- **"How booking works"**: on the homepage and `/book` it is now a real H2 with a small "Three steps" eyebrow above it. It was tiny because the H2 sat inside the hero block, where no size rule applied.
+- **Hero**: the homepage H1 maximum dropped from 6.4rem to 4.75rem, and the "Starts at $349" callout dropped to H2 size so it no longer competes.
+- **Card titles**: package cards, booking steps, panels and band cards all use the H3 step. Fifteen inline `font-size` overrides across about, areas, book, contact, join and military were replaced with a `card-title` class.
+- **All-caps**: removed from page H1s, section H2s, card and step titles, the Join hero, prose headings and the slash banner. It stays on the home hero H1, eyebrows, nav, buttons, breadcrumbs and table headers, with tighter letter-spacing.
+- **Preserved**: pricing, nav, footer, climate-control wording, and attendant/Wi-Fi content were not edited. Colours and fonts are unchanged.
+
+## Two things to review
+- **Homepage booking heading**: the H2 text changed from the slogan "Text the date. We confirm. $100 holds it." to "How booking works"; the slogan is now the line under it.
+- **Home hero H1**: it is still uppercase, just smaller. Removing the `text-transform` line in `.hero h1` makes it sentence case.
+
+The full report is in `claude-report.md` (untracked), updated with this session's retry.
