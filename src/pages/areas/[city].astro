@@ -6,10 +6,13 @@ import { site, textDateHref } from "../../config/site";
 import { cities, type CityPage } from "../../data/cities";
 
 export function getStaticPaths() {
-  return cities.map((city) => ({
-    params: { city: city.slug },
-    props: { city },
-  }));
+  // Killeen uses the dedicated `/areas/killeen.astro` page (SEO copy).
+  return cities
+    .filter((city) => city.slug !== "killeen")
+    .map((city) => ({
+      params: { city: city.slug },
+      props: { city },
+    }));
 }
 
 interface Props {

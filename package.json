@@ -9,13 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:pricing": "tsx scripts/check-pricing.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
   },
   "allowScripts": {
     "esbuild": true
